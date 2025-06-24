@@ -2,6 +2,32 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Shield, Heart, Brain } from 'lucide-react';
 
 export function Hero() {
+  const handleEarlyAccess = () => {
+    const subject = encodeURIComponent('Early Access Registration - Wellnter');
+    const body = encodeURIComponent(`Hi,
+
+I'm interested in registering for early access to Wellnter.
+
+Please let me know the next steps.
+
+Best regards`);
+    
+    window.location.href = `mailto:mdabu.rayhan@outlook.com?subject=${subject}&body=${body}`;
+  };
+
+  const handleDemo = () => {
+    const subject = encodeURIComponent('1:1 Demo Request - Wellnter');
+    const body = encodeURIComponent(`Hi,
+
+I would like to schedule a 1:1 demo of Wellnter.
+
+Please let me know your availability.
+
+Best regards`);
+    
+    window.location.href = `mailto:mdabu.rayhan@outlook.com?subject=${subject}&body=${body}`;
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50">
       {/* Background decoration */}
@@ -57,6 +83,7 @@ export function Hero() {
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
             <Button 
               size="lg" 
+              onClick={handleEarlyAccess}
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             >
               Register for Early Access
@@ -65,6 +92,7 @@ export function Hero() {
             <Button 
               variant="outline" 
               size="lg"
+              onClick={handleDemo}
               className="px-8 py-4 text-lg font-semibold rounded-xl border-2 border-gray-300 hover:border-blue-500 hover:text-blue-600 transition-all duration-300"
             >
               Register for 1:1 Demo
