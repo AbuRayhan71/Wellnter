@@ -30,94 +30,94 @@ Best regards`);
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <section className="relative min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
         <div className="absolute top-3/4 right-1/4 w-64 h-64 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse delay-1000"></div>
       </div>
       
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex-1 flex flex-col justify-center">
-        {/* Logo/Brand */}
-        <div className="flex items-center justify-center mb-8">
-          <div className="flex items-center space-x-6">
-            {/* Wellnter Logo Text with Gradient */}
+      <div className="relative w-full px-4 sm:px-6 lg:px-8 py-16">
+        <div className="max-w-7xl mx-auto">
+          {/* Logo/Brand */}
+          <div className="flex items-center justify-center mb-8">
             <div className="text-6xl sm:text-7xl lg:text-8xl font-bold">
               <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-blue-600 bg-clip-text text-transparent">
                 Wellnter
               </span>
             </div>
           </div>
-        </div>
 
-        {/* Hero content */}
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-            Mental Health for
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> 
-              {" "}High Performers
-            </span>
-          </h2>
-          
-          <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            AI-powered mental health and fitness coaching for founders, developers, and professionals. 
-            Stay healthy while building your career.
-          </p>
+          {/* Hero content */}
+          <div className="text-center mb-16">
+            <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+              Mental Health for
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> 
+                {" "}High Performers
+              </span>
+            </h2>
+            
+            <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed">
+              AI-powered mental health and fitness coaching for founders, developers, and professionals. 
+              Stay healthy while building your career.
+            </p>
 
-          {/* Trust indicators */}
-          <div className="flex items-center justify-center space-x-8 mb-12 text-sm text-gray-500">
-            <div className="flex items-center space-x-2">
-              <Shield className="w-4 h-4" />
-              <span>Privacy First</span>
+            {/* Trust indicators */}
+            <div className="flex items-center justify-center space-x-8 mb-12 text-sm text-gray-500">
+              <div className="flex items-center space-x-2">
+                <Shield className="w-4 h-4" />
+                <span>Privacy First</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Heart className="w-4 h-4" />
+                <span>Burnout Prevention</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Brain className="w-4 h-4" />
+                <span>AI-Powered Insights</span>
+              </div>
             </div>
-            <div className="flex items-center space-x-2">
-              <Heart className="w-4 h-4" />
-              <span>Burnout Prevention</span>
+
+            {/* CTA */}
+            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
+              <Button 
+                size="lg" 
+                onClick={handleEarlyAccess}
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              >
+                Register for Early Access
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg"
+                onClick={handleDemo}
+                className="px-8 py-4 text-lg font-semibold rounded-xl border-2 border-gray-300 hover:border-blue-500 hover:text-blue-600 transition-all duration-300"
+              >
+                Register for 1:1 Demo
+              </Button>
             </div>
-            <div className="flex items-center space-x-2">
-              <Brain className="w-4 h-4" />
-              <span>AI-Powered Insights</span>
-            </div>
+
+            {/* Social proof */}
+            <p className="text-sm text-gray-500 mb-16">
+              Join 500+ founders, developers, and professionals optimizing their mental health
+            </p>
           </div>
 
-          {/* CTA */}
-          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
-            <Button 
-              size="lg" 
-              onClick={handleEarlyAccess}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-            >
-              Register for Early Access
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg"
-              onClick={handleDemo}
-              className="px-8 py-4 text-lg font-semibold rounded-xl border-2 border-gray-300 hover:border-blue-500 hover:text-blue-600 transition-all duration-300"
-            >
-              Register for 1:1 Demo
-            </Button>
+          {/* Therapist Chat Section */}
+          <div className="w-full">
+            <div className="text-center mb-8">
+              <h3 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                Talk to Dr. Sarah - Your AI Therapist
+              </h3>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                Get immediate mental health support designed for high-performing professionals. 
+                Start your conversation below and experience personalized AI therapy.
+              </p>
+            </div>
+            <TherapistChat />
           </div>
-
-          {/* Social proof */}
-          <p className="text-sm text-gray-500 mb-8">
-            Join 500+ founders, developers, and professionals optimizing their mental health
-          </p>
         </div>
-      </div>
-
-      {/* Therapist Chat Section */}
-      <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <div className="text-center mb-8">
-          <h3 className="text-3xl font-bold text-gray-900 mb-4">
-            Talk to Dr. Sarah - Your AI Therapist
-          </h3>
-          <p className="text-lg text-gray-600">
-            Get immediate mental health support designed for high-performing professionals
-          </p>
-        </div>
-        <TherapistChat />
       </div>
     </section>
   );

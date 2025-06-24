@@ -74,14 +74,19 @@ export function TherapistChat() {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto">
-      <Card className="h-[600px] flex flex-col shadow-2xl border-0 bg-white">
+    <div className="w-full max-w-5xl mx-auto">
+      <Card className="h-[700px] flex flex-col shadow-2xl border-0 bg-white/95 backdrop-blur-sm">
         <CardHeader className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-t-lg p-6">
           <CardTitle className="flex items-center space-x-3 text-xl">
-            <Bot className="w-6 h-6" />
+            <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+              <Bot className="w-6 h-6" />
+            </div>
             <div>
-              <div className="font-semibold">Dr. Sarah - AI Therapist</div>
-              <div className="text-sm opacity-90">Online • Specialized in high-performer wellness</div>
+              <div className="font-semibold text-lg">Dr. Sarah - AI Therapist</div>
+              <div className="text-sm opacity-90 flex items-center">
+                <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+                Online • Specialized in high-performer wellness
+              </div>
             </div>
           </CardTitle>
         </CardHeader>
@@ -96,18 +101,22 @@ export function TherapistChat() {
                   className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   <div
-                    className={`max-w-[75%] rounded-2xl p-4 ${
+                    className={`max-w-[80%] rounded-2xl p-4 shadow-sm ${
                       message.role === 'user'
                         ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'
-                        : 'bg-gray-100 text-gray-900'
+                        : 'bg-gray-50 text-gray-900 border border-gray-100'
                     }`}
                   >
                     <div className="flex items-start space-x-3">
                       {message.role === 'assistant' && (
-                        <Bot className="w-5 h-5 mt-0.5 text-blue-600 flex-shrink-0" />
+                        <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                          <Bot className="w-4 h-4 text-white" />
+                        </div>
                       )}
                       {message.role === 'user' && (
-                        <User className="w-5 h-5 mt-0.5 text-white flex-shrink-0" />
+                        <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                          <User className="w-4 h-4 text-white" />
+                        </div>
                       )}
                       <div className="flex-1">
                         <p className="text-sm leading-relaxed">{message.content}</p>
@@ -124,9 +133,11 @@ export function TherapistChat() {
               
               {isLoading && (
                 <div className="flex justify-start">
-                  <div className="bg-gray-100 rounded-2xl p-4 max-w-[75%]">
+                  <div className="bg-gray-50 border border-gray-100 rounded-2xl p-4 max-w-[80%] shadow-sm">
                     <div className="flex items-center space-x-3">
-                      <Bot className="w-5 h-5 text-blue-600" />
+                      <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                        <Bot className="w-4 h-4 text-white" />
+                      </div>
                       <div className="flex space-x-1">
                         <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
                         <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-100"></div>
@@ -141,27 +152,32 @@ export function TherapistChat() {
           </ScrollArea>
 
           {/* Input Area */}
-          <div className="border-t bg-gray-50 p-6 rounded-b-lg">
+          <div className="border-t bg-gradient-to-r from-gray-50 to-blue-50/30 p-6 rounded-b-lg">
             <div className="flex space-x-4">
               <Input
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Share what's on your mind..."
+                placeholder="Share what's on your mind... (Press Enter to send)"
                 disabled={isLoading}
-                className="flex-1 h-12 text-base bg-white border-gray-200 focus:border-blue-500 focus:ring-blue-500"
+                className="flex-1 h-14 text-base bg-white border-gray-200 focus:border-blue-500 focus:ring-blue-500 rounded-xl shadow-sm"
               />
               <Button
                 onClick={handleSendMessage}
                 disabled={!inputMessage.trim() || isLoading}
-                className="h-12 px-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                className="h-14 px-8 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
               >
                 <Send className="w-5 h-5" />
               </Button>
             </div>
-            <p className="text-xs text-gray-500 mt-3 text-center">
-              This is AI support. For emergencies, contact your local crisis helpline.
-            </p>
+            <div className="flex items-center justify-between mt-4">
+              <p className="text-xs text-gray-500">
+                This is AI support. For emergencies, contact your local crisis helpline.
+              </p>
+              <p className="text-xs text-gray-400">
+                Powered by advanced AI • Secure & Private
+              </p>
+            </div>
           </div>
         </CardContent>
       </Card>

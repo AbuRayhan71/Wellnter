@@ -6,7 +6,7 @@ import './App.css';
 
 function App() {
   return (
-    <div className="min-h-screen w-full">
+    <div className="min-h-screen w-full overflow-x-hidden">
       <Hero />
       <Features />
       <HowItWorks />
