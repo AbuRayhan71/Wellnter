@@ -3,11 +3,10 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { MessageCircle, X, Send, Bot, User } from 'lucide-react';
+import { Send, Bot, User } from 'lucide-react';
 import { sendMessageToTherapist, ChatMessage } from '@/services/groqService';
 
 export function TherapistChat() {
-  const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: 'assistant',
@@ -75,116 +74,97 @@ export function TherapistChat() {
   };
 
   return (
-    <>
-      {/* Chat Toggle Button */}
-      <div className="fixed bottom-6 right-6 z-50">
-        <Button
-          onClick={() => setIsOpen(!isOpen)}
-          className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-        >
-          {isOpen ? (
-            <X className="w-6 h-6 text-white" />
-          ) : (
-            <MessageCircle className="w-6 h-6 text-white" />
-          )}
-        </Button>
-      </div>
-
-      {/* Chat Window */}
-      {isOpen && (
-        <div className="fixed bottom-24 right-6 z-40 w-96 h-[500px] max-w-[calc(100vw-2rem)] max-h-[calc(100vh-8rem)]">
-          <Card className="h-full flex flex-col shadow-2xl border-0">
-            <CardHeader className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-t-lg p-4">
-              <CardTitle className="flex items-center space-x-2 text-lg">
-                <Bot className="w-5 h-5" />
-                <div>
-                  <div className="font-semibold">Dr. Sarah - AI Therapist</div>
-                  <div className="text-xs opacity-90">Online • Specialized in high-performer wellness</div>
-                </div>
-              </CardTitle>
-            </CardHeader>
-            
-            <CardContent className="flex-1 flex flex-col p-0">
-              {/* Messages */}
-              <ScrollArea className="flex-1 p-4">
-                <div className="space-y-4">
-                  {messages.map((message, index) => (
-                    <div
-                      key={index}
-                      className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
-                    >
-                      <div
-                        className={`max-w-[80%] rounded-lg p-3 ${
-                          message.role === 'user'
-                            ? 'bg-blue-600 text-white'
-                            : 'bg-gray-100 text-gray-900'
-                        }`}
-                      >
-                        <div className="flex items-start space-x-2">
-                          {message.role === 'assistant' && (
-                            <Bot className="w-4 h-4 mt-0.5 text-blue-600" />
-                          )}
-                          {message.role === 'user' && (
-                            <User className="w-4 h-4 mt-0.5 text-white" />
-                          )}
-                          <div className="flex-1">
-                            <p className="text-sm leading-relaxed">{message.content}</p>
-                            <p className={`text-xs mt-1 ${
-                              message.role === 'user' ? 'text-blue-100' : 'text-gray-500'
-                            }`}>
-                              {formatTime(message.timestamp)}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                  
-                  {isLoading && (
-                    <div className="flex justify-start">
-                      <div className="bg-gray-100 rounded-lg p-3 max-w-[80%]">
-                        <div className="flex items-center space-x-2">
-                          <Bot className="w-4 h-4 text-blue-600" />
-                          <div className="flex space-x-1">
-                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-100"></div>
-                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-200"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-                <div ref={messagesEndRef} />
-              </ScrollArea>
-
-              {/* Input Area */}
-              <div className="border-t p-4">
-                <div className="flex space-x-2">
-                  <Input
-                    value={inputMessage}
-                    onChange={(e) => setInputMessage(e.target.value)}
-                    onKeyPress={handleKeyPress}
-                    placeholder="Share what's on your mind..."
-                    disabled={isLoading}
-                    className="flex-1"
-                  />
-                  <Button
-                    onClick={handleSendMessage}
-                    disabled={!inputMessage.trim() || isLoading}
-                    className="bg-blue-600 hover:bg-blue-700"
+    <div className="w-full max-w-4xl mx-auto">
+      <Card className="h-[600px] flex flex-col shadow-2xl border-0 bg-white">
+        <CardHeader className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-t-lg p-6">
+          <CardTitle className="flex items-center space-x-3 text-xl">
+            <Bot className="w-6 h-6" />
+            <div>
+              <div className="font-semibold">Dr. Sarah - AI Therapist</div>
+              <div className="text-sm opacity-90">Online • Specialized in high-performer wellness</div>
+            </div>
+          </CardTitle>
+        </CardHeader>
+        
+        <CardContent className="flex-1 flex flex-col p-0">
+          {/* Messages */}
+          <ScrollArea className="flex-1 p-6">
+            <div className="space-y-6">
+              {messages.map((message, index) => (
+                <div
+                  key={index}
+                  className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                >
+                  <div
+                    className={`max-w-[75%] rounded-2xl p-4 ${
+                      message.role === 'user'
+                        ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'
+                        : 'bg-gray-100 text-gray-900'
+                    }`}
                   >
-                    <Send className="w-4 h-4" />
-                  </Button>
+                    <div className="flex items-start space-x-3">
+                      {message.role === 'assistant' && (
+                        <Bot className="w-5 h-5 mt-0.5 text-blue-600 flex-shrink-0" />
+                      )}
+                      {message.role === 'user' && (
+                        <User className="w-5 h-5 mt-0.5 text-white flex-shrink-0" />
+                      )}
+                      <div className="flex-1">
+                        <p className="text-sm leading-relaxed">{message.content}</p>
+                        <p className={`text-xs mt-2 ${
+                          message.role === 'user' ? 'text-blue-100' : 'text-gray-500'
+                        }`}>
+                          {formatTime(message.timestamp)}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <p className="text-xs text-gray-500 mt-2">
-                  This is AI support. For emergencies, contact your local crisis helpline.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      )}
-    </>
+              ))}
+              
+              {isLoading && (
+                <div className="flex justify-start">
+                  <div className="bg-gray-100 rounded-2xl p-4 max-w-[75%]">
+                    <div className="flex items-center space-x-3">
+                      <Bot className="w-5 h-5 text-blue-600" />
+                      <div className="flex space-x-1">
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-100"></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-200"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+            <div ref={messagesEndRef} />
+          </ScrollArea>
+
+          {/* Input Area */}
+          <div className="border-t bg-gray-50 p-6 rounded-b-lg">
+            <div className="flex space-x-4">
+              <Input
+                value={inputMessage}
+                onChange={(e) => setInputMessage(e.target.value)}
+                onKeyPress={handleKeyPress}
+                placeholder="Share what's on your mind..."
+                disabled={isLoading}
+                className="flex-1 h-12 text-base bg-white border-gray-200 focus:border-blue-500 focus:ring-blue-500"
+              />
+              <Button
+                onClick={handleSendMessage}
+                disabled={!inputMessage.trim() || isLoading}
+                className="h-12 px-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+              >
+                <Send className="w-5 h-5" />
+              </Button>
+            </div>
+            <p className="text-xs text-gray-500 mt-3 text-center">
+              This is AI support. For emergencies, contact your local crisis helpline.
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
   );
 }

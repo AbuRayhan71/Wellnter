@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Shield, Heart, Brain } from 'lucide-react';
+import { TherapistChat } from '@/components/TherapistChat';
 
 export function Hero() {
   const handleEarlyAccess = () => {
@@ -29,14 +30,14 @@ Best regards`);
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <section className="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
         <div className="absolute top-3/4 right-1/4 w-64 h-64 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse delay-1000"></div>
       </div>
       
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex-1 flex flex-col justify-center">
         {/* Logo/Brand */}
         <div className="flex items-center justify-center mb-8">
           <div className="flex items-center space-x-6">
@@ -80,7 +81,7 @@ Best regards`);
           </div>
 
           {/* CTA */}
-          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
             <Button 
               size="lg" 
               onClick={handleEarlyAccess}
@@ -100,10 +101,23 @@ Best regards`);
           </div>
 
           {/* Social proof */}
-          <p className="text-sm text-gray-500 mt-8">
+          <p className="text-sm text-gray-500 mb-8">
             Join 500+ founders, developers, and professionals optimizing their mental health
           </p>
         </div>
+      </div>
+
+      {/* Therapist Chat Section */}
+      <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <div className="text-center mb-8">
+          <h3 className="text-3xl font-bold text-gray-900 mb-4">
+            Talk to Dr. Sarah - Your AI Therapist
+          </h3>
+          <p className="text-lg text-gray-600">
+            Get immediate mental health support designed for high-performing professionals
+          </p>
+        </div>
+        <TherapistChat />
       </div>
     </section>
   );
