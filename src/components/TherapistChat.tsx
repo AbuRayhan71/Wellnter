@@ -3,8 +3,13 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Send, Bot, User } from 'lucide-react';
-import { sendMessageToTherapist, ChatMessage } from '@/services/groqService';
+import { Send, Bot, User, Calendar, AlertTriangle, Phone } from 'lucide-react';
+import { sendMessageToTherapist, analyzeSupportLevel, ChatMessage, SupportAnalysis } from '@/services/groqService';
+
+interface TherapistPrompt {
+  show: boolean;
+  analysis: SupportAnalysis;
+}
 
 export function TherapistChat() {
   const [messages, setMessages] = useState<ChatMessage[]>([
@@ -16,6 +21,7 @@ export function TherapistChat() {
   ]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [therapistPrompt, setTherapistPrompt] = useState<TherapistPrompt>({ show: false, analysis: { level: 'low', reasoning: '', needsTherapist: false } });
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -24,7 +30,27 @@ export function TherapistChat() {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages]);
+  }, [messages, therapistPrompt]);
+
+  const handleScheduleCall = () => {
+    const subject = encodeURIComponent('Therapist Consultation Request - Wellnter');
+    const body = encodeURIComponent(`Hi,
+
+Based on my conversation with Dr. Sarah (AI), I would like to schedule a consultation with one of your licensed therapists.
+
+Support Level Identified: ${therapistPrompt.analysis.level.toUpperCase()}
+Reason: ${therapistPrompt.analysis.reasoning}
+
+Please let me know your availability for a consultation call.
+
+Best regards`);
+    
+    window.location.href = `mailto:mdabu.rayhan@outlook.com?subject=${subject}&body=${body}`;
+  };
+
+  const handleDismissPrompt = () => {
+    setTherapistPrompt({ show: false, analysis: { level: 'low', reasoning: '', needsTherapist: false } });
+  };
 
   const handleSendMessage = async () => {
     if (!inputMessage.trim() || isLoading) return;
@@ -36,10 +62,15 @@ export function TherapistChat() {
     };
 
     setMessages(prev => [...prev, userMessage]);
+    const currentInput = inputMessage.trim();
     setInputMessage('');
     setIsLoading(true);
 
     try {
+      // Analyze support level first
+      const analysis = await analyzeSupportLevel(currentInput);
+      
+      // Get AI response
       const response = await sendMessageToTherapist([...messages, userMessage]);
       
       const assistantMessage: ChatMessage = {
@@ -49,6 +80,12 @@ export function TherapistChat() {
       };
 
       setMessages(prev => [...prev, assistantMessage]);
+
+      // Show therapist prompt if mid or high level support needed
+      if (analysis.needsTherapist && (analysis.level === 'mid' || analysis.level === 'high')) {
+        setTherapistPrompt({ show: true, analysis });
+      }
+
     } catch (error) {
       console.error('Error sending message:', error);
       const errorMessage: ChatMessage = {
@@ -73,6 +110,22 @@ export function TherapistChat() {
     return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
 
+  const getSupportLevelColor = (level: string) => {
+    switch (level) {
+      case 'high': return 'from-red-500 to-red-600';
+      case 'mid': return 'from-orange-500 to-orange-600';
+      default: return 'from-green-500 to-green-600';
+    }
+  };
+
+  const getSupportLevelIcon = (level: string) => {
+    switch (level) {
+      case 'high': return AlertTriangle;
+      case 'mid': return Phone;
+      default: return Calendar;
+    }
+  };
+
   return (
     <div className="w-full max-w-5xl mx-auto">
       <Card className="h-[700px] flex flex-col shadow-2xl border-0 bg-white/95 backdrop-blur-sm">
@@ -92,6 +145,53 @@ export function TherapistChat() {
         </CardHeader>
         
         <CardContent className="flex-1 flex flex-col p-0">
+          {/* Therapist Recommendation Prompt */}
+          {therapistPrompt.show && (
+            <div className="p-4 border-b bg-gradient-to-r from-blue-50 to-purple-50">
+              <Card className={`border-l-4 bg-gradient-to-r ${getSupportLevelColor(therapistPrompt.analysis.level)} border-0 shadow-lg`}>
+                <CardContent className="p-4">
+                  <div className="flex items-start space-x-3">
+                    <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+                      {React.createElement(getSupportLevelIcon(therapistPrompt.analysis.level), { 
+                        className: `w-5 h-5 ${therapistPrompt.analysis.level === 'high' ? 'text-red-600' : therapistPrompt.analysis.level === 'mid' ? 'text-orange-600' : 'text-green-600'}` 
+                      })}
+                    </div>
+                    <div className="flex-1 text-white">
+                      <h4 className="font-semibold text-lg mb-2">
+                        {therapistPrompt.analysis.level === 'high' ? 'High Priority Support Needed' : 'Professional Support Recommended'}
+                      </h4>
+                      <p className="text-sm opacity-90 mb-4">
+                        Based on our conversation, I recommend speaking with one of our licensed therapists. 
+                        {therapistPrompt.analysis.level === 'high' 
+                          ? ' This appears to require immediate professional attention.'
+                          : ' They can provide more specialized support for your situation.'
+                        }
+                      </p>
+                      <div className="flex space-x-3">
+                        <Button 
+                          onClick={handleScheduleCall}
+                          className="bg-white text-gray-900 hover:bg-gray-100 font-semibold"
+                          size="sm"
+                        >
+                          <Calendar className="w-4 h-4 mr-2" />
+                          Schedule Call with Therapist
+                        </Button>
+                        <Button 
+                          onClick={handleDismissPrompt}
+                          variant="outline"
+                          className="border-white text-white hover:bg-white/10"
+                          size="sm"
+                        >
+                          Continue Chat
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          )}
+
           {/* Messages */}
           <ScrollArea className="flex-1 p-6">
             <div className="space-y-6">
