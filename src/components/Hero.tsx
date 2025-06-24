@@ -57,11 +57,28 @@ Best regards`);
               </span>
             </h2>
             
-            <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl sm:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed">
               AI-powered mental health and fitness coaching for founders, developers, and professionals. 
               Stay healthy while building your career.
             </p>
+          </div>
 
+          {/* Therapist Chat Section - Moved to top */}
+          <div className="w-full mb-16">
+            <div className="text-center mb-8">
+              <h3 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                Talk to Dr. Sarah - Your AI Therapist
+              </h3>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                Get immediate mental health support designed for high-performing professionals. 
+                Start your conversation below and experience personalized AI therapy.
+              </p>
+            </div>
+            <TherapistChat />
+          </div>
+
+          {/* Trust indicators and CTA - Moved below chat */}
+          <div className="text-center">
             {/* Trust indicators */}
             <div className="flex items-center justify-center space-x-8 mb-12 text-sm text-gray-500">
               <div className="flex items-center space-x-2">
@@ -99,23 +116,9 @@ Best regards`);
             </div>
 
             {/* Social proof */}
-            <p className="text-sm text-gray-500 mb-16">
+            <p className="text-sm text-gray-500">
               Join 500+ founders, developers, and professionals optimizing their mental health
             </p>
-          </div>
-
-          {/* Therapist Chat Section */}
-          <div className="w-full">
-            <div className="text-center mb-8">
-              <h3 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-                Talk to Dr. Sarah - Your AI Therapist
-              </h3>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Get immediate mental health support designed for high-performing professionals. 
-                Start your conversation below and experience personalized AI therapy.
-              </p>
-            </div>
-            <TherapistChat />
           </div>
         </div>
       </div>
