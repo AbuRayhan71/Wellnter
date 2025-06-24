@@ -37,7 +37,7 @@ export async function sendMessageToTherapist(messages: ChatMessage[]): Promise<s
 
     const completion = await groq.chat.completions.create({
       messages: formattedMessages,
-      model: 'llama-3.1-70b-versatile',
+      model: 'llama3-70b-8192',
       temperature: 0.7,
       max_tokens: 500,
     });
