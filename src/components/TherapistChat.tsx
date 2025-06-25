@@ -3,8 +3,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Send, Bot, User, Calendar, AlertTriangle, Phone, X, ChevronUp, ChevronDown, MessageCircle, Activity, Mic, Brain } from 'lucide-react';
+import { Send, Bot, User, Calendar, AlertTriangle, Phone, X, ChevronUp, ChevronDown, MessageCircle, Activity, Brain } from 'lucide-react';
 import { sendMessageToTherapist, analyzeSupportLevel, ChatMessage, SupportAnalysis, ClinicalAssessment } from '@/services/groqService';
+import { VoiceInput } from '@/components/VoiceInput';
 
 interface TherapistPrompt {
   show: boolean;
@@ -53,23 +54,23 @@ Best regards`);
     setTherapistPrompt({ show: false, analysis: { level: 'low', reasoning: '', needsTherapist: false } });
   };
 
-  const handleSendMessage = async () => {
-    if (!inputMessage.trim() || isLoading) return;
+  const handleSendMessage = async (messageText?: string) => {
+    const textToSend = messageText || inputMessage.trim();
+    if (!textToSend || isLoading) return;
 
     const userMessage: ChatMessage = {
       role: 'user',
-      content: inputMessage.trim(),
+      content: textToSend,
       timestamp: new Date()
     };
 
     setMessages(prev => [...prev, userMessage]);
-    const currentInput = inputMessage.trim();
     setInputMessage('');
     setIsLoading(true);
 
     try {
       // Analyze support level first
-      const analysis = await analyzeSupportLevel(currentInput);
+      const analysis = await analyzeSupportLevel(textToSend);
       
       // Get AI response with clinical data
       const { response, clinicalData } = await sendMessageToTherapist([...messages, userMessage]);
@@ -99,6 +100,12 @@ Best regards`);
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleVoiceTranscription = (transcribedText: string) => {
+    setInputMessage(transcribedText);
+    // Optionally auto-send the transcribed message
+    // handleSendMessage(transcribedText);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -325,18 +332,24 @@ Best regards`);
         </ScrollArea>
       </div>
 
-      {/* Input Area - Matching UNSW style */}
+      {/* Input Area - Matching UNSW style with Voice Input */}
       <div className="bg-white border border-gray-200 rounded-b-xl shadow-sm">
         {/* Language Selector */}
         <div className="px-6 py-3 border-b border-gray-100">
-          <div className="flex items-center space-x-2">
-            <div className="w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center">
-              <span className="text-white text-xs">🌐</span>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <div className="w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center">
+                <span className="text-white text-xs">🌐</span>
+              </div>
+              <span className="text-sm font-medium text-gray-700">Language</span>
+              <select className="ml-2 text-sm border border-gray-200 rounded px-2 py-1 bg-white">
+                <option>🇺🇸 English</option>
+              </select>
             </div>
-            <span className="text-sm font-medium text-gray-700">Language</span>
-            <select className="ml-2 text-sm border border-gray-200 rounded px-2 py-1 bg-white">
-              <option>🇺🇸 English</option>
-            </select>
+            <div className="flex items-center space-x-2 text-sm text-green-600">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+              <span>Azure Whisper AI Ready</span>
+            </div>
           </div>
         </div>
 
@@ -347,19 +360,16 @@ Best regards`);
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
               onKeyPress={handleKeyPress}
-              placeholder="Tell me about your symptoms..."
+              placeholder="Tell me about your symptoms or use voice input..."
               disabled={isLoading}
               className="flex-1 bg-gray-50 border-gray-200 focus:border-blue-500 focus:ring-blue-500 h-12 rounded-xl"
             />
+            <VoiceInput 
+              onTranscription={handleVoiceTranscription}
+              disabled={isLoading}
+            />
             <Button
-              variant="ghost"
-              size="sm"
-              className="h-12 w-12 rounded-xl border border-gray-200 hover:bg-gray-50"
-            >
-              <Mic className="w-5 h-5 text-gray-500" />
-            </Button>
-            <Button
-              onClick={handleSendMessage}
+              onClick={() => handleSendMessage()}
               disabled={!inputMessage.trim() || isLoading}
               className="bg-blue-600 hover:bg-blue-700 px-6 h-12 rounded-xl font-medium"
             >
@@ -370,9 +380,15 @@ Best regards`);
           
           <div className="flex items-center justify-between mt-4">
             <p className="text-xs text-gray-500">
-              🔊 Azure Whisper AI voice transcription enabled
+              🔊 Voice input powered by Azure Whisper AI • Secure & Private
             </p>
-            <button className="text-xs text-blue-600 hover:text-blue-700 underline">
+            <button 
+              onClick={() => {
+                setMessages([messages[0]]);
+                setTherapistPrompt({ show: false, analysis: { level: 'low', reasoning: '', needsTherapist: false } });
+              }}
+              className="text-xs text-blue-600 hover:text-blue-700 underline"
+            >
               Start a new conversation
             </button>
           </div>
