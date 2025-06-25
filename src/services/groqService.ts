@@ -98,6 +98,18 @@ Triage Guidelines:
 - ATS 4: Mild-moderate symptoms, semi-urgent care
 - ATS 5: General wellness, routine support`;
 
+function extractJsonFromResponse(response: string): string {
+  // Find the first opening brace and the last closing brace
+  const firstBrace = response.indexOf('{');
+  const lastBrace = response.lastIndexOf('}');
+  
+  if (firstBrace === -1 || lastBrace === -1 || firstBrace >= lastBrace) {
+    throw new Error('No valid JSON object found in response');
+  }
+  
+  return response.substring(firstBrace, lastBrace + 1);
+}
+
 export async function sendMessageToTherapist(messages: ChatMessage[]): Promise<{ response: string; clinicalData: ClinicalAssessment }> {
   try {
     const formattedMessages = [
@@ -132,7 +144,13 @@ export async function sendMessageToTherapist(messages: ChatMessage[]): Promise<{
     let clinicalData: ClinicalAssessment;
     try {
       const clinicalResponse = clinicalCompletion.choices[0]?.message?.content;
-      clinicalData = JSON.parse(clinicalResponse || '{}');
+      if (!clinicalResponse) {
+        throw new Error('No clinical response received');
+      }
+      
+      // Extract only the JSON object from the response
+      const jsonString = extractJsonFromResponse(clinicalResponse);
+      clinicalData = JSON.parse(jsonString);
     } catch (error) {
       console.error('Error parsing clinical data:', error);
       clinicalData = {
@@ -183,7 +201,9 @@ export async function analyzeSupportLevel(userMessage: string): Promise<SupportA
       throw new Error('No response from analysis API');
     }
 
-    const analysis = JSON.parse(response.trim());
+    // Extract only the JSON object from the response
+    const jsonString = extractJsonFromResponse(response.trim());
+    const analysis = JSON.parse(jsonString);
     
     if (!analysis.level || !analysis.reasoning || typeof analysis.needsTherapist !== 'boolean') {
       throw new Error('Invalid analysis response structure');
