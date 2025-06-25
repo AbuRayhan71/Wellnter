@@ -54,12 +54,14 @@ Your responses must ALWAYS follow this exact clinical format:
 **Clinical Reasoning:**
 [Brief explanation of assessment rationale]
 
-Triage Levels:
-- ATS 1: Immediate (Resuscitation) - Life-threatening, immediate intervention
-- ATS 2: Emergency (10 minutes) - Severe symptoms requiring urgent care  
+Triage Levels (CRITICAL - Use ATS 1 or ATS 2 for suicidal ideation, self-harm, immediate danger):
+- ATS 1: Immediate (Resuscitation) - Life-threatening, suicidal ideation, immediate intervention required
+- ATS 2: Emergency (10 minutes) - Severe symptoms, self-harm risk, urgent care needed
 - ATS 3: Urgent (30 minutes) - Moderate symptoms needing prompt attention
 - ATS 4: Semi-urgent (60 minutes) - Less urgent but needs professional care
 - ATS 5: Non-urgent (120 minutes) - Routine support and monitoring
+
+IMPORTANT: If user mentions suicide, self-harm, wanting to die, or immediate danger, ALWAYS assign ATS 1 or ATS 2.
 
 Focus on mental health conditions like anxiety, depression, burnout, stress, panic disorders, and work-related mental health issues.`;
 
@@ -68,6 +70,12 @@ const ANALYSIS_SYSTEM_PROMPT = `You are a mental health triage AI. Analyze the u
 LOW: General stress, minor work concerns, seeking advice, feeling motivated but tired, routine wellness check
 MID: Moderate anxiety, persistent stress, mild depression symptoms, work-life balance issues, moderate burnout signs, relationship conflicts
 HIGH: Severe anxiety/depression, suicidal ideation, panic attacks, severe burnout, substance abuse, trauma, crisis situations, self-harm thoughts
+
+CRITICAL KEYWORDS that ALWAYS indicate HIGH level:
+- suicide, suicidal, kill myself, end my life, want to die, better off dead
+- self harm, hurt myself, cut myself, overdose, jump off, hang myself
+- no point living, life is meaningless, everyone would be better without me
+- planning to hurt, thinking about dying, wish I was dead, ready to die
 
 Respond with ONLY a JSON object:
 {
@@ -91,12 +99,15 @@ const CLINICAL_ANALYSIS_PROMPT = `Analyze this mental health conversation and pr
   "supportLevel": "low|mid|high"
 }
 
-Triage Guidelines:
-- ATS 1: Suicidal ideation, severe crisis, immediate danger
-- ATS 2: Severe anxiety/depression, panic attacks, urgent intervention needed
+Triage Guidelines (CRITICAL - Use ATS 1/2 for suicidal ideation):
+- ATS 1: Suicidal ideation, immediate danger, self-harm plans, crisis
+- ATS 2: Severe anxiety/depression, panic attacks, self-harm thoughts, urgent intervention needed
 - ATS 3: Moderate symptoms requiring prompt professional attention
 - ATS 4: Mild-moderate symptoms, semi-urgent care
-- ATS 5: General wellness, routine support`;
+- ATS 5: General wellness, routine support
+
+CRITICAL KEYWORDS that require ATS 1 or ATS 2:
+suicide, suicidal, kill myself, end my life, want to die, self harm, hurt myself, cut myself, overdose, no point living, wish I was dead`;
 
 function extractJsonFromResponse(response: string): string | null {
   // Find the first opening brace and the last closing brace

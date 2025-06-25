@@ -6,6 +6,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Send, Bot, User, Calendar, AlertTriangle, Phone, X, ChevronUp, ChevronDown, MessageCircle, Activity, Brain, Globe } from 'lucide-react';
 import { sendMessageToTherapist, analyzeSupportLevel, ChatMessage, SupportAnalysis, ClinicalAssessment } from '@/services/groqService';
 import { VoiceInput } from '@/components/VoiceInput';
+import { CriticalAppointmentModal } from '@/components/CriticalAppointmentModal';
 
 interface TherapistPrompt {
   show: boolean;
@@ -49,6 +50,11 @@ export function TherapistChat() {
     show: false, 
     analysis: { level: 'low', reasoning: '', needsTherapist: false } 
   });
+  const [criticalModal, setCriticalModal] = useState<{
+    show: boolean;
+    urgencyLevel: 'critical' | 'urgent';
+    clinicalData?: ClinicalAssessment;
+  }>({ show: false, urgencyLevel: 'critical' });
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -59,19 +65,30 @@ export function TherapistChat() {
     scrollToBottom();
   }, [messages, therapistPrompt]);
 
+  // Helper function to detect critical situations
+  const isCriticalSituation = (message: string, clinicalData?: ClinicalAssessment): boolean => {
+    const criticalKeywords = [
+      'suicide', 'suicidal', 'kill myself', 'end my life', 'want to die', 'better off dead',
+      'self harm', 'hurt myself', 'cut myself', 'overdose', 'jump off', 'hang myself',
+      'no point living', 'life is meaningless', 'everyone would be better without me',
+      'planning to hurt', 'thinking about dying', 'wish I was dead', 'ready to die'
+    ];
+
+    const messageText = message.toLowerCase();
+    const hasCriticalKeywords = criticalKeywords.some(keyword => messageText.includes(keyword));
+    const isATS1or2 = clinicalData && ['ATS 1', 'ATS 2'].includes(clinicalData.triageLevel);
+    
+    return hasCriticalKeywords || isATS1or2 || false;
+  };
+
   // Helper function to check if ATS score requires appointment
   const requiresAppointment = (atsLevel: string): boolean => {
     return ['ATS 1', 'ATS 2', 'ATS 3'].includes(atsLevel);
   };
 
   // Helper function to get urgency level based on ATS score
-  const getUrgencyLevel = (atsLevel: string): 'critical' | 'urgent' | 'moderate' => {
-    switch (atsLevel) {
-      case 'ATS 1': return 'critical';
-      case 'ATS 2': return 'urgent';
-      case 'ATS 3': return 'moderate';
-      default: return 'moderate';
-    }
+  const getUrgencyLevel = (atsLevel: string): 'critical' | 'urgent' => {
+    return ['ATS 1', 'ATS 2'].includes(atsLevel) ? 'critical' : 'urgent';
   };
 
   const handleLanguageChange = (language: Language) => {
@@ -100,7 +117,7 @@ export function TherapistChat() {
   };
 
   const handleScheduleCall = () => {
-    const urgencyLevel = therapistPrompt.clinicalData ? getUrgencyLevel(therapistPrompt.clinicalData.triageLevel) : 'moderate';
+    const urgencyLevel = therapistPrompt.clinicalData ? getUrgencyLevel(therapistPrompt.clinicalData.triageLevel) : 'urgent';
     const atsLevel = therapistPrompt.clinicalData?.triageLevel || 'ATS 3';
     
     const subject = encodeURIComponent(`${urgencyLevel.toUpperCase()} - Therapist Consultation Request - Wellnter`);
@@ -125,7 +142,7 @@ Please prioritize this request based on the ${urgencyLevel} urgency level and co
 
 Best regards`);
     
-    window.location.href = `mailto:mdabu.rayhan@outlook.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:contact@wellnter.com?subject=${subject}&body=${body}`;
   };
 
   const handleDismissPrompt = () => {
@@ -165,8 +182,24 @@ Best regards`);
 
       setMessages(prev => [...prev, assistantMessage]);
 
-      // Show therapist prompt if ATS score is 3 or higher (ATS 1, ATS 2, ATS 3)
-      if (clinicalData && requiresAppointment(clinicalData.triageLevel)) {
+      // Check for critical situations first (suicidal ideation, immediate danger)
+      if (isCriticalSituation(textToSend, clinicalData)) {
+        setCriticalModal({
+          show: true,
+          urgencyLevel: 'critical',
+          clinicalData
+        });
+      }
+      // Show critical modal for ATS 1 and ATS 2
+      else if (clinicalData && ['ATS 1', 'ATS 2'].includes(clinicalData.triageLevel)) {
+        setCriticalModal({
+          show: true,
+          urgencyLevel: getUrgencyLevel(clinicalData.triageLevel),
+          clinicalData
+        });
+      }
+      // Show therapist prompt for ATS 3 (urgent but not critical)
+      else if (clinicalData && clinicalData.triageLevel === 'ATS 3') {
         setTherapistPrompt({ 
           show: true, 
           analysis,
@@ -308,6 +341,14 @@ Best regards`);
 
   return (
     <div className="w-full max-w-5xl mx-auto">
+      {/* Critical Appointment Modal */}
+      <CriticalAppointmentModal
+        isOpen={criticalModal.show}
+        onClose={() => setCriticalModal({ show: false, urgencyLevel: 'critical' })}
+        urgencyLevel={criticalModal.urgencyLevel}
+        clinicalData={criticalModal.clinicalData}
+      />
+
       {/* Header - Always visible, matching UNSW style */}
       <div className="bg-white border border-gray-200 rounded-t-xl shadow-sm">
         <div className="flex items-center justify-between p-4">
@@ -577,6 +618,7 @@ Best regards`);
                   show: false, 
                   analysis: { level: 'low', reasoning: '', needsTherapist: false } 
                 });
+                setCriticalModal({ show: false, urgencyLevel: 'critical' });
               }}
               className="text-xs text-blue-600 hover:text-blue-700 underline font-medium"
             >
