@@ -1,27 +1,28 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Github, Linkedin, Mail, Twitter } from 'lucide-react';
+import { Github, Linkedin, Mail, Twitter, ArrowRight } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer id="contact" className="bg-gray-900 text-white">
       {/* Newsletter section */}
       <div className="border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="text-center">
+          <div className="max-w-2xl mx-auto text-center">
             <h3 className="text-3xl font-bold mb-4">Stay Updated</h3>
-            <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
-              Get the latest insights on mental health, fitness coaching, and AI-powered wellness solutions.
+            <p className="text-gray-400 mb-8">
+              Get the latest insights on mental health, wellness strategies, and AI-powered solutions for high performers.
             </p>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 max-w-md mx-auto">
+            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
               <Input
                 type="email"
-                placeholder="Enter your email"
-                className="bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500"
+                placeholder="Enter your email address"
+                className="bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500 h-12 px-4 rounded-lg"
               />
-              <Button className="bg-blue-600 hover:bg-blue-700 px-8 whitespace-nowrap">
+              <Button className="bg-blue-600 hover:bg-blue-700 px-8 h-12 rounded-lg font-semibold whitespace-nowrap">
                 Subscribe
+                <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </div>
             
@@ -33,32 +34,27 @@ export function Footer() {
       </div>
 
       {/* Main footer */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="md:col-span-2">
-            <div className="flex items-center space-x-4 mb-4">
-              {/* Wellnter Logo Text with Gradient */}
-              <div className="text-2xl font-bold">
-                <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-blue-500 bg-clip-text text-transparent">
-                  Wellnter
-                </span>
-              </div>
+            <div className="text-2xl font-bold text-blue-400 mb-4">
+              Wellnter
             </div>
-            <p className="text-gray-400 mb-6 max-w-md">
-              AI-powered mental health support and life fitness coaching platform. 
-              Empowering individuals to achieve optimal wellness through personalized guidance and continuous monitoring.
+            <p className="text-gray-400 mb-6 max-w-md leading-relaxed">
+              AI-powered mental health support and fitness coaching platform designed specifically 
+              for founders, developers, and high-performing professionals.
             </p>
             
             {/* Contact Information */}
-            <div className="mb-6 space-y-2">
-              <div className="flex items-center space-x-2 text-gray-400">
+            <div className="mb-6 space-y-3">
+              <div className="flex items-center space-x-3 text-gray-400">
                 <Mail className="w-4 h-4" />
                 <a href="mailto:mdabu.rayhan@outlook.com" className="hover:text-white transition-colors">
                   mdabu.rayhan@outlook.com
                 </a>
               </div>
-              <div className="flex items-center space-x-2 text-gray-400">
+              <div className="flex items-center space-x-3 text-gray-400">
                 <Linkedin className="w-4 h-4" />
                 <a 
                   href="https://www.linkedin.com/in/md-abu-rayhan-854b3b1a9/" 
@@ -76,23 +72,23 @@ export function Footer() {
               <Button 
                 variant="ghost" 
                 size="sm" 
-                className="text-gray-400 hover:text-white hover:bg-gray-800"
+                className="text-gray-400 hover:text-white hover:bg-gray-800 p-2"
                 asChild
               >
                 <a href="https://www.linkedin.com/in/md-abu-rayhan-854b3b1a9/" target="_blank" rel="noopener noreferrer">
                   <Linkedin className="w-5 h-5" />
                 </a>
               </Button>
-              <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white hover:bg-gray-800">
+              <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white hover:bg-gray-800 p-2">
                 <Twitter className="w-5 h-5" />
               </Button>
-              <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white hover:bg-gray-800">
+              <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white hover:bg-gray-800 p-2">
                 <Github className="w-5 h-5" />
               </Button>
               <Button 
                 variant="ghost" 
                 size="sm" 
-                className="text-gray-400 hover:text-white hover:bg-gray-800"
+                className="text-gray-400 hover:text-white hover:bg-gray-800 p-2"
                 asChild
               >
                 <a href="mailto:mdabu.rayhan@outlook.com">
@@ -104,20 +100,20 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h5 className="text-lg font-semibold mb-4">Services</h5>
-            <ul className="space-y-2 text-gray-400">
-              <li><a href="#" className="hover:text-white transition-colors">Mental Health Support</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Fitness Coaching</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">AI Monitoring</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Professional Network</a></li>
+            <h5 className="text-lg font-semibold mb-6 text-white">Services</h5>
+            <ul className="space-y-3 text-gray-400">
+              <li><a href="#" className="hover:text-white transition-colors">AI Therapy</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Burnout Prevention</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Performance Coaching</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Stress Monitoring</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Wellness Assessment</a></li>
             </ul>
           </div>
 
           {/* Company */}
           <div>
-            <h5 className="text-lg font-semibold mb-4">Company</h5>
-            <ul className="space-y-2 text-gray-400">
+            <h5 className="text-lg font-semibold mb-6 text-white">Company</h5>
+            <ul className="space-y-3 text-gray-400">
               <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Our Mission</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>

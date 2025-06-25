@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Send, Bot, User, Calendar, AlertTriangle, Phone } from 'lucide-react';
+import { Send, Bot, User, Calendar, AlertTriangle, Phone, X } from 'lucide-react';
 import { sendMessageToTherapist, analyzeSupportLevel, ChatMessage, SupportAnalysis } from '@/services/groqService';
 
 interface TherapistPrompt {
@@ -15,7 +15,7 @@ export function TherapistChat() {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: 'assistant',
-      content: "Hi! I'm Dr. Sarah, your AI therapist. I'm here to provide mental health support specifically for high-performing professionals like yourself. How are you feeling today?",
+      content: "Hi! I'm Dr. Sarah, your AI therapist specializing in mental health support for high-performing professionals. I understand the unique pressures of startup life, coding, and building careers. How are you feeling today?",
       timestamp: new Date()
     }
   ]);
@@ -112,9 +112,9 @@ Best regards`);
 
   const getSupportLevelColor = (level: string) => {
     switch (level) {
-      case 'high': return 'from-red-500 to-red-600';
-      case 'mid': return 'from-orange-500 to-orange-600';
-      default: return 'from-green-500 to-green-600';
+      case 'high': return 'bg-red-500';
+      case 'mid': return 'bg-orange-500';
+      default: return 'bg-green-500';
     }
   };
 
@@ -127,15 +127,15 @@ Best regards`);
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto">
-      <Card className="h-[700px] flex flex-col shadow-2xl border-0 bg-white/95 backdrop-blur-sm">
-        <CardHeader className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-t-lg p-6">
-          <CardTitle className="flex items-center space-x-3 text-xl">
-            <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
-              <Bot className="w-6 h-6" />
+    <div className="w-full max-w-4xl mx-auto">
+      <Card className="h-[600px] flex flex-col shadow-lg border border-gray-200 bg-white">
+        <CardHeader className="bg-blue-600 text-white p-6 rounded-t-lg">
+          <CardTitle className="flex items-center space-x-3">
+            <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+              <Bot className="w-5 h-5" />
             </div>
             <div>
-              <div className="font-semibold text-lg">Dr. Sarah - AI Therapist</div>
+              <div className="font-semibold">Dr. Sarah - AI Therapist</div>
               <div className="text-sm opacity-90 flex items-center">
                 <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
                 Online • Specialized in high-performer wellness
@@ -147,75 +147,72 @@ Best regards`);
         <CardContent className="flex-1 flex flex-col p-0">
           {/* Therapist Recommendation Prompt */}
           {therapistPrompt.show && (
-            <div className="p-4 border-b bg-gradient-to-r from-blue-50 to-purple-50">
-              <Card className={`border-l-4 bg-gradient-to-r ${getSupportLevelColor(therapistPrompt.analysis.level)} border-0 shadow-lg`}>
-                <CardContent className="p-4">
-                  <div className="flex items-start space-x-3">
-                    <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center flex-shrink-0">
-                      {React.createElement(getSupportLevelIcon(therapistPrompt.analysis.level), { 
-                        className: `w-5 h-5 ${therapistPrompt.analysis.level === 'high' ? 'text-red-600' : therapistPrompt.analysis.level === 'mid' ? 'text-orange-600' : 'text-green-600'}` 
-                      })}
-                    </div>
-                    <div className="flex-1 text-white">
-                      <h4 className="font-semibold text-lg mb-2">
-                        {therapistPrompt.analysis.level === 'high' ? 'High Priority Support Needed' : 'Professional Support Recommended'}
-                      </h4>
-                      <p className="text-sm opacity-90 mb-4">
-                        Based on our conversation, I recommend speaking with one of our licensed therapists. 
-                        {therapistPrompt.analysis.level === 'high' 
-                          ? ' This appears to require immediate professional attention.'
-                          : ' They can provide more specialized support for your situation.'
-                        }
-                      </p>
-                      <div className="flex space-x-3">
-                        <Button 
-                          onClick={handleScheduleCall}
-                          className="bg-white text-gray-900 hover:bg-gray-100 font-semibold"
-                          size="sm"
-                        >
-                          <Calendar className="w-4 h-4 mr-2" />
-                          Schedule Call with Therapist
-                        </Button>
-                        <Button 
-                          onClick={handleDismissPrompt}
-                          variant="outline"
-                          className="border-white text-white hover:bg-white/10"
-                          size="sm"
-                        >
-                          Continue Chat
-                        </Button>
-                      </div>
-                    </div>
+            <div className="p-4 border-b bg-gray-50">
+              <div className={`${getSupportLevelColor(therapistPrompt.analysis.level)} rounded-lg p-4 text-white relative`}>
+                <Button
+                  onClick={handleDismissPrompt}
+                  variant="ghost"
+                  size="sm"
+                  className="absolute top-2 right-2 text-white hover:bg-white/20 p-1 h-auto"
+                >
+                  <X className="w-4 h-4" />
+                </Button>
+                
+                <div className="flex items-start space-x-3 pr-8">
+                  <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                    {React.createElement(getSupportLevelIcon(therapistPrompt.analysis.level), { 
+                      className: 'w-4 h-4' 
+                    })}
                   </div>
-                </CardContent>
-              </Card>
+                  <div className="flex-1">
+                    <h4 className="font-semibold mb-2">
+                      {therapistPrompt.analysis.level === 'high' ? 'High Priority Support Needed' : 'Professional Support Recommended'}
+                    </h4>
+                    <p className="text-sm opacity-90 mb-4">
+                      Based on our conversation, I recommend speaking with one of our licensed therapists. 
+                      {therapistPrompt.analysis.level === 'high' 
+                        ? ' This appears to require immediate professional attention.'
+                        : ' They can provide more specialized support for your situation.'
+                      }
+                    </p>
+                    <Button 
+                      onClick={handleScheduleCall}
+                      className="bg-white text-gray-900 hover:bg-gray-100 font-semibold"
+                      size="sm"
+                    >
+                      <Calendar className="w-4 h-4 mr-2" />
+                      Schedule Call with Therapist
+                    </Button>
+                  </div>
+                </div>
+              </div>
             </div>
           )}
 
           {/* Messages */}
           <ScrollArea className="flex-1 p-6">
-            <div className="space-y-6">
+            <div className="space-y-4">
               {messages.map((message, index) => (
                 <div
                   key={index}
                   className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   <div
-                    className={`max-w-[80%] rounded-2xl p-4 shadow-sm ${
+                    className={`max-w-[80%] rounded-lg p-4 ${
                       message.role === 'user'
-                        ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'
-                        : 'bg-gray-50 text-gray-900 border border-gray-100'
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-gray-100 text-gray-900'
                     }`}
                   >
                     <div className="flex items-start space-x-3">
                       {message.role === 'assistant' && (
-                        <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
-                          <Bot className="w-4 h-4 text-white" />
+                        <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                          <Bot className="w-3 h-3 text-white" />
                         </div>
                       )}
                       {message.role === 'user' && (
-                        <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-                          <User className="w-4 h-4 text-white" />
+                        <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                          <User className="w-3 h-3 text-white" />
                         </div>
                       )}
                       <div className="flex-1">
@@ -233,10 +230,10 @@ Best regards`);
               
               {isLoading && (
                 <div className="flex justify-start">
-                  <div className="bg-gray-50 border border-gray-100 rounded-2xl p-4 max-w-[80%] shadow-sm">
+                  <div className="bg-gray-100 rounded-lg p-4 max-w-[80%]">
                     <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
-                        <Bot className="w-4 h-4 text-white" />
+                      <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
+                        <Bot className="w-3 h-3 text-white" />
                       </div>
                       <div className="flex space-x-1">
                         <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
@@ -252,30 +249,30 @@ Best regards`);
           </ScrollArea>
 
           {/* Input Area */}
-          <div className="border-t bg-gradient-to-r from-gray-50 to-blue-50/30 p-6 rounded-b-lg">
-            <div className="flex space-x-4">
+          <div className="border-t bg-gray-50 p-4">
+            <div className="flex space-x-3">
               <Input
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Share what's on your mind... (Press Enter to send)"
+                placeholder="Share what's on your mind..."
                 disabled={isLoading}
-                className="flex-1 h-14 text-base bg-white border-gray-200 focus:border-blue-500 focus:ring-blue-500 rounded-xl shadow-sm"
+                className="flex-1 bg-white border-gray-200 focus:border-blue-500 focus:ring-blue-500"
               />
               <Button
                 onClick={handleSendMessage}
                 disabled={!inputMessage.trim() || isLoading}
-                className="h-14 px-8 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                className="bg-blue-600 hover:bg-blue-700 px-4"
               >
-                <Send className="w-5 h-5" />
+                <Send className="w-4 h-4" />
               </Button>
             </div>
-            <div className="flex items-center justify-between mt-4">
+            <div className="flex items-center justify-between mt-3">
               <p className="text-xs text-gray-500">
                 This is AI support. For emergencies, contact your local crisis helpline.
               </p>
               <p className="text-xs text-gray-400">
-                Powered by advanced AI • Secure & Private
+                Secure & Private
               </p>
             </div>
           </div>
