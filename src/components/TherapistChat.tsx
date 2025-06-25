@@ -10,6 +10,7 @@ import { VoiceInput } from '@/components/VoiceInput';
 interface TherapistPrompt {
   show: boolean;
   analysis: SupportAnalysis;
+  clinicalData?: ClinicalAssessment;
 }
 
 export function TherapistChat() {
@@ -23,7 +24,10 @@ export function TherapistChat() {
   ]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [therapistPrompt, setTherapistPrompt] = useState<TherapistPrompt>({ show: false, analysis: { level: 'low', reasoning: '', needsTherapist: false } });
+  const [therapistPrompt, setTherapistPrompt] = useState<TherapistPrompt>({ 
+    show: false, 
+    analysis: { level: 'low', reasoning: '', needsTherapist: false } 
+  });
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -34,16 +38,43 @@ export function TherapistChat() {
     scrollToBottom();
   }, [messages, therapistPrompt]);
 
+  // Helper function to check if ATS score requires appointment
+  const requiresAppointment = (atsLevel: string): boolean => {
+    return ['ATS 1', 'ATS 2', 'ATS 3'].includes(atsLevel);
+  };
+
+  // Helper function to get urgency level based on ATS score
+  const getUrgencyLevel = (atsLevel: string): 'critical' | 'urgent' | 'moderate' => {
+    switch (atsLevel) {
+      case 'ATS 1': return 'critical';
+      case 'ATS 2': return 'urgent';
+      case 'ATS 3': return 'moderate';
+      default: return 'moderate';
+    }
+  };
+
   const handleScheduleCall = () => {
-    const subject = encodeURIComponent('Therapist Consultation Request - Wellnter');
+    const urgencyLevel = therapistPrompt.clinicalData ? getUrgencyLevel(therapistPrompt.clinicalData.triageLevel) : 'moderate';
+    const atsLevel = therapistPrompt.clinicalData?.triageLevel || 'ATS 3';
+    
+    const subject = encodeURIComponent(`${urgencyLevel.toUpperCase()} - Therapist Consultation Request - Wellnter`);
     const body = encodeURIComponent(`Hi,
 
-Based on my conversation with Dr. Sarah (AI), I would like to schedule a consultation with one of your licensed therapists.
+Based on my conversation with Dr. Sarah (AI), I need to schedule a consultation with one of your licensed therapists.
 
-Support Level Identified: ${therapistPrompt.analysis.level.toUpperCase()}
-Reason: ${therapistPrompt.analysis.reasoning}
+CLINICAL ASSESSMENT:
+- ATS Triage Level: ${atsLevel}
+- Support Level: ${therapistPrompt.analysis.level.toUpperCase()}
+- Urgency: ${urgencyLevel.toUpperCase()}
+- Symptom Summary: ${therapistPrompt.clinicalData?.symptomSummary || 'Assessment in progress'}
 
-Please let me know your availability for a consultation call.
+REASON FOR REFERRAL:
+${therapistPrompt.analysis.reasoning}
+
+CLINICAL REASONING:
+${therapistPrompt.clinicalData?.clinicalReasoning || 'Professional assessment required'}
+
+Please prioritize this request based on the ${urgencyLevel} urgency level and contact me as soon as possible.
 
 Best regards`);
     
@@ -51,7 +82,10 @@ Best regards`);
   };
 
   const handleDismissPrompt = () => {
-    setTherapistPrompt({ show: false, analysis: { level: 'low', reasoning: '', needsTherapist: false } });
+    setTherapistPrompt({ 
+      show: false, 
+      analysis: { level: 'low', reasoning: '', needsTherapist: false } 
+    });
   };
 
   const handleSendMessage = async (messageText?: string) => {
@@ -84,9 +118,21 @@ Best regards`);
 
       setMessages(prev => [...prev, assistantMessage]);
 
-      // Show therapist prompt if mid or high level support needed
-      if (analysis.needsTherapist && (analysis.level === 'mid' || analysis.level === 'high')) {
-        setTherapistPrompt({ show: true, analysis });
+      // Show therapist prompt if ATS score is 3 or higher (ATS 1, ATS 2, ATS 3)
+      if (clinicalData && requiresAppointment(clinicalData.triageLevel)) {
+        setTherapistPrompt({ 
+          show: true, 
+          analysis,
+          clinicalData 
+        });
+      }
+      // Also show for mid/high level support as backup
+      else if (analysis.needsTherapist && (analysis.level === 'mid' || analysis.level === 'high')) {
+        setTherapistPrompt({ 
+          show: true, 
+          analysis,
+          clinicalData 
+        });
       }
 
     } catch (error) {
@@ -127,10 +173,28 @@ Best regards`);
     }
   };
 
+  const getATSUrgencyColor = (atsLevel: string) => {
+    switch (atsLevel) {
+      case 'ATS 1': return 'bg-red-600';
+      case 'ATS 2': return 'bg-red-500';
+      case 'ATS 3': return 'bg-orange-500';
+      default: return 'bg-green-500';
+    }
+  };
+
   const getSupportLevelIcon = (level: string) => {
     switch (level) {
       case 'high': return AlertTriangle;
       case 'mid': return Phone;
+      default: return Calendar;
+    }
+  };
+
+  const getATSIcon = (atsLevel: string) => {
+    switch (atsLevel) {
+      case 'ATS 1': return AlertTriangle;
+      case 'ATS 2': return AlertTriangle;
+      case 'ATS 3': return Phone;
       default: return Calendar;
     }
   };
@@ -161,6 +225,11 @@ Best regards`);
                 {clinicalData.triageLevel}
               </span>
               <span className="text-gray-700 font-medium">{clinicalData.triageDescription}</span>
+              {requiresAppointment(clinicalData.triageLevel) && (
+                <span className="px-2 py-1 bg-red-100 text-red-700 text-xs font-bold rounded-full">
+                  APPOINTMENT REQUIRED
+                </span>
+              )}
             </div>
             <div className="text-right">
               <div className="text-2xl font-bold text-blue-600">{clinicalData.confidence}%</div>
@@ -223,10 +292,14 @@ Best regards`);
 
       {/* Chat Interface */}
       <div className="bg-white border-x border-gray-200 min-h-[600px] flex flex-col">
-        {/* Therapist Recommendation Prompt */}
+        {/* Therapist Recommendation Prompt - Enhanced for ATS scores */}
         {therapistPrompt.show && (
           <div className="p-4 border-b bg-red-50">
-            <div className={`${getSupportLevelColor(therapistPrompt.analysis.level)} rounded-lg p-4 text-white relative`}>
+            <div className={`${
+              therapistPrompt.clinicalData 
+                ? getATSUrgencyColor(therapistPrompt.clinicalData.triageLevel)
+                : getSupportLevelColor(therapistPrompt.analysis.level)
+            } rounded-lg p-4 text-white relative`}>
               <Button
                 onClick={handleDismissPrompt}
                 variant="ghost"
@@ -238,29 +311,47 @@ Best regards`);
               
               <div className="flex items-start space-x-3 pr-8">
                 <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-                  {React.createElement(getSupportLevelIcon(therapistPrompt.analysis.level), { 
-                    className: 'w-4 h-4' 
-                  })}
+                  {React.createElement(
+                    therapistPrompt.clinicalData 
+                      ? getATSIcon(therapistPrompt.clinicalData.triageLevel)
+                      : getSupportLevelIcon(therapistPrompt.analysis.level), 
+                    { className: 'w-4 h-4' }
+                  )}
                 </div>
                 <div className="flex-1">
                   <h4 className="font-semibold mb-2">
-                    {therapistPrompt.analysis.level === 'high' ? 'High Priority Support Needed' : 'Professional Support Recommended'}
+                    {therapistPrompt.clinicalData && requiresAppointment(therapistPrompt.clinicalData.triageLevel)
+                      ? `${therapistPrompt.clinicalData.triageLevel} - Professional Appointment Required`
+                      : therapistPrompt.analysis.level === 'high' 
+                        ? 'High Priority Support Needed' 
+                        : 'Professional Support Recommended'
+                    }
                   </h4>
                   <p className="text-sm opacity-90 mb-4">
-                    Based on our clinical assessment, I recommend speaking with one of our licensed therapists. 
-                    {therapistPrompt.analysis.level === 'high' 
-                      ? ' This appears to require immediate professional attention.'
-                      : ' They can provide more specialized support for your situation.'
+                    {therapistPrompt.clinicalData && requiresAppointment(therapistPrompt.clinicalData.triageLevel)
+                      ? `Based on your ${therapistPrompt.clinicalData.triageLevel} clinical assessment, you need to speak with a licensed therapist. This level requires professional intervention within the recommended timeframe.`
+                      : `Based on our clinical assessment, I recommend speaking with one of our licensed therapists. ${
+                          therapistPrompt.analysis.level === 'high' 
+                            ? 'This appears to require immediate professional attention.'
+                            : 'They can provide more specialized support for your situation.'
+                        }`
                     }
                   </p>
-                  <Button 
-                    onClick={handleScheduleCall}
-                    className="bg-white text-gray-900 hover:bg-gray-100 font-semibold"
-                    size="sm"
-                  >
-                    <Calendar className="w-4 h-4 mr-2" />
-                    Schedule Call with Therapist
-                  </Button>
+                  <div className="flex items-center space-x-3">
+                    <Button 
+                      onClick={handleScheduleCall}
+                      className="bg-white text-gray-900 hover:bg-gray-100 font-semibold"
+                      size="sm"
+                    >
+                      <Calendar className="w-4 h-4 mr-2" />
+                      Schedule Urgent Appointment
+                    </Button>
+                    {therapistPrompt.clinicalData && (
+                      <span className="text-xs opacity-75">
+                        {therapistPrompt.clinicalData.triageDescription}
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
@@ -385,7 +476,10 @@ Best regards`);
             <button 
               onClick={() => {
                 setMessages([messages[0]]);
-                setTherapistPrompt({ show: false, analysis: { level: 'low', reasoning: '', needsTherapist: false } });
+                setTherapistPrompt({ 
+                  show: false, 
+                  analysis: { level: 'low', reasoning: '', needsTherapist: false } 
+                });
               }}
               className="text-xs text-blue-600 hover:text-blue-700 underline"
             >
