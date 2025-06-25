@@ -98,13 +98,13 @@ Triage Guidelines:
 - ATS 4: Mild-moderate symptoms, semi-urgent care
 - ATS 5: General wellness, routine support`;
 
-function extractJsonFromResponse(response: string): string {
+function extractJsonFromResponse(response: string): string | null {
   // Find the first opening brace and the last closing brace
   const firstBrace = response.indexOf('{');
   const lastBrace = response.lastIndexOf('}');
   
   if (firstBrace === -1 || lastBrace === -1 || firstBrace >= lastBrace) {
-    throw new Error('No valid JSON object found in response');
+    return null;
   }
   
   return response.substring(firstBrace, lastBrace + 1);
@@ -150,6 +150,9 @@ export async function sendMessageToTherapist(messages: ChatMessage[]): Promise<{
       
       // Extract only the JSON object from the response
       const jsonString = extractJsonFromResponse(clinicalResponse);
+      if (jsonString === null) {
+        throw new Error('Failed to extract JSON from Groq clinical response');
+      }
       clinicalData = JSON.parse(jsonString);
     } catch (error) {
       console.error('Error parsing clinical data:', error);
@@ -203,6 +206,10 @@ export async function analyzeSupportLevel(userMessage: string): Promise<SupportA
 
     // Extract only the JSON object from the response
     const jsonString = extractJsonFromResponse(response.trim());
+    if (jsonString === null) {
+      throw new Error('Failed to extract JSON from Groq response');
+    }
+    
     const analysis = JSON.parse(jsonString);
     
     if (!analysis.level || !analysis.reasoning || typeof analysis.needsTherapist !== 'boolean') {
