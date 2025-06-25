@@ -296,33 +296,33 @@ Best regards`);
 
   const renderClinicalAssessment = (clinicalData: ClinicalAssessment) => {
     return (
-      <div className="mt-4 space-y-4">
-        {/* Triage Level Card - Matching UNSW style */}
-        <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-xl p-4 border border-blue-200">
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center space-x-3">
-              <span className={`px-4 py-2 rounded-full text-sm font-bold ${getTriageLevelColor(clinicalData.triageLevel)}`}>
+      <div className="mt-4 space-y-3 sm:space-y-4">
+        {/* Triage Level Card - Mobile optimized */}
+        <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-lg sm:rounded-xl p-3 sm:p-4 border border-blue-200">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 space-y-2 sm:space-y-0">
+            <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
+              <span className={`px-3 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-bold ${getTriageLevelColor(clinicalData.triageLevel)} w-fit`}>
                 {clinicalData.triageLevel}
               </span>
-              <span className="text-gray-700 font-medium">{clinicalData.triageDescription}</span>
+              <span className="text-gray-700 font-medium text-sm sm:text-base">{clinicalData.triageDescription}</span>
               {requiresAppointment(clinicalData.triageLevel) && (
-                <span className="px-2 py-1 bg-red-100 text-red-700 text-xs font-bold rounded-full">
+                <span className="px-2 py-1 bg-red-100 text-red-700 text-xs font-bold rounded-full w-fit">
                   APPOINTMENT REQUIRED
                 </span>
               )}
             </div>
-            <div className="text-right">
-              <div className="text-2xl font-bold text-blue-600">{clinicalData.confidence}%</div>
+            <div className="text-left sm:text-right">
+              <div className="text-xl sm:text-2xl font-bold text-blue-600">{clinicalData.confidence}%</div>
             </div>
           </div>
         </div>
 
-        {/* Follow-up Questions - Green background like UNSW */}
-        <div className="bg-green-50 rounded-xl p-4 border border-green-200">
-          <h4 className="font-semibold text-gray-900 mb-3">I'd like to know more:</h4>
-          <ul className="space-y-2">
+        {/* Follow-up Questions - Mobile optimized */}
+        <div className="bg-green-50 rounded-lg sm:rounded-xl p-3 sm:p-4 border border-green-200">
+          <h4 className="font-semibold text-gray-900 mb-2 sm:mb-3 text-sm sm:text-base">I'd like to know more:</h4>
+          <ul className="space-y-1 sm:space-y-2">
             {clinicalData.followUpQuestions.map((question, index) => (
-              <li key={index} className="flex items-start text-gray-700">
+              <li key={index} className="flex items-start text-gray-700 text-sm sm:text-base">
                 <span className="text-green-600 mr-2 font-bold">•</span>
                 {question}
               </li>
@@ -330,10 +330,10 @@ Best regards`);
           </ul>
         </div>
 
-        {/* Clinical Reasoning - Orange background like UNSW */}
-        <div className="bg-orange-50 rounded-xl p-4 border border-orange-200">
-          <h4 className="font-semibold text-orange-800 mb-2">Clinical Reasoning:</h4>
-          <p className="text-orange-700">{clinicalData.clinicalReasoning}</p>
+        {/* Clinical Reasoning - Mobile optimized */}
+        <div className="bg-orange-50 rounded-lg sm:rounded-xl p-3 sm:p-4 border border-orange-200">
+          <h4 className="font-semibold text-orange-800 mb-2 text-sm sm:text-base">Clinical Reasoning:</h4>
+          <p className="text-orange-700 text-sm sm:text-base">{clinicalData.clinicalReasoning}</p>
         </div>
       </div>
     );
@@ -349,45 +349,45 @@ Best regards`);
         clinicalData={criticalModal.clinicalData}
       />
 
-      {/* Header - Always visible, matching UNSW style */}
+      {/* Header - Mobile optimized */}
       <div className="bg-white border border-gray-200 rounded-t-xl shadow-sm">
-        <div className="flex items-center justify-between p-4">
-          <div className="flex items-center space-x-4">
-            <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-              <Activity className="w-6 h-6 text-white" />
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 sm:p-4 space-y-3 sm:space-y-0">
+          <div className="flex items-center space-x-3 sm:space-x-4">
+            <div className="w-10 sm:w-12 h-10 sm:h-12 bg-blue-600 rounded-lg flex items-center justify-center">
+              <Activity className="w-5 sm:w-6 h-5 sm:h-6 text-white" />
             </div>
             <div>
-              <h2 className="text-xl font-bold text-gray-900">Wellnter Mental Health Assistant</h2>
-              <p className="text-sm text-blue-600 font-medium">AI-Powered Chat Interface - Research Prototype</p>
+              <h2 className="text-lg sm:text-xl font-bold text-gray-900">Wellnter Mental Health Assistant</h2>
+              <p className="text-xs sm:text-sm text-blue-600 font-medium">AI-Powered Chat Interface - Research Prototype</p>
             </div>
           </div>
-          <div className="flex items-center space-x-3">
-            <div className="flex items-center space-x-2 bg-blue-50 px-3 py-1 rounded-full">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+            <div className="flex items-center space-x-1 sm:space-x-2 bg-blue-50 px-2 sm:px-3 py-1 rounded-full">
               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              <span className="text-sm text-blue-700 font-medium">Mental Health</span>
+              <span className="text-xs sm:text-sm text-blue-700 font-medium">Mental Health</span>
             </div>
-            <div className="flex items-center space-x-2 bg-purple-50 px-3 py-1 rounded-full">
-              <Brain className="w-4 h-4 text-purple-600" />
-              <span className="text-sm text-purple-700 font-medium">AI-Powered</span>
+            <div className="flex items-center space-x-1 sm:space-x-2 bg-purple-50 px-2 sm:px-3 py-1 rounded-full">
+              <Brain className="w-3 sm:w-4 h-3 sm:h-4 text-purple-600" />
+              <span className="text-xs sm:text-sm text-purple-700 font-medium">AI-Powered</span>
             </div>
-            <div className="flex items-center space-x-2 bg-red-50 px-3 py-1 rounded-full">
-              <AlertTriangle className="w-4 h-4 text-red-600" />
-              <span className="text-sm text-red-700 font-medium">Emergency Care</span>
+            <div className="flex items-center space-x-1 sm:space-x-2 bg-red-50 px-2 sm:px-3 py-1 rounded-full">
+              <AlertTriangle className="w-3 sm:w-4 h-3 sm:h-4 text-red-600" />
+              <span className="text-xs sm:text-sm text-red-700 font-medium">Emergency Care</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Chat Interface */}
-      <div className="bg-white border-x border-gray-200 min-h-[600px] flex flex-col">
-        {/* Therapist Recommendation Prompt - Enhanced for ATS scores */}
+      <div className="bg-white border-x border-gray-200 min-h-[400px] sm:min-h-[600px] flex flex-col">
+        {/* Therapist Recommendation Prompt - Mobile optimized */}
         {therapistPrompt.show && (
-          <div className="p-4 border-b bg-red-50">
+          <div className="p-3 sm:p-4 border-b bg-red-50">
             <div className={`${
               therapistPrompt.clinicalData 
                 ? getATSUrgencyColor(therapistPrompt.clinicalData.triageLevel)
                 : getSupportLevelColor(therapistPrompt.analysis.level)
-            } rounded-lg p-4 text-white relative`}>
+            } rounded-lg p-3 sm:p-4 text-white relative`}>
               <Button
                 onClick={handleDismissPrompt}
                 variant="ghost"
@@ -397,17 +397,17 @@ Best regards`);
                 <X className="w-4 h-4" />
               </Button>
               
-              <div className="flex items-start space-x-3 pr-8">
-                <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+              <div className="flex items-start space-x-2 sm:space-x-3 pr-6 sm:pr-8">
+                <div className="w-6 sm:w-8 h-6 sm:h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
                   {React.createElement(
                     therapistPrompt.clinicalData 
                       ? getATSIcon(therapistPrompt.clinicalData.triageLevel)
                       : getSupportLevelIcon(therapistPrompt.analysis.level), 
-                    { className: 'w-4 h-4' }
+                    { className: 'w-3 sm:w-4 h-3 sm:h-4' }
                   )}
                 </div>
                 <div className="flex-1">
-                  <h4 className="font-semibold mb-2">
+                  <h4 className="font-semibold mb-2 text-sm sm:text-base">
                     {therapistPrompt.clinicalData && requiresAppointment(therapistPrompt.clinicalData.triageLevel)
                       ? `${therapistPrompt.clinicalData.triageLevel} - Professional Appointment Required`
                       : therapistPrompt.analysis.level === 'high' 
@@ -415,7 +415,7 @@ Best regards`);
                         : 'Professional Support Recommended'
                     }
                   </h4>
-                  <p className="text-sm opacity-90 mb-4">
+                  <p className="text-xs sm:text-sm opacity-90 mb-3 sm:mb-4">
                     {therapistPrompt.clinicalData && requiresAppointment(therapistPrompt.clinicalData.triageLevel)
                       ? `Based on your ${therapistPrompt.clinicalData.triageLevel} clinical assessment, you need to speak with a licensed therapist. This level requires professional intervention within the recommended timeframe.`
                       : `Based on our clinical assessment, I recommend speaking with one of our licensed therapists. ${
@@ -425,13 +425,13 @@ Best regards`);
                         }`
                     }
                   </p>
-                  <div className="flex items-center space-x-3">
+                  <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
                     <Button 
                       onClick={handleScheduleCall}
-                      className="bg-white text-gray-900 hover:bg-gray-100 font-semibold"
+                      className="bg-white text-gray-900 hover:bg-gray-100 font-semibold text-sm"
                       size="sm"
                     >
-                      <Calendar className="w-4 h-4 mr-2" />
+                      <Calendar className="w-3 sm:w-4 h-3 sm:h-4 mr-2" />
                       Schedule Urgent Appointment
                     </Button>
                     {therapistPrompt.clinicalData && (
@@ -446,25 +446,25 @@ Best regards`);
           </div>
         )}
 
-        {/* Messages Area */}
-        <ScrollArea className="flex-1 p-6 bg-gray-50">
-          <div className="space-y-6 max-w-4xl mx-auto">
+        {/* Messages Area - Mobile optimized */}
+        <ScrollArea className="flex-1 p-3 sm:p-6 bg-gray-50">
+          <div className="space-y-4 sm:space-y-6 max-w-4xl mx-auto">
             {messages.map((message, index) => (
-              <div key={index} className="space-y-4">
+              <div key={index} className="space-y-3 sm:space-y-4">
                 <div className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                  <div className={`max-w-[80%] ${
+                  <div className={`max-w-[85%] sm:max-w-[80%] ${
                     message.role === 'user'
                       ? 'bg-blue-600 text-white rounded-2xl rounded-br-md'
                       : 'bg-white border border-gray-200 rounded-2xl rounded-bl-md shadow-sm'
-                  } p-4`}>
-                    <div className="flex items-start space-x-3">
+                  } p-3 sm:p-4`}>
+                    <div className="flex items-start space-x-2 sm:space-x-3">
                       {message.role === 'assistant' && (
-                        <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
-                          <Bot className="w-4 h-4 text-white" />
+                        <div className="w-6 sm:w-8 h-6 sm:h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                          <Bot className="w-3 sm:w-4 h-3 sm:h-4 text-white" />
                         </div>
                       )}
                       <div className="flex-1">
-                        <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
+                        <p className="text-sm sm:text-base leading-relaxed whitespace-pre-wrap">{message.content}</p>
                         <p className={`text-xs mt-2 ${
                           message.role === 'user' ? 'text-blue-100' : 'text-gray-500'
                         }`}>
@@ -472,17 +472,17 @@ Best regards`);
                         </p>
                       </div>
                       {message.role === 'user' && (
-                        <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-                          <User className="w-4 h-4 text-white" />
+                        <div className="w-6 sm:w-8 h-6 sm:h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                          <User className="w-3 sm:w-4 h-3 sm:h-4 text-white" />
                         </div>
                       )}
                     </div>
                   </div>
                 </div>
                 
-                {/* Clinical Assessment Display - Matching UNSW layout */}
+                {/* Clinical Assessment Display - Mobile optimized */}
                 {message.role === 'assistant' && message.clinicalData && index > 0 && (
-                  <div className="max-w-[80%]">
+                  <div className="max-w-[85%] sm:max-w-[80%]">
                     {renderClinicalAssessment(message.clinicalData)}
                   </div>
                 )}
@@ -491,17 +491,17 @@ Best regards`);
             
             {isLoading && (
               <div className="flex justify-start">
-                <div className="bg-white border border-gray-200 rounded-2xl rounded-bl-md shadow-sm p-4 max-w-[80%]">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                      <Bot className="w-4 h-4 text-white" />
+                <div className="bg-white border border-gray-200 rounded-2xl rounded-bl-md shadow-sm p-3 sm:p-4 max-w-[85%] sm:max-w-[80%]">
+                  <div className="flex items-center space-x-2 sm:space-x-3">
+                    <div className="w-6 sm:w-8 h-6 sm:h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                      <Bot className="w-3 sm:w-4 h-3 sm:h-4 text-white" />
                     </div>
                     <div className="flex space-x-1">
                       <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce"></div>
                       <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce delay-100"></div>
                       <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce delay-200"></div>
                     </div>
-                    <span className="text-sm text-gray-600">Analyzing symptoms...</span>
+                    <span className="text-xs sm:text-sm text-gray-600">Analyzing symptoms...</span>
                   </div>
                 </div>
               </div>
@@ -511,18 +511,18 @@ Best regards`);
         </ScrollArea>
       </div>
 
-      {/* Input Area - Enhanced with Language Selector */}
+      {/* Input Area - Mobile optimized */}
       <div className="bg-white border border-gray-200 rounded-b-xl shadow-sm">
-        {/* Language Selector Bar */}
-        <div className="px-6 py-4 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-purple-50">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
+        {/* Language Selector Bar - Mobile optimized */}
+        <div className="px-3 sm:px-6 py-3 sm:py-4 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-purple-50">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0">
+            <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
               <div className="flex items-center space-x-2">
-                <Globe className="w-5 h-5 text-blue-600" />
+                <Globe className="w-4 sm:w-5 h-4 sm:h-5 text-blue-600" />
                 <span className="text-sm font-semibold text-gray-700">Language Support</span>
               </div>
               
-              {/* Language Dropdown */}
+              {/* Language Dropdown - Mobile optimized */}
               <div className="relative">
                 <select 
                   value={selectedLanguage.code}
@@ -530,7 +530,7 @@ Best regards`);
                     const language = TOP_LANGUAGES.find(lang => lang.code === e.target.value);
                     if (language) handleLanguageChange(language);
                   }}
-                  className="appearance-none bg-white border border-gray-200 rounded-lg px-4 py-2 pr-8 text-sm font-medium text-gray-700 hover:border-blue-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
+                  className="appearance-none bg-white border border-gray-200 rounded-lg px-3 sm:px-4 py-2 pr-8 text-sm font-medium text-gray-700 hover:border-blue-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 w-full sm:w-auto"
                 >
                   {TOP_LANGUAGES.map((language) => (
                     <option key={language.code} value={language.code}>
@@ -542,10 +542,10 @@ Best regards`);
               </div>
             </div>
             
-            {/* Language Status */}
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-2 bg-white rounded-full px-3 py-1 border border-gray-200">
-                <span className="text-lg">{selectedLanguage.flag}</span>
+            {/* Language Status - Mobile optimized */}
+            <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
+              <div className="flex items-center space-x-2 bg-white rounded-full px-3 py-1 border border-gray-200 w-fit">
+                <span className="text-base sm:text-lg">{selectedLanguage.flag}</span>
                 <span className="text-sm font-medium text-gray-700">{selectedLanguage.nativeName}</span>
               </div>
               <div className="flex items-center space-x-2 text-sm text-green-600">
@@ -555,8 +555,8 @@ Best regards`);
             </div>
           </div>
           
-          {/* Language Features */}
-          <div className="mt-3 flex items-center justify-center space-x-6 text-xs text-gray-500">
+          {/* Language Features - Mobile optimized */}
+          <div className="mt-3 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs text-gray-500">
             <div className="flex items-center space-x-1">
               <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
               <span>Real-time Translation</span>
@@ -576,16 +576,16 @@ Best regards`);
           </div>
         </div>
 
-        {/* Input Field */}
-        <div className="p-6">
-          <div className="flex space-x-3">
+        {/* Input Field - Mobile optimized */}
+        <div className="p-3 sm:p-6">
+          <div className="flex space-x-2 sm:space-x-3">
             <Input
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder={`Tell me about your symptoms in ${selectedLanguage.name}...`}
               disabled={isLoading}
-              className="flex-1 bg-gray-50 border-gray-200 focus:border-blue-500 focus:ring-blue-500 h-12 rounded-xl"
+              className="flex-1 bg-gray-50 border-gray-200 focus:border-blue-500 focus:ring-blue-500 h-10 sm:h-12 rounded-xl text-sm sm:text-base"
             />
             <VoiceInput 
               onTranscription={handleVoiceTranscription}
@@ -594,14 +594,14 @@ Best regards`);
             <Button
               onClick={() => handleSendMessage()}
               disabled={!inputMessage.trim() || isLoading}
-              className="bg-blue-600 hover:bg-blue-700 px-6 h-12 rounded-xl font-medium"
+              className="bg-blue-600 hover:bg-blue-700 px-4 sm:px-6 h-10 sm:h-12 rounded-xl font-medium"
             >
-              <Send className="w-4 h-4 mr-2" />
-              Send
+              <Send className="w-4 h-4 mr-0 sm:mr-2" />
+              <span className="hidden sm:inline">Send</span>
             </Button>
           </div>
           
-          <div className="flex items-center justify-between mt-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-3 sm:mt-4 space-y-2 sm:space-y-0">
             <p className="text-xs text-gray-500">
               🔊 Voice input powered by Azure Whisper AI • Supports {TOP_LANGUAGES.length} languages • Secure & Private
             </p>
@@ -628,16 +628,16 @@ Best regards`);
         </div>
       </div>
 
-      {/* Bottom Warning - Enhanced with Language Support */}
-      <div className="mt-4 bg-gradient-to-r from-gray-800 to-gray-900 text-white rounded-xl p-4">
+      {/* Bottom Warning - Mobile optimized */}
+      <div className="mt-4 bg-gradient-to-r from-gray-800 to-gray-900 text-white rounded-xl p-3 sm:p-4">
         <div className="text-center space-y-2">
           <div className="flex items-center justify-center space-x-2">
-            <AlertTriangle className="w-5 h-5 text-red-400" />
-            <span className="text-sm font-medium">
+            <AlertTriangle className="w-4 sm:w-5 h-4 sm:h-5 text-red-400" />
+            <span className="text-xs sm:text-sm font-medium">
               🚨 AI Prototype for research use only — not for clinical decision-making
             </span>
           </div>
-          <div className="flex items-center justify-center space-x-4 text-xs text-gray-300">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs text-gray-300">
             <span>🌍 {TOP_LANGUAGES.length} Languages Supported</span>
             <span>•</span>
             <span>🔒 End-to-End Encrypted</span>

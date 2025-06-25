@@ -92,26 +92,26 @@ Time: ${new Date().toLocaleString()}`;
         <Card className="w-full max-w-md bg-white">
           <CardHeader className="bg-green-600 text-white text-center">
             <CardTitle className="flex items-center justify-center space-x-2">
-              <Phone className="w-6 h-6" />
-              <span>Emergency Request Sent</span>
+              <Phone className="w-5 sm:w-6 h-5 sm:h-6" />
+              <span className="text-sm sm:text-base">Emergency Request Sent</span>
             </CardTitle>
           </CardHeader>
-          <CardContent className="p-6 text-center space-y-4">
-            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto">
-              <Phone className="w-8 h-8 text-green-600" />
+          <CardContent className="p-4 sm:p-6 text-center space-y-4">
+            <div className="w-12 sm:w-16 h-12 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto">
+              <Phone className="w-6 sm:w-8 h-6 sm:h-8 text-green-600" />
             </div>
-            <h3 className="text-lg font-semibold text-gray-900">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900">
               Help is on the way
             </h3>
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-sm sm:text-base">
               Your emergency appointment request has been sent to our crisis team at contact@wellnter.com. 
               A licensed therapist will contact you within 10 minutes.
             </p>
-            <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-              <p className="text-sm text-red-800 font-medium">
+            <div className="bg-red-50 border border-red-200 rounded-lg p-3 sm:p-4">
+              <p className="text-sm font-medium text-red-800">
                 If you're in immediate danger, please call:
               </p>
-              <div className="mt-2 space-y-1 text-sm text-red-700">
+              <div className="mt-2 space-y-1 text-xs sm:text-sm text-red-700">
                 <div>🇺🇸 US: 988 (Suicide & Crisis Lifeline)</div>
                 <div>🇬🇧 UK: 116 123 (Samaritans)</div>
                 <div>🇧🇩 BD: 09611677777 (Kaan Pete Roi)</div>
@@ -129,14 +129,14 @@ Time: ${new Date().toLocaleString()}`;
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <Card className="w-full max-w-lg bg-white">
+      <Card className="w-full max-w-lg bg-white max-h-[90vh] overflow-y-auto">
         <CardHeader className={`${
           urgencyLevel === 'critical' ? 'bg-red-600' : 'bg-orange-600'
         } text-white`}>
           <div className="flex items-center justify-between">
             <CardTitle className="flex items-center space-x-2">
-              <AlertTriangle className="w-6 h-6" />
-              <span>
+              <AlertTriangle className="w-5 sm:w-6 h-5 sm:h-6" />
+              <span className="text-sm sm:text-base">
                 {urgencyLevel === 'critical' ? 'CRITICAL - Immediate Danger' : 'URGENT - High Priority'}
               </span>
             </CardTitle>
@@ -149,7 +149,7 @@ Time: ${new Date().toLocaleString()}`;
               <X className="w-4 h-4" />
             </Button>
           </div>
-          <p className="text-sm opacity-90">
+          <p className="text-xs sm:text-sm opacity-90">
             {urgencyLevel === 'critical' 
               ? 'Suicidal ideation detected - Emergency appointment required'
               : 'High-risk situation identified - Urgent professional support needed'
@@ -157,16 +157,16 @@ Time: ${new Date().toLocaleString()}`;
           </p>
         </CardHeader>
 
-        <CardContent className="p-6">
+        <CardContent className="p-4 sm:p-6">
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="bg-gray-50 rounded-lg p-4 mb-4">
+            <div className="bg-gray-50 rounded-lg p-3 sm:p-4 mb-4">
               <div className="flex items-center space-x-2 mb-2">
                 <Clock className="w-4 h-4 text-gray-600" />
                 <span className="text-sm font-medium text-gray-700">
                   Response Time: {urgencyLevel === 'critical' ? '< 10 minutes' : '< 30 minutes'}
                 </span>
               </div>
-              <p className="text-sm text-gray-600">
+              <p className="text-xs sm:text-sm text-gray-600">
                 A licensed therapist will contact you immediately. This request is being sent to our emergency team.
               </p>
             </div>
@@ -226,13 +226,13 @@ Time: ${new Date().toLocaleString()}`;
                   value={formData.urgentNotes}
                   onChange={(e) => setFormData(prev => ({ ...prev, urgentNotes: e.target.value }))}
                   placeholder="Any additional information you'd like to share..."
-                  className="w-full p-3 border border-gray-200 rounded-lg resize-none h-20 text-sm"
+                  className="w-full p-3 border border-gray-200 rounded-lg resize-none h-16 sm:h-20 text-sm"
                 />
               </div>
             </div>
 
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-              <p className="text-sm text-yellow-800">
+            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 sm:p-4">
+              <p className="text-xs sm:text-sm text-yellow-800">
                 <strong>Privacy Notice:</strong> This information will be sent securely to our licensed therapists at contact@wellnter.com for immediate intervention.
               </p>
             </div>
@@ -243,7 +243,7 @@ Time: ${new Date().toLocaleString()}`;
                 disabled={isSubmitting}
                 className={`flex-1 ${
                   urgencyLevel === 'critical' ? 'bg-red-600 hover:bg-red-700' : 'bg-orange-600 hover:bg-orange-700'
-                } text-white font-semibold`}
+                } text-white font-semibold text-sm sm:text-base`}
               >
                 {isSubmitting ? (
                   <>
@@ -261,7 +261,7 @@ Time: ${new Date().toLocaleString()}`;
           </form>
 
           {/* Crisis Resources */}
-          <div className="mt-6 pt-4 border-t border-gray-200">
+          <div className="mt-4 sm:mt-6 pt-4 border-t border-gray-200">
             <h4 className="text-sm font-semibold text-gray-900 mb-2">Immediate Crisis Resources:</h4>
             <div className="space-y-1 text-xs text-gray-600">
               <div>🇺🇸 US: 988 (Suicide & Crisis Lifeline)</div>

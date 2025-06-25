@@ -37,45 +37,45 @@ const benefits = [
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-24 bg-gray-50">
+    <section id="how-it-works" className="py-12 sm:py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-blue-50 rounded-full text-blue-700 text-sm font-medium mb-6">
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="inline-flex items-center px-3 sm:px-4 py-2 bg-blue-50 rounded-full text-blue-700 text-xs sm:text-sm font-medium mb-4 sm:mb-6">
             How It Works
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 px-4">
             Your Wellness Journey
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
             A streamlined approach to mental health designed for busy professionals. 
             Get started in minutes and maintain your wellbeing while building your career.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
           {steps.map((step, index) => (
             <div key={index} className="relative">
-              {/* Connection line */}
+              {/* Connection line - Hidden on mobile */}
               {index < steps.length - 1 && (
                 <div className="hidden lg:block absolute top-16 left-full w-full h-0.5 bg-gray-200 z-0" style={{ width: 'calc(100% - 2rem)' }}></div>
               )}
               
               <Card className="relative z-10 bg-white border border-gray-100 hover:shadow-lg transition-all duration-300">
-                <CardContent className="p-8 text-center">
-                  <div className="relative mb-6">
-                    <div className={`w-16 h-16 mx-auto ${step.bgColor} rounded-full flex items-center justify-center shadow-sm`}>
-                      <step.icon className={`w-8 h-8 ${step.color}`} />
+                <CardContent className="p-6 sm:p-8 text-center">
+                  <div className="relative mb-4 sm:mb-6">
+                    <div className={`w-12 sm:w-16 h-12 sm:h-16 mx-auto ${step.bgColor} rounded-full flex items-center justify-center shadow-sm`}>
+                      <step.icon className={`w-6 sm:w-8 h-6 sm:h-8 ${step.color}`} />
                     </div>
-                    <div className="absolute -top-2 -right-2 w-8 h-8 bg-gray-900 rounded-full flex items-center justify-center">
-                      <span className="text-white text-sm font-bold">{step.number}</span>
+                    <div className="absolute -top-2 -right-2 w-6 sm:w-8 h-6 sm:h-8 bg-gray-900 rounded-full flex items-center justify-center">
+                      <span className="text-white text-xs sm:text-sm font-bold">{step.number}</span>
                     </div>
                   </div>
                   
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">
                     {step.title}
                   </h3>
                   
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
                     {step.description}
                   </p>
                 </CardContent>
@@ -84,22 +84,22 @@ export function HowItWorks() {
           ))}
         </div>
 
-        {/* Benefits Section */}
-        <div className="bg-white rounded-2xl p-8 lg:p-12 shadow-sm border border-gray-100">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+        {/* Benefits Section - Mobile optimized */}
+        <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 lg:p-12 shadow-sm border border-gray-100">
+          <div className="text-center mb-6 sm:mb-8">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
               Proven Results for High Performers
             </h3>
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-sm sm:text-base">
               Join professionals who have transformed their mental health and career performance
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {benefits.map((benefit, index) => (
               <div key={index} className="flex items-center space-x-3">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
-                <span className="text-gray-700 font-medium">{benefit}</span>
+                <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5 text-green-600 flex-shrink-0" />
+                <span className="text-gray-700 font-medium text-sm sm:text-base">{benefit}</span>
               </div>
             ))}
           </div>
