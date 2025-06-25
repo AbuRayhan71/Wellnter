@@ -9,6 +9,18 @@ export interface ChatMessage {
   role: 'user' | 'assistant' | 'system';
   content: string;
   timestamp: Date;
+  clinicalData?: ClinicalAssessment;
+}
+
+export interface ClinicalAssessment {
+  symptomSummary: string;
+  clinicalIndicators: string[];
+  triageLevel: 'ATS 1' | 'ATS 2' | 'ATS 3' | 'ATS 4' | 'ATS 5';
+  triageDescription: string;
+  confidence: number;
+  followUpQuestions: string[];
+  clinicalReasoning: string;
+  supportLevel: 'low' | 'mid' | 'high';
 }
 
 export interface SupportAnalysis {
@@ -17,36 +29,76 @@ export interface SupportAnalysis {
   needsTherapist: boolean;
 }
 
-const THERAPIST_SYSTEM_PROMPT = `You are Dr. Sarah, a compassionate and professional AI therapist specializing in mental health support for high-performing professionals, founders, and developers. 
+const THERAPIST_SYSTEM_PROMPT = `You are Dr. Sarah, a clinical AI therapist providing structured mental health assessments for high-performing professionals. 
 
-Your approach:
-- Be warm, empathetic, and non-judgmental
-- Use evidence-based therapeutic techniques (CBT, mindfulness, stress management)
-- Understand the unique pressures of startup life, coding, and high-achievement careers
-- Provide practical, actionable advice
-- Recognize signs of burnout, anxiety, and work-related stress
-- Encourage professional help when needed
-- Keep responses concise but meaningful (2-4 sentences typically)
-- Use a supportive, professional tone
+Your responses must ALWAYS follow this exact clinical format:
 
-Remember: You're here to provide immediate support and guidance, but always encourage users to seek professional help for serious mental health concerns.`;
+**Empathetic Response:**
+[Provide a warm, supportive response to the user's concerns]
 
-const ANALYSIS_SYSTEM_PROMPT = `You are a mental health assessment AI. Analyze the user's message and determine their support level needed:
+**Symptom Summary:**
+[Brief summary of reported symptoms/concerns]
 
-LOW: General stress, minor work concerns, seeking advice, feeling motivated but tired
-MID: Moderate anxiety, work-life balance issues, persistent stress, mild depression symptoms, relationship conflicts, moderate burnout signs
-HIGH: Severe anxiety/depression, suicidal thoughts, panic attacks, severe burnout, substance abuse mentions, trauma, crisis situations
+**Clinical Indicators:**
+• [List 2-3 key clinical indicators observed]
 
-Respond with ONLY a JSON object in this exact format:
+**AI-Suggested Triage Level:**
+[ATS Level] - [Description] ([Time frame])
+
+**AI Confidence:** [Percentage]%
+
+**I'd like to know more:**
+• [Follow-up question 1]
+• [Follow-up question 2]
+
+**Clinical Reasoning:**
+[Brief explanation of assessment rationale]
+
+Triage Levels:
+- ATS 1: Immediate (Resuscitation) - Life-threatening, immediate intervention
+- ATS 2: Emergency (10 minutes) - Severe symptoms requiring urgent care  
+- ATS 3: Urgent (30 minutes) - Moderate symptoms needing prompt attention
+- ATS 4: Semi-urgent (60 minutes) - Less urgent but needs professional care
+- ATS 5: Non-urgent (120 minutes) - Routine support and monitoring
+
+Focus on mental health conditions like anxiety, depression, burnout, stress, panic disorders, and work-related mental health issues.`;
+
+const ANALYSIS_SYSTEM_PROMPT = `You are a mental health triage AI. Analyze the user's message and determine their support level:
+
+LOW: General stress, minor work concerns, seeking advice, feeling motivated but tired, routine wellness check
+MID: Moderate anxiety, persistent stress, mild depression symptoms, work-life balance issues, moderate burnout signs, relationship conflicts
+HIGH: Severe anxiety/depression, suicidal ideation, panic attacks, severe burnout, substance abuse, trauma, crisis situations, self-harm thoughts
+
+Respond with ONLY a JSON object:
 {
   "level": "low|mid|high",
-  "reasoning": "Brief explanation of why this level was chosen",
+  "reasoning": "Brief explanation",
   "needsTherapist": true/false
 }
 
 Set needsTherapist to true for mid and high levels.`;
 
-export async function sendMessageToTherapist(messages: ChatMessage[]): Promise<string> {
+const CLINICAL_ANALYSIS_PROMPT = `Analyze this mental health conversation and provide structured clinical data in JSON format:
+
+{
+  "symptomSummary": "Brief summary of reported symptoms",
+  "clinicalIndicators": ["indicator1", "indicator2", "indicator3"],
+  "triageLevel": "ATS 1|ATS 2|ATS 3|ATS 4|ATS 5",
+  "triageDescription": "Description with timeframe",
+  "confidence": 85,
+  "followUpQuestions": ["question1", "question2"],
+  "clinicalReasoning": "Brief clinical reasoning",
+  "supportLevel": "low|mid|high"
+}
+
+Triage Guidelines:
+- ATS 1: Suicidal ideation, severe crisis, immediate danger
+- ATS 2: Severe anxiety/depression, panic attacks, urgent intervention needed
+- ATS 3: Moderate symptoms requiring prompt professional attention
+- ATS 4: Mild-moderate symptoms, semi-urgent care
+- ATS 5: General wellness, routine support`;
+
+export async function sendMessageToTherapist(messages: ChatMessage[]): Promise<{ response: string; clinicalData: ClinicalAssessment }> {
   try {
     const formattedMessages = [
       { role: 'system' as const, content: THERAPIST_SYSTEM_PROMPT },
@@ -56,17 +108,61 @@ export async function sendMessageToTherapist(messages: ChatMessage[]): Promise<s
       }))
     ];
 
+    // Get clinical response
     const completion = await groq.chat.completions.create({
       messages: formattedMessages,
       model: 'llama3-70b-8192',
       temperature: 0.7,
-      max_tokens: 500,
+      max_tokens: 800,
     });
 
-    return completion.choices[0]?.message?.content || 'I apologize, but I\'m having trouble responding right now. Please try again.';
+    const response = completion.choices[0]?.message?.content || 'I apologize, but I\'m having trouble responding right now. Please try again.';
+
+    // Get clinical analysis
+    const clinicalCompletion = await groq.chat.completions.create({
+      messages: [
+        { role: 'system', content: CLINICAL_ANALYSIS_PROMPT },
+        { role: 'user', content: `User message: "${messages[messages.length - 1].content}"\n\nAI Response: "${response}"` }
+      ],
+      model: 'llama3-70b-8192',
+      temperature: 0.3,
+      max_tokens: 400,
+    });
+
+    let clinicalData: ClinicalAssessment;
+    try {
+      const clinicalResponse = clinicalCompletion.choices[0]?.message?.content;
+      clinicalData = JSON.parse(clinicalResponse || '{}');
+    } catch (error) {
+      console.error('Error parsing clinical data:', error);
+      clinicalData = {
+        symptomSummary: "General wellness inquiry",
+        clinicalIndicators: ["Seeking support", "Professional consultation"],
+        triageLevel: "ATS 5",
+        triageDescription: "Non-urgent (120 minutes)",
+        confidence: 75,
+        followUpQuestions: ["How are you feeling today?", "What specific support do you need?"],
+        clinicalReasoning: "Routine mental health support and monitoring recommended.",
+        supportLevel: "low"
+      };
+    }
+
+    return { response, clinicalData };
   } catch (error) {
     console.error('Error calling Groq API:', error);
-    return 'I\'m experiencing technical difficulties. Please try again in a moment, or feel free to reach out to our support team.';
+    return {
+      response: 'I\'m experiencing technical difficulties. Please try again in a moment, or feel free to reach out to our support team.',
+      clinicalData: {
+        symptomSummary: "Technical error occurred",
+        clinicalIndicators: ["System unavailable"],
+        triageLevel: "ATS 5",
+        triageDescription: "Non-urgent (120 minutes)",
+        confidence: 0,
+        followUpQuestions: ["Please try again", "Contact support if issues persist"],
+        clinicalReasoning: "Technical difficulties preventing proper assessment.",
+        supportLevel: "low"
+      }
+    };
   }
 }
 
@@ -87,10 +183,8 @@ export async function analyzeSupportLevel(userMessage: string): Promise<SupportA
       throw new Error('No response from analysis API');
     }
 
-    // Parse the JSON response
     const analysis = JSON.parse(response.trim());
     
-    // Validate the response structure
     if (!analysis.level || !analysis.reasoning || typeof analysis.needsTherapist !== 'boolean') {
       throw new Error('Invalid analysis response structure');
     }
@@ -98,7 +192,6 @@ export async function analyzeSupportLevel(userMessage: string): Promise<SupportA
     return analysis;
   } catch (error) {
     console.error('Error analyzing support level:', error);
-    // Default to low level if analysis fails
     return {
       level: 'low',
       reasoning: 'Unable to analyze - defaulting to low support level',
