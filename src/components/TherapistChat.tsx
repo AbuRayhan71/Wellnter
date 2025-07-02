@@ -324,41 +324,6 @@ Best regards`);
         clinicalData={criticalModal.clinicalData}
       />
 
-      {/* Top Controls - Language and Voice */}
-      <div className="bg-gray-50 border-b border-gray-200 p-4">
-        <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center space-x-3">
-            <Globe className="w-5 h-5 text-blue-600" />
-            <select 
-              value={selectedLanguage.code}
-              onChange={(e) => {
-                const language = TOP_LANGUAGES.find(lang => lang.code === e.target.value);
-                if (language) handleLanguageChange(language);
-              }}
-              className="bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm font-medium text-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
-            >
-              {TOP_LANGUAGES.map((language) => (
-                <option key={language.code} value={language.code}>
-                  {language.flag} {language.nativeName}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="flex items-center space-x-2 text-sm text-green-600">
-            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-            <span className="font-medium">AI Ready</span>
-          </div>
-        </div>
-        
-        {/* Voice Input Section */}
-        <div className="flex items-center justify-center">
-          <VoiceInput 
-            onTranscription={handleVoiceTranscription}
-            disabled={isLoading}
-          />
-        </div>
-      </div>
-
       {/* Therapist Recommendation Prompt */}
       {therapistPrompt.show && (
         <div className="bg-red-50 border-b">
@@ -393,8 +358,8 @@ Best regards`);
       )}
 
       {/* Messages Area */}
-      <ScrollArea className="h-96 p-4 bg-gray-50">
-        <div className="space-y-4">
+      <ScrollArea className="h-96 p-3 bg-gray-50">
+        <div className="space-y-3">
           {messages.map((message, index) => (
             <div key={index} className="space-y-2">
               <div className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -402,24 +367,24 @@ Best regards`);
                   message.role === 'user'
                     ? 'bg-blue-600 text-white rounded-2xl rounded-br-md'
                     : 'bg-white border border-gray-200 rounded-2xl rounded-bl-md shadow-sm'
-                } p-4`}>
-                  <div className="flex items-start space-x-3">
+                } p-3`}>
+                  <div className="flex items-start space-x-2">
                     {message.role === 'assistant' && (
-                      <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Bot className="w-4 h-4 text-white" />
+                      <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Bot className="w-3 h-3 text-white" />
                       </div>
                     )}
                     <div className="flex-1">
                       <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
-                      <p className={`text-xs mt-2 ${
+                      <p className={`text-xs mt-1 ${
                         message.role === 'user' ? 'text-blue-100' : 'text-gray-500'
                       }`}>
                         {formatTime(message.timestamp)}
                       </p>
                     </div>
                     {message.role === 'user' && (
-                      <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-                        <User className="w-4 h-4 text-white" />
+                      <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                        <User className="w-3 h-3 text-white" />
                       </div>
                     )}
                   </div>
@@ -437,10 +402,10 @@ Best regards`);
           
           {isLoading && (
             <div className="flex justify-start">
-              <div className="bg-white border border-gray-200 rounded-2xl rounded-bl-md shadow-sm p-4 max-w-[85%]">
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                    <Bot className="w-4 h-4 text-white" />
+              <div className="bg-white border border-gray-200 rounded-2xl rounded-bl-md shadow-sm p-3 max-w-[85%]">
+                <div className="flex items-center space-x-2">
+                  <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
+                    <Bot className="w-3 h-3 text-white" />
                   </div>
                   <div className="flex space-x-1">
                     <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce"></div>
@@ -455,33 +420,58 @@ Best regards`);
         <div ref={messagesEndRef} />
       </ScrollArea>
 
-      {/* Input Area - Bigger typing window */}
-      <div className="p-4 border-t border-gray-200 bg-white">
-        <div className="flex space-x-3">
-          <textarea
+      {/* Language Selector */}
+      <div className="px-3 py-2 border-t border-gray-100 bg-gray-50">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <Globe className="w-4 h-4 text-blue-600" />
+            <select 
+              value={selectedLanguage.code}
+              onChange={(e) => {
+                const language = TOP_LANGUAGES.find(lang => lang.code === e.target.value);
+                if (language) handleLanguageChange(language);
+              }}
+              className="text-sm bg-transparent border-none focus:outline-none text-gray-700"
+            >
+              {TOP_LANGUAGES.map((language) => (
+                <option key={language.code} value={language.code}>
+                  {language.flag} {language.nativeName}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="flex items-center space-x-1 text-xs text-green-600">
+            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+            <span>AI Ready</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Input Area */}
+      <div className="p-3 border-t border-gray-200">
+        <div className="flex space-x-2">
+          <Input
             value={inputMessage}
             onChange={(e) => setInputMessage(e.target.value)}
-            onKeyPress={(e) => {
-              if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                handleSendMessage();
-              }
-            }}
+            onKeyPress={handleKeyPress}
             placeholder="How are you feeling today?"
             disabled={isLoading}
-            className="flex-1 bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-sm resize-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none min-h-[60px] max-h-[120px]"
-            rows={3}
+            className="flex-1 bg-gray-50 border-gray-200 focus:border-blue-500 focus:ring-blue-500 h-10 rounded-xl text-sm"
+          />
+          <VoiceInput 
+            onTranscription={handleVoiceTranscription}
+            disabled={isLoading}
           />
           <Button
             onClick={() => handleSendMessage()}
             disabled={!inputMessage.trim() || isLoading}
-            className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-xl self-end"
+            className="bg-blue-600 hover:bg-blue-700 px-4 h-10 rounded-xl"
           >
-            <Send className="w-5 h-5" />
+            <Send className="w-4 h-4" />
           </Button>
         </div>
         
-        <div className="flex items-center justify-between mt-3">
+        <div className="flex items-center justify-between mt-2">
           <p className="text-xs text-gray-500">
             🔊 Voice input • Secure & Private
           </p>
@@ -500,7 +490,7 @@ Best regards`);
               });
               setCriticalModal({ show: false, urgencyLevel: 'critical' });
             }}
-            className="text-xs text-blue-600 hover:text-blue-700 underline font-medium"
+            className="text-xs text-blue-600 hover:text-blue-700 underline"
           >
             New Chat
           </button>
