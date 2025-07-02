@@ -27,3 +27,8 @@ html {
 html, body {
   scroll-padding-top: 0;
 }
+
+/* Force initial scroll position */
+html, body, #root {
+  scroll-behavior: auto !important;
+}
