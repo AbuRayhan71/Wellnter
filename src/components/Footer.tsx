@@ -40,9 +40,13 @@ export function Footer() {
           <div className="sm:col-span-2">
             <div className="flex items-center space-x-3 mb-3 sm:mb-4">
               <img 
-                src="/src/assets/ChatGPT Image Jul 2, 2025, 01_33_41 PM.png" 
+                src="/ChatGPT Image Jul 2, 2025, 01_33_41 PM.png" 
                 alt="Wellnter Logo" 
                 className="w-6 h-6 sm:w-8 sm:h-8"
+                onError={(e) => {
+                  // Fallback if image doesn't load
+                  e.currentTarget.style.display = 'none';
+                }}
               />
               <div className="text-xl sm:text-2xl font-bold text-blue-400">
                 Wellnter
