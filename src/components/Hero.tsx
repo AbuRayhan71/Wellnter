@@ -146,8 +146,8 @@ Best regards`);
             </h1>
             
             <p className="text-lg sm:text-xl text-gray-600 mb-10 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-4">
-              AI-powered mental health and fitness coaching designed specifically for founders, 
-              developers, and professionals. Stay healthy while building your career.
+              AI-powered mental health and wellness coaching designed for students, researchers, and professionals.
+              Stay mentally strong while pursuing excellence in academics, research, or career.
             </p>
 
             {/* Trust indicators */}
@@ -188,7 +188,7 @@ Best regards`);
 
             {/* Social proof */}
             <p className="text-sm sm:text-base text-gray-500 mb-16 sm:mb-20 px-4">
-              Join 500+ founders, developers, and professionals optimizing their mental health
+              Join 500+ high-performing students, researchers, and professionals optimizing their mental health with Wellnter
             </p>
           </div>
 
@@ -196,11 +196,11 @@ Best regards`);
           <div id="ai-therapist" className="bg-gray-50 rounded-2xl sm:rounded-3xl p-6 sm:p-10 lg:p-12">
             <div className="text-center mb-8 sm:mb-10">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 px-2">
-                Meet Dr. Sarah - Your AI Therapist
+                Meet Dr. Sarah — Your AI Mental Health Assistant
               </h2>
               <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto px-4">
-                Get immediate mental health support designed for high-performing professionals. 
-                Start your conversation below and experience personalized AI therapy.
+                Get immediate, intelligent mental health support designed for ambitious minds under pressure.
+                Start your conversation below and experience personalized AI therapy built for high-performance lifestyles.
               </p>
             </div>
             <TherapistChat />

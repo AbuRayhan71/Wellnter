@@ -4,45 +4,45 @@ import { Brain, Heart, Activity, Users, Shield, Target } from 'lucide-react';
 const features = [
   {
     icon: Brain,
-    title: 'AI-Powered Monitoring',
-    description: 'Advanced algorithms track stress patterns, work habits, and mental health indicators specifically designed for high-pressure careers.',
+    title: 'Built for High Performers',
+    description: 'Whether you\'re juggling deadlines, thesis work, coding sprints, or product launches, Wellnter supports the mental health of high achievers.',
     color: 'text-blue-600',
     bgColor: 'bg-blue-50'
   },
   {
-    icon: Heart,
-    title: 'Burnout Prevention',
-    description: 'Proactive identification of burnout risks with personalized interventions before critical stress levels are reached.',
-    color: 'text-red-600',
-    bgColor: 'bg-red-50'
-  },
-  {
     icon: Activity,
-    title: 'Performance Optimization',
-    description: 'Integrate wellness practices into your workflow to boost productivity, focus, and sustained high performance.',
+    title: 'AI-Powered Monitoring',
+    description: 'Our algorithms track stress patterns, sleep cycles, and focus levels tailored to academic and professional demands.',
     color: 'text-green-600',
     bgColor: 'bg-green-50'
   },
   {
+    icon: Heart,
+    title: 'Burnout Prevention',
+    description: 'Catch early warning signs and get personalized interventions before stress becomes overwhelming.',
+    color: 'text-red-600',
+    bgColor: 'bg-red-50'
+  },
+  {
+    icon: Target,
+    title: 'Performance Optimization',
+    description: 'Incorporate wellness routines and mental clarity practices into your schedule to improve focus, retention, and productivity.',
+    color: 'text-orange-600',
+    bgColor: 'bg-orange-50'
+  },
+  {
     icon: Users,
     title: 'Expert Network',
-    description: 'Access to licensed therapists and coaches who understand the unique challenges of founders and tech professionals.',
+    description: 'Access certified therapists and performance coaches who understand the life of students, researchers, and professionals.',
     color: 'text-purple-600',
     bgColor: 'bg-purple-50'
   },
   {
     icon: Shield,
     title: 'Privacy & Security',
-    description: 'Enterprise-grade security with end-to-end encryption. Your mental health data remains completely private and secure.',
+    description: 'We protect your mental health data with enterprise-grade encryption — it stays confidential and secure.',
     color: 'text-indigo-600',
     bgColor: 'bg-indigo-50'
-  },
-  {
-    icon: Target,
-    title: 'Goal-Oriented Coaching',
-    description: 'Set and achieve wellness goals that align with your professional objectives and personal growth targets.',
-    color: 'text-orange-600',
-    bgColor: 'bg-orange-50'
   }
 ];
 
@@ -52,14 +52,14 @@ export function Features() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16">
           <div className="inline-flex items-center px-3 sm:px-4 py-2 bg-blue-50 rounded-full text-blue-700 text-xs sm:text-sm font-medium mb-4 sm:mb-6">
-            Why Choose Wellnter
+            Why Choose Wellnter?
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 px-4">
             Built for High Performers
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-            Our platform understands the unique mental health challenges faced by founders, 
-            developers, and professionals in high-pressure environments.
+            Our platform understands the unique mental health challenges faced by students, 
+            researchers, and professionals in high-pressure environments.
           </p>
         </div>
 
