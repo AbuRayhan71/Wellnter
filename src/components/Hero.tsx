@@ -39,7 +39,7 @@ Best regards`);
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <img 
-              src="/ChatGPT Image Jul 2, 2025, 01_33_41 PM.png" 
+              src="/wellnter-logo.png" 
               alt="Wellnter Logo" 
               className="w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0"
               onError={(e) => {
