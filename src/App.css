@@ -16,3 +16,14 @@ body {
 * {
   box-sizing: border-box;
 }
+
+/* Ensure smooth scrolling and proper viewport behavior */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Prevent any unwanted scrolling on page load */
+html, body {
+  scroll-padding-top: 0;
+}

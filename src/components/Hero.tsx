@@ -1,10 +1,15 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Shield, Heart, Brain, CheckCircle, Menu, X } from 'lucide-react';
 import { TherapistChat } from '@/components/TherapistChat';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export function Hero() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Ensure page starts at top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleEarlyAccess = () => {
     const subject = encodeURIComponent('Early Access Registration - Wellnter');
@@ -56,6 +61,7 @@ Best regards`);
           <div className="hidden md:flex items-center space-x-8">
             <a href="#features" className="text-gray-600 hover:text-blue-600 transition-colors">Features</a>
             <a href="#how-it-works" className="text-gray-600 hover:text-blue-600 transition-colors">How it Works</a>
+            <a href="#ai-therapist" className="text-gray-600 hover:text-blue-600 transition-colors">AI Therapist</a>
             <a href="#contact" className="text-gray-600 hover:text-blue-600 transition-colors">Contact</a>
             <Button 
               onClick={handleEarlyAccess}
@@ -97,6 +103,13 @@ Best regards`);
                 How it Works
               </a>
               <a 
+                href="#ai-therapist" 
+                className="block text-gray-600 hover:text-blue-600 transition-colors py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                AI Therapist
+              </a>
+              <a 
                 href="#contact" 
                 className="block text-gray-600 hover:text-blue-600 transition-colors py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -118,74 +131,74 @@ Best regards`);
       </nav>
 
       {/* Hero Section */}
-      <div className="relative px-4 sm:px-6 lg:px-8 pt-8 sm:pt-16 pb-12 sm:pb-24">
+      <div className="relative px-4 sm:px-6 lg:px-8 pt-8 sm:pt-16 pb-16 sm:pb-24">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 sm:mb-16">
+          <div className="text-center mb-16 sm:mb-20">
             <div className="inline-flex items-center px-3 sm:px-4 py-2 bg-blue-50 rounded-full text-blue-700 text-xs sm:text-sm font-medium mb-6 sm:mb-8">
               <CheckCircle className="w-3 sm:w-4 h-3 sm:h-4 mr-2" />
               AI-Powered Mental Health Platform
             </div>
             
-            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-bold text-gray-900 mb-6 sm:mb-8 leading-tight px-2">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 sm:mb-8 leading-tight px-2">
               Mental Health for
               <br />
               <span className="text-blue-600">High Performers</span>
             </h1>
             
-            <p className="text-base sm:text-xl text-gray-600 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-4">
+            <p className="text-lg sm:text-xl text-gray-600 mb-10 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-4">
               AI-powered mental health and fitness coaching designed specifically for founders, 
               developers, and professionals. Stay healthy while building your career.
             </p>
 
             {/* Trust indicators */}
-            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 mb-8 sm:mb-12 text-xs sm:text-sm text-gray-500 px-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 mb-10 sm:mb-12 text-sm sm:text-base text-gray-500 px-4">
               <div className="flex items-center space-x-2">
-                <Shield className="w-4 h-4 text-blue-600" />
+                <Shield className="w-5 h-5 text-blue-600" />
                 <span>Privacy First</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Heart className="w-4 h-4 text-blue-600" />
+                <Heart className="w-5 h-5 text-blue-600" />
                 <span>Burnout Prevention</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Brain className="w-4 h-4 text-blue-600" />
+                <Brain className="w-5 h-5 text-blue-600" />
                 <span>AI-Powered Insights</span>
               </div>
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 mb-12 sm:mb-16 px-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-12 sm:mb-16 px-4">
               <Button 
                 size="lg" 
                 onClick={handleEarlyAccess}
-                className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-8 sm:px-10 py-4 sm:py-5 text-lg sm:text-xl font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 Register for Early Access
-                <ArrowRight className="ml-2 w-4 sm:w-5 h-4 sm:h-5" />
+                <ArrowRight className="ml-3 w-5 sm:w-6 h-5 sm:h-6" />
               </Button>
               <Button 
                 variant="outline" 
                 size="lg"
                 onClick={handleDemo}
-                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-lg border-2 border-gray-300 hover:border-blue-600 hover:text-blue-600 transition-all duration-300"
+                className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 text-lg sm:text-xl font-semibold rounded-xl border-2 border-gray-300 hover:border-blue-600 hover:text-blue-600 transition-all duration-300"
               >
                 Schedule 1:1 Demo
               </Button>
             </div>
 
             {/* Social proof */}
-            <p className="text-xs sm:text-sm text-gray-500 mb-12 sm:mb-16 px-4">
+            <p className="text-sm sm:text-base text-gray-500 mb-16 sm:mb-20 px-4">
               Join 500+ founders, developers, and professionals optimizing their mental health
             </p>
           </div>
 
           {/* AI Therapist Section */}
-          <div className="bg-gray-50 rounded-xl sm:rounded-2xl p-4 sm:p-8 lg:p-12">
-            <div className="text-center mb-6 sm:mb-8">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 px-2">
+          <div id="ai-therapist" className="bg-gray-50 rounded-2xl sm:rounded-3xl p-6 sm:p-10 lg:p-12">
+            <div className="text-center mb-8 sm:mb-10">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 px-2">
                 Meet Dr. Sarah - Your AI Therapist
               </h2>
-              <p className="text-sm sm:text-lg text-gray-600 max-w-3xl mx-auto px-4">
+              <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto px-4">
                 Get immediate mental health support designed for high-performing professionals. 
                 Start your conversation below and experience personalized AI therapy.
               </p>
