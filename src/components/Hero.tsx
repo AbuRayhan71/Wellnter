@@ -16,7 +16,7 @@ Please let me know the next steps.
 
 Best regards`);
     
-    window.location.href = `mailto:mdabu.rayhan@outlook.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:contact@wellnter.com?subject=${subject}&body=${body}`;
   };
 
   const handleDemo = () => {
@@ -29,7 +29,7 @@ Please let me know your availability.
 
 Best regards`);
     
-    window.location.href = `mailto:mdabu.rayhan@outlook.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:contact@wellnter.com?subject=${subject}&body=${body}`;
   };
 
   return (

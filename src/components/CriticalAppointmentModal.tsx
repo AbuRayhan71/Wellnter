@@ -74,7 +74,7 @@ Time: ${new Date().toLocaleString()}`;
 
       // Also send to backup email
       setTimeout(() => {
-        const backupMailto = `mailto:mdabu.rayhan@outlook.com?subject=${subject}&body=${encodeURIComponent(emailBody)}`;
+        const backupMailto = `mailto:contact@wellnter.com?subject=${subject}&body=${encodeURIComponent(emailBody)}`;
         window.open(backupMailto, '_blank');
       }, 1000);
 
