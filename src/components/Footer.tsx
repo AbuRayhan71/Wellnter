@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { WellnterLogo } from '@/components/WellnterLogo';
 import { Github, Linkedin, Mail, Twitter, ArrowRight } from 'lucide-react';
 
 export function Footer() {
@@ -38,8 +39,11 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="sm:col-span-2">
-            <div className="text-xl sm:text-2xl font-bold text-blue-400 mb-3 sm:mb-4">
-              Wellnter
+            <div className="flex items-center space-x-3 mb-3 sm:mb-4">
+              <WellnterLogo size={32} />
+              <div className="text-xl sm:text-2xl font-bold text-blue-400">
+                Wellnter
+              </div>
             </div>
             <p className="text-gray-400 mb-4 sm:mb-6 max-w-md leading-relaxed text-sm sm:text-base">
               AI-powered mental health support and fitness coaching platform designed specifically 
