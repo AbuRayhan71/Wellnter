@@ -8,7 +8,7 @@ const steps = [
     number: '01',
     icon: UserPlus,
     title: 'Professional Assessment',
-    description: 'Complete a comprehensive assessment designed for high-performers. We evaluate stress levels, work-life balance, and career-specific mental health factors.',
+    description: 'Complete a comprehensive assessment designed for high-performers. We evaluate stress levels, work-life balance, and academic or career-specific mental health factors.',
     color: 'text-blue-600',
     bgColor: 'bg-blue-50'
   },
@@ -16,7 +16,7 @@ const steps = [
     number: '02',
     icon: Brain,
     title: 'AI-Powered Analysis',
-    description: 'Our AI continuously monitors your mental health patterns, work stress, and performance metrics to provide insights tailored to your professional lifestyle.',
+    description: 'Our AI continuously monitors your mental health patterns, academic stress, work pressure, and performance metrics to provide insights tailored to your lifestyle.',
     color: 'text-purple-600',
     bgColor: 'bg-purple-50'
   },
@@ -24,7 +24,7 @@ const steps = [
     number: '03',
     icon: Target,
     title: 'Personalized Support',
-    description: 'Receive targeted coaching and access to mental health experts who understand high-pressure careers and can provide specialized guidance.',
+    description: 'Receive targeted coaching and access to mental health experts who understand high-pressure academic and professional environments.',
     color: 'text-green-600',
     bgColor: 'bg-green-50'
   }
@@ -41,21 +41,21 @@ const features = [
   {
     icon: Brain,
     title: 'AI-Powered Monitoring',
-    description: 'Advanced algorithms track stress patterns, work habits, and mental health indicators specifically designed for high-pressure careers.',
+    description: 'Advanced algorithms track stress patterns, sleep cycles, and focus levels tailored to academic and professional demands.',
     color: 'text-blue-600',
     bgColor: 'bg-blue-50'
   },
   {
     icon: Heart,
     title: 'Burnout Prevention',
-    description: 'Proactive identification of burnout risks with personalized interventions before critical stress levels are reached.',
+    description: 'Catch early warning signs and get personalized interventions before stress becomes overwhelming.',
     color: 'text-red-600',
     bgColor: 'bg-red-50'
   },
   {
     icon: Activity,
     title: 'Performance Optimization',
-    description: 'Integrate wellness practices into your workflow to boost productivity, focus, and sustained high performance.',
+    description: 'Incorporate wellness routines and mental clarity practices into your schedule to improve focus, retention, and productivity.',
     color: 'text-green-600',
     bgColor: 'bg-green-50'
   }
@@ -204,8 +204,8 @@ Best regards`);
             </h1>
             
             <p className="text-xl sm:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              A streamlined approach to mental health designed for busy professionals. 
-              Get started in minutes and maintain your wellbeing while building your career.
+              A streamlined approach to mental health designed for students, researchers, and busy professionals. 
+              Get started in minutes and maintain your wellbeing while pursuing excellence.
             </p>
           </div>
 
@@ -272,7 +272,7 @@ Best regards`);
               Powerful Features for High Performers
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our platform combines cutting-edge AI with proven mental health practices
+              Our platform combines cutting-edge AI with proven mental health practices for students, researchers, and professionals
             </p>
           </div>
 
@@ -308,7 +308,7 @@ Best regards`);
                 Proven Results for High Performers
               </h3>
               <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-                Join professionals who have transformed their mental health and career performance
+                Join students, researchers, and professionals who have transformed their mental health and performance
               </p>
             </div>
             
@@ -331,7 +331,7 @@ Best regards`);
             Ready to Transform Your Mental Health?
           </h2>
           <p className="text-xl text-gray-600 mb-10">
-            Join hundreds of high-performing professionals who are already optimizing their wellbeing
+            Join hundreds of high-performing students, researchers, and professionals who are already optimizing their wellbeing
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">

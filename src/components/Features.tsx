@@ -3,18 +3,18 @@ import { Brain, Heart, Activity, Users, Shield, Target } from 'lucide-react';
 
 const features = [
   {
-    icon: Brain,
+    icon: Target,
     title: 'Built for High Performers',
     description: 'Whether you\'re juggling deadlines, thesis work, coding sprints, or product launches, Wellnter supports the mental health of high achievers.',
     color: 'text-blue-600',
     bgColor: 'bg-blue-50'
   },
   {
-    icon: Activity,
+    icon: Brain,
     title: 'AI-Powered Monitoring',
     description: 'Our algorithms track stress patterns, sleep cycles, and focus levels tailored to academic and professional demands.',
-    color: 'text-green-600',
-    bgColor: 'bg-green-50'
+    color: 'text-purple-600',
+    bgColor: 'bg-purple-50'
   },
   {
     icon: Heart,
@@ -24,18 +24,18 @@ const features = [
     bgColor: 'bg-red-50'
   },
   {
-    icon: Target,
+    icon: Activity,
     title: 'Performance Optimization',
     description: 'Incorporate wellness routines and mental clarity practices into your schedule to improve focus, retention, and productivity.',
-    color: 'text-orange-600',
-    bgColor: 'bg-orange-50'
+    color: 'text-green-600',
+    bgColor: 'bg-green-50'
   },
   {
     icon: Users,
     title: 'Expert Network',
     description: 'Access certified therapists and performance coaches who understand the life of students, researchers, and professionals.',
-    color: 'text-purple-600',
-    bgColor: 'bg-purple-50'
+    color: 'text-orange-600',
+    bgColor: 'bg-orange-50'
   },
   {
     icon: Shield,

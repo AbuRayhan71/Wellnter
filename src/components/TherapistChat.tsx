@@ -40,7 +40,7 @@ export function TherapistChat() {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: 'assistant',
-      content: "Hi! I'm Dr. Sarah, your AI therapist specializing in mental health support for high-performing professionals. I understand the unique pressures of startup life, coding, and building careers. How are you feeling today?",
+      content: "Hi! I'm Dr. Sarah, your AI mental wellness companion. I specialize in helping high-performing individuals — from students and researchers to tech professionals — manage stress, stay balanced, and avoid burnout. How are you feeling today?",
       timestamp: new Date()
     }
   ]);
@@ -95,16 +95,16 @@ export function TherapistChat() {
     setSelectedLanguage(language);
     // Update the initial message based on selected language
     const welcomeMessages: Record<string, string> = {
-      'en': "Hi! I'm Dr. Sarah, your AI therapist specializing in mental health support for high-performing professionals. I understand the unique pressures of startup life, coding, and building careers. How are you feeling today?",
-      'zh': "您好！我是莎拉博士，您的AI治疗师，专门为高绩效专业人士提供心理健康支持。我理解创业生活、编程和职业发展的独特压力。您今天感觉如何？",
-      'hi': "नमस्ते! मैं डॉ. सारा हूं, आपकी AI थेरेपिस्ट जो उच्च प्रदर्शन करने वाले पेशेवरों के लिए मानसिक स्वास्थ्य सहायता में विशेषज्ञ है। मैं स्टार्टअप जीवन, कोडिंग और करियर निर्माण के अनूठे दबावों को समझती हूं। आज आप कैसा महसूस कर रहे हैं?",
-      'es': "¡Hola! Soy la Dra. Sarah, su terapeuta de IA especializada en apoyo de salud mental para profesionales de alto rendimiento. Entiendo las presiones únicas de la vida de las startups, la programación y la construcción de carreras. ¿Cómo se siente hoy?",
-      'fr': "Salut! Je suis Dr. Sarah, votre thérapeute IA spécialisée dans le soutien en santé mentale pour les professionnels performants. Je comprends les pressions uniques de la vie des startups, du codage et de la construction de carrière. Comment vous sentez-vous aujourd'hui?",
-      'ar': "مرحباً! أنا د. سارة، معالجتك بالذكاء الاصطناعي المتخصصة في دعم الصحة النفسية للمهنيين عالي الأداء. أفهم الضغوط الفريدة لحياة الشركات الناشئة والبرمجة وبناء المهن. كيف تشعر اليوم؟",
-      'bn': "হ্যালো! আমি ডাঃ সারাহ, আপনার AI থেরাপিস্ট যিনি উচ্চ-পারফরমিং পেশাদারদের জন্য মানসিক স্বাস্থ্য সহায়তায় বিশেষজ্ঞ। আমি স্টার্টআপ জীবন, কোডিং এবং ক্যারিয়ার গড়ার অনন্য চাপগুলি বুঝি। আজ আপনি কেমন অনুভব করছেন?",
-      'ru': "Привет! Я доктор Сара, ваш ИИ-терапевт, специализирующийся на поддержке психического здоровья высокоэффективных профессионалов. Я понимаю уникальные давления стартап-жизни, программирования и построения карьеры. Как вы себя чувствуете сегодня?",
-      'pt': "Olá! Eu sou a Dra. Sarah, sua terapeuta de IA especializada em apoio à saúde mental para profissionais de alto desempenho. Entendo as pressões únicas da vida de startups, programação e construção de carreira. Como você está se sentindo hoje?",
-      'ja': "こんにちは！私はサラ博士です。高パフォーマンス専門家のためのメンタルヘルスサポートを専門とするAIセラピストです。スタートアップ生活、コーディング、キャリア構築の独特なプレッシャーを理解しています。今日はいかがお過ごしですか？"
+      'en': "Hi! I'm Dr. Sarah, your AI mental wellness companion. I specialize in helping high-performing individuals — from students and researchers to tech professionals — manage stress, stay balanced, and avoid burnout. How are you feeling today?",
+      'zh': "您好！我是莎拉博士，您的AI心理健康伴侣。我专门帮助高绩效人士——从学生和研究人员到技术专业人士——管理压力、保持平衡并避免倦怠。您今天感觉如何？",
+      'hi': "नमस्ते! मैं डॉ. सारा हूं, आपकी AI मानसिक स्वास्थ्य साथी। मैं उच्च प्रदर्शन करने वाले व्यक्तियों की मदद करने में विशेषज्ञ हूं — छात्रों और शोधकर्ताओं से लेकर तकनीकी पेशेवरों तक — तनाव का प्रबंधन करने, संतुलित रहने और बर्नआउट से बचने में। आज आप कैसा महसूस कर रहे हैं?",
+      'es': "¡Hola! Soy la Dra. Sarah, su compañera de bienestar mental con IA. Me especializo en ayudar a personas de alto rendimiento — desde estudiantes e investigadores hasta profesionales de tecnología — a manejar el estrés, mantenerse equilibrados y evitar el agotamiento. ¿Cómo se siente hoy?",
+      'fr': "Salut! Je suis Dr. Sarah, votre compagnon de bien-être mental IA. Je me spécialise dans l'aide aux personnes très performantes — des étudiants et chercheurs aux professionnels de la technologie — pour gérer le stress, rester équilibrés et éviter l'épuisement. Comment vous sentez-vous aujourd'hui?",
+      'ar': "مرحباً! أنا د. سارة، رفيقتك في الصحة النفسية بالذكاء الاصطناعي. أتخصص في مساعدة الأفراد عالي الأداء — من الطلاب والباحثين إلى المهنيين التقنيين — في إدارة التوتر والبقاء متوازنين وتجنب الإرهاق. كيف تشعر اليوم؟",
+      'bn': "হ্যালো! আমি ডাঃ সারাহ, আপনার AI মানসিক সুস্থতার সঙ্গী। আমি উচ্চ-পারফরমিং ব্যক্তিদের সাহায্য করতে বিশেষজ্ঞ — ছাত্র এবং গবেষকদের থেকে প্রযুক্তি পেশাদারদের পর্যন্ত — চাপ পরিচালনা করতে, ভারসাম্য বজায় রাখতে এবং বার্নআউট এড়াতে। আজ আপনি কেমন অনুভব করছেন?",
+      'ru': "Привет! Я доктор Сара, ваш ИИ-компаньон по психическому здоровью. Я специализируюсь на помощи высокоэффективным людям — от студентов и исследователей до технических специалистов — в управлении стрессом, поддержании баланса и предотвращении выгорания. Как вы себя чувствуете сегодня?",
+      'pt': "Olá! Eu sou a Dra. Sarah, sua companheira de bem-estar mental com IA. Especializo-me em ajudar indivíduos de alto desempenho — de estudantes e pesquisadores a profissionais de tecnologia — a gerenciar o estresse, manter o equilíbrio e evitar o esgotamento. Como você está se sentindo hoje?",
+      'ja': "こんにちは！私はサラ博士です。あなたのAIメンタルウェルネスコンパニオンです。学生や研究者からテクノロジー専門家まで、高パフォーマンスな個人がストレスを管理し、バランスを保ち、燃え尽き症候群を避けるお手伝いを専門としています。今日はいかがお過ごしですか？"
     };
 
     if (messages.length === 1) {
@@ -357,22 +357,22 @@ Best regards`);
               <Activity className="w-5 sm:w-6 h-5 sm:h-6 text-white" />
             </div>
             <div>
-              <h2 className="text-lg sm:text-xl font-bold text-gray-900">Wellnter Mental Health Assistant</h2>
-              <p className="text-xs sm:text-sm text-blue-600 font-medium">AI-Powered Chat Interface - Research Prototype</p>
+              <h2 className="text-lg sm:text-xl font-bold text-gray-900">Wellnter AI Chat Interface</h2>
+              <p className="text-xs sm:text-sm text-blue-600 font-medium">AI-Powered Mental Health Assistant — Research Prototype</p>
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-2 sm:gap-3">
             <div className="flex items-center space-x-1 sm:space-x-2 bg-blue-50 px-2 sm:px-3 py-1 rounded-full">
               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              <span className="text-xs sm:text-sm text-blue-700 font-medium">Mental Health</span>
-            </div>
-            <div className="flex items-center space-x-1 sm:space-x-2 bg-purple-50 px-2 sm:px-3 py-1 rounded-full">
-              <Brain className="w-3 sm:w-4 h-3 sm:h-4 text-purple-600" />
-              <span className="text-xs sm:text-sm text-purple-700 font-medium">AI-Powered</span>
+              <span className="text-xs sm:text-sm text-blue-700 font-medium">Mental Health Support</span>
             </div>
             <div className="flex items-center space-x-1 sm:space-x-2 bg-red-50 px-2 sm:px-3 py-1 rounded-full">
               <AlertTriangle className="w-3 sm:w-4 h-3 sm:h-4 text-red-600" />
-              <span className="text-xs sm:text-sm text-red-700 font-medium">Emergency Care</span>
+              <span className="text-xs sm:text-sm text-red-700 font-medium">Emergency Response Pathways</span>
+            </div>
+            <div className="flex items-center space-x-1 sm:space-x-2 bg-purple-50 px-2 sm:px-3 py-1 rounded-full">
+              <Brain className="w-3 sm:w-4 h-3 sm:h-4 text-purple-600" />
+              <span className="text-xs sm:text-sm text-purple-700 font-medium">AI-Powered Copilot for Self-Care</span>
             </div>
           </div>
         </div>
@@ -559,19 +559,11 @@ Best regards`);
           <div className="mt-3 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs text-gray-500">
             <div className="flex items-center space-x-1">
               <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-              <span>Real-time Translation</span>
+              <span>Real-time Translation & Voice Recognition</span>
             </div>
             <div className="flex items-center space-x-1">
               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              <span>Voice Recognition</span>
-            </div>
-            <div className="flex items-center space-x-1">
-              <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-              <span>Cultural Context</span>
-            </div>
-            <div className="flex items-center space-x-1">
-              <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-              <span>Clinical Accuracy</span>
+              <span>Cultural Context & Clinical Accuracy</span>
             </div>
           </div>
         </div>
@@ -583,7 +575,7 @@ Best regards`);
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
               onKeyPress={handleKeyPress}
-              placeholder={`Tell me about your symptoms in ${selectedLanguage.name}...`}
+              placeholder={`Tell me about your symptoms in your preferred language...`}
               disabled={isLoading}
               className="flex-1 bg-gray-50 border-gray-200 focus:border-blue-500 focus:ring-blue-500 h-10 sm:h-12 rounded-xl text-sm sm:text-base"
             />
@@ -610,7 +602,7 @@ Best regards`);
                 setMessages([{
                   role: 'assistant',
                   content: selectedLanguage.code === 'en' 
-                    ? "Hi! I'm Dr. Sarah, your AI therapist specializing in mental health support for high-performing professionals. I understand the unique pressures of startup life, coding, and building careers. How are you feeling today?"
+                    ? "Hi! I'm Dr. Sarah, your AI mental wellness companion. I specialize in helping high-performing individuals — from students and researchers to tech professionals — manage stress, stay balanced, and avoid burnout. How are you feeling today?"
                     : messages[0].content,
                   timestamp: new Date()
                 }]);
@@ -634,17 +626,17 @@ Best regards`);
           <div className="flex items-center justify-center space-x-2">
             <AlertTriangle className="w-4 sm:w-5 h-4 sm:h-5 text-red-400" />
             <span className="text-xs sm:text-sm font-medium">
-              🚨 AI Prototype for research use only — not for clinical decision-making
+              🚨 AI Prototype for Research Use Only – Not for Clinical Decision-Making
             </span>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs text-gray-300">
-            <span>🌍 {TOP_LANGUAGES.length} Languages Supported</span>
+            <span>🌍 Supports {TOP_LANGUAGES.length} Languages</span>
             <span>•</span>
             <span>🔒 End-to-End Encrypted</span>
             <span>•</span>
-            <span>🏥 Clinical Grade AI</span>
+            <span>🏥 Clinical-Grade AI</span>
             <span>•</span>
-            <span>⚡ Real-time Processing</span>
+            <span>⚡ Real-Time Response</span>
           </div>
         </div>
       </div>
