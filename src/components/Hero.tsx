@@ -196,7 +196,7 @@ Best regards`);
           <div id="ai-therapist" className="bg-gray-50 rounded-2xl sm:rounded-3xl p-6 sm:p-10 lg:p-12">
             <div className="text-center mb-8 sm:mb-10">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 px-2">
-                Meet Dr. Sarah — Your AI Mental Health Assistant
+                Wellnter AI
               </h2>
               <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto px-4">
                 Get immediate, intelligent mental health support designed for ambitious minds under pressure.
