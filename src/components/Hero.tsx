@@ -39,7 +39,7 @@ Best regards`);
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <img 
-              src="/src/assets/image.png" 
+              src="/src/assets/ChatGPT Image Jul 2, 2025, 01_33_41 PM.png" 
               alt="Wellnter Logo" 
               className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0"
             />
