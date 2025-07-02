@@ -41,7 +41,7 @@ Best regards`);
             <img 
               src="/src/assets/ChatGPT Image Jul 2, 2025, 01_33_41 PM.png" 
               alt="Wellnter Logo" 
-              className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0"
+              className="w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0"
             />
             <div className="text-2xl sm:text-3xl font-bold">
               <span className="text-blue-600">Wellnter</span>
