@@ -64,12 +64,12 @@ export function Footer() {
               <div className="flex items-center space-x-3 text-gray-400 text-sm sm:text-base">
                 <Linkedin className="w-4 h-4" />
                 <a 
-                  href="https://www.linkedin.com/in/md-abu-rayhan-854b3b1a9/" 
+                  href="https://www.linkedin.com/company/107561458/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="hover:text-white transition-colors"
                 >
-                  Connect with our founder
+                  Follow Wellnter on LinkedIn
                 </a>
               </div>
             </div>
@@ -82,7 +82,7 @@ export function Footer() {
                 className="text-gray-400 hover:text-white hover:bg-gray-800 p-2"
                 asChild
               >
-                <a href="https://www.linkedin.com/in/md-abu-rayhan-854b3b1a9/" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/company/107561458/" target="_blank" rel="noopener noreferrer">
                   <Linkedin className="w-5 h-5" />
                 </a>
               </Button>
