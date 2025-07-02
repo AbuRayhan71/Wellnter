@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { WellnterLogo } from '@/components/WellnterLogo';
 import { Github, Linkedin, Mail, Twitter, ArrowRight } from 'lucide-react';
 
 export function Footer() {
@@ -40,7 +39,11 @@ export function Footer() {
           {/* Brand */}
           <div className="sm:col-span-2">
             <div className="flex items-center space-x-3 mb-3 sm:mb-4">
-              <WellnterLogo size={32} />
+              <img 
+                src="/src/assets/image.png" 
+                alt="Wellnter Logo" 
+                className="w-6 h-6 sm:w-8 sm:h-8"
+              />
               <div className="text-xl sm:text-2xl font-bold text-blue-400">
                 Wellnter
               </div>

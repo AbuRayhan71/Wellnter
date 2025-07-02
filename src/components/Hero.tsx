@@ -1,7 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Shield, Heart, Brain, CheckCircle, Menu, X } from 'lucide-react';
 import { TherapistChat } from '@/components/TherapistChat';
-import { WellnterLogo } from '@/components/WellnterLogo';
 import { useState } from 'react';
 
 export function Hero() {
@@ -39,7 +38,11 @@ Best regards`);
       <nav className="relative z-10 px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <WellnterLogo size={40} className="flex-shrink-0" />
+            <img 
+              src="/src/assets/image.png" 
+              alt="Wellnter Logo" 
+              className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0"
+            />
             <div className="text-2xl sm:text-3xl font-bold">
               <span className="text-blue-600">Wellnter</span>
             </div>
