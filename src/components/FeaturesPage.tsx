@@ -27,148 +27,270 @@ import {
   Calendar,
   AlertTriangle,
   Star,
-  Award
+  Award,
+  Headphones,
+  Video,
+  Phone,
+  Mail,
+  Download,
+  Upload,
+  Settings,
+  Bell,
+  Search,
+  Filter,
+  Bookmark,
+  Share2,
+  Eye,
+  PieChart,
+  LineChart,
+  Timer,
+  Coffee,
+  Moon,
+  Sun,
+  Wifi,
+  Database,
+  Cloud,
+  Cpu
 } from 'lucide-react';
 import { useState } from 'react';
 
-const mainFeatures = [
-  {
-    icon: Target,
-    title: 'Built for Academic Life',
-    description: 'Whether you\'re managing coursework, thesis deadlines, research projects, or dissertation stress, Wellnter understands the unique pressures of academic life.',
-    color: 'text-blue-600',
-    bgColor: 'bg-blue-50',
-    category: 'Academic Focus'
-  },
+const coreFeatures = [
   {
     icon: Brain,
-    title: 'Academic Stress Monitoring',
-    description: 'Our AI tracks stress patterns, study cycles, and focus levels specifically tailored to academic schedules and research demands.',
-    color: 'text-purple-600',
-    bgColor: 'bg-purple-50',
-    category: 'AI Technology'
+    title: 'AI-Powered Mental Health Assessment',
+    description: 'Advanced clinical algorithms provide real-time mental health evaluations specifically calibrated for academic stress patterns.',
+    features: [
+      'Real-time mood tracking and analysis',
+      'Academic stress pattern recognition',
+      'Personalized risk assessment scoring',
+      'Predictive burnout detection',
+      'Clinical-grade triage system (ATS 1-5)',
+      'Multi-language psychological evaluation'
+    ],
+    color: 'text-blue-600',
+    bgColor: 'bg-blue-50',
+    category: 'Core AI'
   },
   {
-    icon: Heart,
-    title: 'Academic Burnout Prevention',
-    description: 'Catch early warning signs of academic burnout and get personalized interventions before exam stress or research pressure becomes overwhelming.',
-    color: 'text-red-600',
-    bgColor: 'bg-red-50',
-    category: 'Prevention'
-  },
-  {
-    icon: Activity,
-    title: 'Study Performance Optimization',
-    description: 'Incorporate wellness routines and mental clarity practices into your study schedule to improve focus, memory retention, and academic productivity.',
+    icon: MessageSquare,
+    title: 'Intelligent Therapy Chatbot',
+    description: 'Conversational AI therapist trained specifically on academic mental health challenges, available 24/7 in 10+ languages.',
+    features: [
+      '24/7 conversational therapy support',
+      'Academic-specific therapy protocols',
+      'Crisis intervention capabilities',
+      'Voice input and transcription',
+      'Multi-language therapy sessions',
+      'Contextual follow-up questions'
+    ],
     color: 'text-green-600',
     bgColor: 'bg-green-50',
-    category: 'Performance'
+    category: 'AI Therapy'
   },
   {
-    icon: Users,
-    title: 'Academic-Focused Support',
-    description: 'Access certified therapists and academic coaches who understand the unique challenges of student life, research stress, and academic pressure.',
-    color: 'text-orange-600',
-    bgColor: 'bg-orange-50',
-    category: 'Expert Support'
+    icon: BarChart3,
+    title: 'Academic Performance Analytics',
+    description: 'Comprehensive dashboard tracking the correlation between mental health metrics and academic performance indicators.',
+    features: [
+      'Study pattern analysis and optimization',
+      'Mental health vs performance correlation',
+      'Productivity trend visualization',
+      'Focus and attention metrics',
+      'Sleep quality impact analysis',
+      'Stress level academic impact reports'
+    ],
+    color: 'text-purple-600',
+    bgColor: 'bg-purple-50',
+    category: 'Analytics'
   },
   {
-    icon: Shield,
-    title: 'Student Privacy & Security',
-    description: 'Your academic and mental health data is protected with enterprise-grade encryption — completely confidential and secure.',
-    color: 'text-indigo-600',
-    bgColor: 'bg-indigo-50',
-    category: 'Security'
+    icon: AlertTriangle,
+    title: 'Crisis Detection & Intervention',
+    description: 'Advanced AI monitoring system that detects mental health crises and automatically connects students with emergency support.',
+    features: [
+      'Suicidal ideation detection',
+      'Automatic crisis escalation',
+      'Emergency therapist connection',
+      'Campus counseling integration',
+      'Family/guardian notification system',
+      'Crisis resource directory'
+    ],
+    color: 'text-red-600',
+    bgColor: 'bg-red-50',
+    category: 'Safety'
   }
 ];
 
-const detailedFeatures = [
+const academicSpecificFeatures = [
   {
     icon: GraduationCap,
-    title: 'Student-Specific Assessments',
-    description: 'Comprehensive mental health evaluations designed specifically for academic environments, covering study stress, exam anxiety, thesis pressure, and research challenges.',
-    benefits: ['Academic stress evaluation', 'Study-life balance assessment', 'Research pressure analysis', 'Exam anxiety screening'],
+    title: 'Exam Stress Management',
+    description: 'Specialized tools and techniques for managing exam anxiety, test preparation stress, and performance pressure.',
+    tools: [
+      'Pre-exam anxiety assessment',
+      'Breathing and relaxation exercises',
+      'Study schedule optimization',
+      'Performance anxiety coaching',
+      'Post-exam emotional processing',
+      'Grade-related stress counseling'
+    ],
     color: 'text-blue-600',
     bgColor: 'bg-blue-50'
   },
   {
-    icon: Microscope,
-    title: 'Research Stress Support',
-    description: 'Specialized support for researchers dealing with publication pressure, funding stress, imposter syndrome, and the unique challenges of academic research.',
-    benefits: ['Publication anxiety help', 'Funding stress management', 'Imposter syndrome support', 'Research milestone tracking'],
+    icon: FileText,
+    title: 'Thesis & Research Support',
+    description: 'Comprehensive mental health support for long-term research projects, thesis writing, and dissertation completion.',
+    tools: [
+      'Research milestone tracking',
+      'Writing block intervention',
+      'Advisor relationship guidance',
+      'Imposter syndrome support',
+      'Publication anxiety management',
+      'Research setback recovery'
+    ],
     color: 'text-purple-600',
     bgColor: 'bg-purple-50'
   },
   {
-    icon: FileText,
-    title: 'Thesis & Dissertation Support',
-    description: 'Dedicated mental health support for students working on major academic projects, helping manage the stress and isolation of long-term research.',
-    benefits: ['Thesis anxiety management', 'Writing block support', 'Deadline stress relief', 'Motivation maintenance'],
+    icon: Users,
+    title: 'Academic Social Support',
+    description: 'Peer support networks and social features designed specifically for academic communities and research groups.',
+    tools: [
+      'Anonymous peer support groups',
+      'Study buddy matching system',
+      'Research collaboration networks',
+      'Academic mentorship programs',
+      'Department-specific communities',
+      'International student support'
+    ],
     color: 'text-green-600',
     bgColor: 'bg-green-50'
   },
   {
-    icon: BarChart3,
-    title: 'Academic Performance Insights',
-    description: 'AI-powered analytics that correlate your mental health patterns with academic performance, helping you optimize both wellbeing and study outcomes.',
-    benefits: ['Study pattern analysis', 'Performance correlation', 'Optimal study timing', 'Productivity insights'],
+    icon: Calendar,
+    title: 'Academic Calendar Integration',
+    description: 'Smart calendar integration that anticipates stressful academic periods and provides proactive mental health support.',
+    tools: [
+      'Exam period stress preparation',
+      'Assignment deadline tracking',
+      'Conference presentation support',
+      'Semester transition guidance',
+      'Holiday break adjustment help',
+      'Academic year planning'
+    ],
     color: 'text-orange-600',
     bgColor: 'bg-orange-50'
-  },
-  {
-    icon: MessageSquare,
-    title: 'Peer Support Networks',
-    description: 'Connect with other students and researchers facing similar challenges in a safe, moderated environment designed for academic mental health.',
-    benefits: ['Anonymous peer groups', 'Study buddy matching', 'Research community', 'Academic mentorship'],
-    color: 'text-pink-600',
-    bgColor: 'bg-pink-50'
-  },
-  {
-    icon: Clock,
-    title: '24/7 Academic Crisis Support',
-    description: 'Round-the-clock access to mental health resources specifically for academic crises, including exam panic, thesis deadlines, and research setbacks.',
-    benefits: ['Emergency support hotline', 'Crisis intervention', 'Immediate coping strategies', 'Academic counselor access'],
-    color: 'text-red-600',
-    bgColor: 'bg-red-50'
   }
 ];
 
-const techFeatures = [
+const professionalFeatures = [
   {
-    icon: Zap,
-    title: 'Real-time Stress Detection',
-    description: 'Advanced AI algorithms monitor your digital behavior patterns to detect early signs of academic stress and burnout.',
-    color: 'text-yellow-600',
-    bgColor: 'bg-yellow-50'
+    icon: Video,
+    title: 'Licensed Therapist Video Sessions',
+    description: 'One-on-one video sessions with licensed therapists who specialize in academic mental health.',
+    pricing: 'From $75/session',
+    color: 'text-blue-600',
+    bgColor: 'bg-blue-50'
+  },
+  {
+    icon: Phone,
+    title: 'Crisis Hotline Access',
+    description: '24/7 access to trained crisis counselors for immediate mental health emergencies.',
+    pricing: 'Included in all plans',
+    color: 'text-red-600',
+    bgColor: 'bg-red-50'
+  },
+  {
+    icon: Headphones,
+    title: 'Guided Meditation & Mindfulness',
+    description: 'Curated library of academic-focused meditation and mindfulness exercises.',
+    pricing: 'Premium feature',
+    color: 'text-green-600',
+    bgColor: 'bg-green-50'
+  },
+  {
+    icon: BookOpen,
+    title: 'Academic Wellness Resources',
+    description: 'Comprehensive library of articles, videos, and tools for academic mental health.',
+    pricing: 'Free with account',
+    color: 'text-purple-600',
+    bgColor: 'bg-purple-50'
+  }
+];
+
+const technicalFeatures = [
+  {
+    icon: Shield,
+    title: 'FERPA & HIPAA Compliance',
+    description: 'Full compliance with educational and healthcare privacy regulations.',
+    specs: ['End-to-end encryption', 'SOC 2 Type II certified', 'GDPR compliant', 'Regular security audits'],
+    color: 'text-indigo-600',
+    bgColor: 'bg-indigo-50'
   },
   {
     icon: Globe,
-    title: 'Multi-language Support',
-    description: 'Available in 10+ languages to support international students and researchers from diverse backgrounds.',
+    title: 'Multi-Language Support',
+    description: 'Available in 10+ languages with culturally-adapted therapy approaches.',
+    specs: ['English, Spanish, French, German', 'Mandarin, Hindi, Arabic, Bengali', 'Portuguese, Russian, Japanese', 'Cultural adaptation protocols'],
     color: 'text-blue-600',
     bgColor: 'bg-blue-50'
   },
   {
     icon: Smartphone,
-    title: 'Cross-platform Access',
-    description: 'Seamless experience across desktop, mobile, and tablet devices, perfect for busy student lifestyles.',
+    title: 'Cross-Platform Accessibility',
+    description: 'Seamless experience across all devices with offline capability.',
+    specs: ['iOS and Android apps', 'Web platform', 'Offline mode', 'Sync across devices'],
     color: 'text-green-600',
     bgColor: 'bg-green-50'
   },
   {
-    icon: Lock,
-    title: 'FERPA Compliant',
-    description: 'Fully compliant with educational privacy regulations, ensuring your academic and health data remains protected.',
+    icon: Database,
+    title: 'Advanced AI Architecture',
+    description: 'State-of-the-art machine learning models trained on academic mental health data.',
+    specs: ['GPT-4 powered conversations', 'Clinical decision support', 'Predictive analytics', 'Continuous learning'],
     color: 'text-purple-600',
     bgColor: 'bg-purple-50'
   }
 ];
 
-const academicStats = [
-  { number: '85%', label: 'Reduction in study anxiety' },
-  { number: '70%', label: 'Decrease in academic burnout' },
-  { number: '92%', label: 'Improved study-life balance' },
-  { number: '78%', label: 'Better academic performance' }
+const integrationFeatures = [
+  {
+    name: 'Learning Management Systems',
+    description: 'Direct integration with Canvas, Blackboard, Moodle, and other LMS platforms',
+    icon: BookOpen,
+    status: 'Available'
+  },
+  {
+    name: 'Campus Counseling Centers',
+    description: 'Seamless referral system to on-campus mental health services',
+    icon: Users,
+    status: 'Available'
+  },
+  {
+    name: 'Student Information Systems',
+    description: 'Integration with university student records and academic tracking',
+    icon: Database,
+    status: 'Coming Soon'
+  },
+  {
+    name: 'Wearable Devices',
+    description: 'Apple Watch, Fitbit integration for stress and sleep monitoring',
+    icon: Activity,
+    status: 'Beta'
+  },
+  {
+    name: 'Calendar Applications',
+    description: 'Google Calendar, Outlook integration for academic schedule tracking',
+    icon: Calendar,
+    status: 'Available'
+  },
+  {
+    name: 'Research Tools',
+    description: 'Mendeley, Zotero, EndNote integration for research stress tracking',
+    icon: Microscope,
+    status: 'Coming Soon'
+  }
 ];
 
 export function FeaturesPage() {
@@ -293,111 +415,63 @@ Best regards`);
           <div className="text-center mb-16 sm:mb-20">
             <div className="inline-flex items-center px-4 py-2 bg-blue-100 rounded-full text-blue-700 text-sm font-medium mb-6">
               <Star className="w-4 h-4 mr-2" />
-              Complete Feature Overview
+              Complete Feature Breakdown
             </div>
             
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Built for Academic Success
+              Every Feature Built for
+              <br />
+              <span className="text-blue-600">Academic Success</span>
             </h1>
             
             <p className="text-xl sm:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Comprehensive mental health support designed specifically for students and researchers navigating the unique challenges of academic life.
+              Comprehensive mental health technology designed specifically for students and researchers. 
+              Explore every tool, feature, and capability that makes Wellnter the leading academic wellness platform.
             </p>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-16">
-            {academicStats.map((stat, index) => (
-              <div key={index} className="text-center bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-                <div className="text-3xl sm:text-4xl font-bold text-blue-600 mb-2">{stat.number}</div>
-                <div className="text-gray-600 text-sm sm:text-base">{stat.label}</div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
 
-      {/* Main Features */}
+      {/* Core AI Features */}
       <section className="py-16 sm:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-              Core Features for Academic Wellbeing
+              Core AI-Powered Features
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Everything you need to maintain mental health while pursuing academic excellence
+              Advanced artificial intelligence capabilities that power your mental health journey
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {mainFeatures.map((feature, index) => (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {coreFeatures.map((feature, index) => (
               <Card 
                 key={index} 
-                className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 bg-white"
+                className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 bg-white"
               >
                 <CardHeader className="pb-4">
                   <div className="flex items-center justify-between mb-4">
-                    <div className={`w-12 h-12 ${feature.bgColor} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                      <feature.icon className={`w-6 h-6 ${feature.color}`} />
+                    <div className={`w-14 h-14 ${feature.bgColor} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                      <feature.icon className={`w-7 h-7 ${feature.color}`} />
                     </div>
                     <Badge variant="secondary" className="text-xs">
                       {feature.category}
                     </Badge>
                   </div>
-                  <CardTitle className="text-xl font-semibold text-gray-900">
+                  <CardTitle className="text-xl font-semibold text-gray-900 mb-3">
                     {feature.title}
                   </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 leading-relaxed">
-                    {feature.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Detailed Features */}
-      <section className="py-16 sm:py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-              Specialized Academic Support
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Deep-dive into features designed specifically for the academic journey
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {detailedFeatures.map((feature, index) => (
-              <Card 
-                key={index} 
-                className="bg-white border border-gray-100 hover:shadow-lg transition-all duration-300"
-              >
-                <CardHeader>
-                  <div className="flex items-center space-x-4 mb-4">
-                    <div className={`w-14 h-14 ${feature.bgColor} rounded-xl flex items-center justify-center`}>
-                      <feature.icon className={`w-7 h-7 ${feature.color}`} />
-                    </div>
-                    <div>
-                      <CardTitle className="text-xl font-semibold text-gray-900">
-                        {feature.title}
-                      </CardTitle>
-                    </div>
-                  </div>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed mb-4">
                     {feature.description}
                   </p>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2">
-                    {feature.benefits.map((benefit, benefitIndex) => (
-                      <div key={benefitIndex} className="flex items-center space-x-3">
+                    {feature.features.map((item, itemIndex) => (
+                      <div key={itemIndex} className="flex items-center space-x-3">
                         <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
-                        <span className="text-sm text-gray-700">{benefit}</span>
+                        <span className="text-sm text-gray-700">{item}</span>
                       </div>
                     ))}
                   </div>
@@ -408,20 +482,67 @@ Best regards`);
         </div>
       </section>
 
-      {/* Technology Features */}
+      {/* Academic-Specific Features */}
+      <section className="py-16 sm:py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+              Academic-Specific Tools
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Specialized features designed for the unique challenges of academic life
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {academicSpecificFeatures.map((feature, index) => (
+              <Card 
+                key={index} 
+                className="bg-white border border-gray-100 hover:shadow-lg transition-all duration-300"
+              >
+                <CardHeader>
+                  <div className="flex items-center space-x-4 mb-4">
+                    <div className={`w-12 h-12 ${feature.bgColor} rounded-xl flex items-center justify-center`}>
+                      <feature.icon className={`w-6 h-6 ${feature.color}`} />
+                    </div>
+                    <CardTitle className="text-lg font-semibold text-gray-900">
+                      {feature.title}
+                    </CardTitle>
+                  </div>
+                  <p className="text-gray-600 leading-relaxed mb-4">
+                    {feature.description}
+                  </p>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-1 gap-2">
+                    {feature.tools.map((tool, toolIndex) => (
+                      <div key={toolIndex} className="flex items-center space-x-3 py-1">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
+                        <span className="text-sm text-gray-700">{tool}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Professional Services */}
       <section className="py-16 sm:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-              Advanced Technology Stack
+              Professional Mental Health Services
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Cutting-edge AI and security features that power your academic wellness journey
+              Access to licensed professionals and premium wellness resources
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {techFeatures.map((feature, index) => (
+            {professionalFeatures.map((feature, index) => (
               <Card 
                 key={index} 
                 className="text-center bg-white border border-gray-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
@@ -433,8 +554,99 @@ Best regards`);
                   <h3 className="text-lg font-semibold text-gray-900 mb-3">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
+                  <p className="text-gray-600 text-sm leading-relaxed mb-4">
                     {feature.description}
+                  </p>
+                  <Badge variant="outline" className="text-xs">
+                    {feature.pricing}
+                  </Badge>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Technical Features */}
+      <section className="py-16 sm:py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+              Technical Specifications
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Enterprise-grade technology and security features
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {technicalFeatures.map((feature, index) => (
+              <Card 
+                key={index} 
+                className="bg-white border border-gray-100 hover:shadow-lg transition-all duration-300"
+              >
+                <CardHeader>
+                  <div className="flex items-center space-x-4 mb-4">
+                    <div className={`w-12 h-12 ${feature.bgColor} rounded-xl flex items-center justify-center`}>
+                      <feature.icon className={`w-6 h-6 ${feature.color}`} />
+                    </div>
+                    <CardTitle className="text-lg font-semibold text-gray-900">
+                      {feature.title}
+                    </CardTitle>
+                  </div>
+                  <p className="text-gray-600 leading-relaxed mb-4">
+                    {feature.description}
+                  </p>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {feature.specs.map((spec, specIndex) => (
+                      <div key={specIndex} className="flex items-center space-x-2 py-1">
+                        <CheckCircle className="w-3 h-3 text-green-600 flex-shrink-0" />
+                        <span className="text-xs text-gray-700">{spec}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Integration Features */}
+      <section className="py-16 sm:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+              Platform Integrations
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Seamless integration with your existing academic and wellness tools
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {integrationFeatures.map((integration, index) => (
+              <Card 
+                key={index} 
+                className="bg-white border border-gray-100 hover:shadow-lg transition-all duration-300"
+              >
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <integration.icon className="w-8 h-8 text-blue-600" />
+                    <Badge 
+                      variant={integration.status === 'Available' ? 'default' : integration.status === 'Beta' ? 'secondary' : 'outline'}
+                      className="text-xs"
+                    >
+                      {integration.status}
+                    </Badge>
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    {integration.name}
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {integration.description}
                   </p>
                 </CardContent>
               </Card>
@@ -449,10 +661,10 @@ Best regards`);
           <div className="text-white mb-8">
             <Award className="w-16 h-16 mx-auto mb-6 opacity-90" />
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-              Ready to Transform Your Academic Journey?
+              Experience Every Feature
             </h2>
             <p className="text-xl text-blue-100 mb-10">
-              Join thousands of students and researchers who are already optimizing their mental health and academic performance with Wellnter
+              Get early access to the most comprehensive academic mental health platform ever built
             </p>
           </div>
           

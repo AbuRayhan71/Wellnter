@@ -1,4 +1,5 @@
 import { Hero } from '@/components/Hero';
+import { Features } from '@/components/Features';
 import { HowItWorksPage } from '@/components/HowItWorksPage';
 import { FeaturesPage } from '@/components/FeaturesPage';
 import { Footer } from '@/components/Footer';
@@ -95,6 +96,7 @@ function App() {
   return (
     <div className="min-h-screen w-full overflow-x-hidden">
       <Hero />
+      <Features />
       <Footer />
     </div>
   );
