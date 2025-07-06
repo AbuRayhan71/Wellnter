@@ -183,11 +183,6 @@ Best regards`);
                 Schedule 1:1 Demo
               </Button>
             </div>
-
-            {/* Social proof */}
-            <p className="text-sm sm:text-base text-gray-500 mb-16 sm:mb-20 px-4">
-              Join 500+ students and researchers optimizing their mental health and academic performance with Wellnter
-            </p>
           </div>
         </div>
       </div>
