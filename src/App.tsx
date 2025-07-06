@@ -1,5 +1,4 @@
 import { Hero } from '@/components/Hero';
-import { Features } from '@/components/Features';
 import { HowItWorksPage } from '@/components/HowItWorksPage';
 import { Footer } from '@/components/Footer';
 import { useEffect, useState } from 'react';
@@ -81,7 +80,6 @@ function App() {
   return (
     <div className="min-h-screen w-full overflow-x-hidden">
       <Hero />
-      <Features />
       <Footer />
     </div>
   );
