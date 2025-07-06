@@ -288,23 +288,29 @@ Best regards`);
 
   const renderClinicalAssessment = (clinicalData: ClinicalAssessment) => {
     return (
-      <div className="mt-2 space-y-2">
-        <div className="bg-blue-50 rounded-lg p-2 border border-blue-200">
-          <div className="flex items-center justify-between mb-1">
-            <span className={`px-2 py-1 rounded-full text-xs font-bold ${getTriageLevelColor(clinicalData.triageLevel)}`}>
+      <div className="mt-3 space-y-3">
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-4 border border-blue-100 shadow-sm">
+          <div className="flex items-center justify-between mb-3">
+            <span className={`px-3 py-1 rounded-full text-sm font-bold ${getTriageLevelColor(clinicalData.triageLevel)} shadow-sm`}>
               {clinicalData.triageLevel}
             </span>
-            <div className="text-sm font-bold text-blue-600">{clinicalData.confidence}%</div>
+            <div className="flex items-center space-x-2">
+              <div className="text-sm font-semibold text-blue-700">Confidence</div>
+              <div className="bg-blue-600 text-white px-2 py-1 rounded-lg text-sm font-bold">{clinicalData.confidence}%</div>
+            </div>
           </div>
-          <p className="text-xs text-gray-700">{clinicalData.triageDescription}</p>
+          <p className="text-sm text-gray-700 leading-relaxed">{clinicalData.triageDescription}</p>
         </div>
 
-        <div className="bg-green-50 rounded-lg p-2 border border-green-200">
-          <h4 className="font-medium text-gray-900 mb-1 text-xs">Follow-up:</h4>
-          <ul className="space-y-1">
+        <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-4 border border-green-100 shadow-sm">
+          <h4 className="font-semibold text-gray-900 mb-3 text-sm flex items-center">
+            <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+            Follow-up Questions
+          </h4>
+          <ul className="space-y-2">
             {clinicalData.followUpQuestions.slice(0, 2).map((question, index) => (
-              <li key={index} className="flex items-start text-gray-700 text-xs">
-                <span className="text-green-600 mr-1">•</span>
+              <li key={index} className="flex items-start text-gray-700 text-sm">
+                <span className="text-green-600 mr-2 mt-1">•</span>
                 {question}
               </li>
             ))}
