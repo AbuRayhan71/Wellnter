@@ -26,7 +26,7 @@ import {
 const founders = [
   {
     name: 'Md Abu Rayhan',
-    role: 'Founder & CEO',
+    role: 'Founder',
     background: 'Computer Science, AI/ML Specialist & Entrepreneur',
     image: '/src/assets/rayray.jpeg',
     bio: 'Rayhan experienced severe research anxiety and academic burnout during his computer science studies, leading to multiple panic attacks during thesis preparation. As an international student, he faced additional challenges accessing culturally-appropriate mental health support. His personal struggle with academic mental health inspired him to build AI technology that truly understands the unique pressures of student life and research environments.',
@@ -40,17 +40,17 @@ const founders = [
     ]
   },
   {
-    name: 'Dr. Sarah Chen',
-    role: 'Co-Founder & Chief Clinical Officer',
-    background: 'Clinical Psychology PhD, Stanford University',
+    name: 'Anastasia Thiessen',
+    role: 'Co-Founder',
+    background: 'Business Strategy & Operations Specialist',
     image: 'https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
-    bio: 'Dr. Chen experienced severe burnout during her PhD in Clinical Psychology at Stanford. After struggling with thesis anxiety and imposter syndrome, she realized the gap in mental health support specifically designed for academic environments. Her research in AI-assisted therapy and academic stress patterns forms the clinical foundation of Wellnter\'s approach.',
-    expertise: ['Clinical Psychology', 'AI Therapy', 'Academic Mental Health', 'Research Psychology'],
-    linkedin: 'https://linkedin.com/in/sarahchen-phd',
+    bio: 'Anastasia brings extensive experience in business strategy and operations to Wellnter. Her deep understanding of scaling technology platforms and building sustainable business models has been instrumental in shaping Wellnter\'s growth strategy. She shares the vision of making mental health support accessible to students and researchers worldwide.',
+    expertise: ['Business Strategy', 'Operations Management', 'Product Development', 'Market Expansion'],
+    linkedin: 'https://www.linkedin.com/in/anastasia-thiessen-977b24216/',
     achievements: [
-      'Published 15+ papers on academic mental health',
-      'Former Stanford Counseling Center researcher',
-      'TEDx speaker on student mental health'
+      'Led operations for multiple tech startups',
+      'Expert in business development and partnerships',
+      'Passionate advocate for student mental health'
     ]
   },
   {
@@ -281,6 +281,7 @@ Best regards`);
                 </p>
                 <div className="mt-6 text-sm text-gray-600">
                   - Md Abu Rayhan, Founder & CEO
+                  - Md Abu Rayhan, Founder
                 </div>
               </div>
             </div>
