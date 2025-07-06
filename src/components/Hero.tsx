@@ -138,7 +138,7 @@ Best regards`);
       </nav>
 
       {/* Hero Section */}
-      <div className="relative px-4 sm:px-6 lg:px-8 pt-8 sm:pt-16 pb-16 sm:pb-24">
+      <div className="relative px-4 sm:px-6 lg:px-8 pt-8 sm:pt-16 pb-8 sm:pb-12">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 sm:mb-20">
             <div className="inline-flex items-center px-3 sm:px-4 py-2 bg-blue-50 rounded-full text-blue-700 text-xs sm:text-sm font-medium mb-6 sm:mb-8">
@@ -194,7 +194,7 @@ Best regards`);
             </div>
 
             {/* Social proof */}
-            <p className="text-sm sm:text-base text-gray-500 mb-16 sm:mb-20 px-4">
+            <p className="text-sm sm:text-base text-gray-500 mb-8 sm:mb-12 px-4">
               Join 500+ students and researchers optimizing their mental health and academic performance with Wellnter
             </p>
           </div>

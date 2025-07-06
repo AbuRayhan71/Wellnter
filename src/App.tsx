@@ -99,16 +99,16 @@ function App() {
       <Hero />
       
       {/* AI Therapist Section */}
-      <section id="ai-therapist" className="py-16 sm:py-24 bg-gray-50">
+      <section id="ai-therapist" className="py-12 sm:py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 sm:mb-16">
+          <div className="text-center mb-8 sm:mb-12">
             <div className="inline-flex items-center px-4 py-2 bg-blue-100 rounded-full text-blue-700 text-sm font-medium mb-6">
               Try Our AI Therapist
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
               Talk to Our AI Mental Health Companion
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8 sm:mb-10">
               Experience personalized mental health support designed specifically for students and researchers. 
               Our AI understands academic stress, thesis anxiety, and research pressure.
             </p>
@@ -124,7 +124,7 @@ function App() {
             </div>
           </div>
           
-          <div className="text-center mt-12">
+          <div className="text-center mt-8 sm:mt-10">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
               <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
                 <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
