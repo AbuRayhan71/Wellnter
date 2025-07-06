@@ -5,34 +5,34 @@ const steps = [
   {
     number: '01',
     icon: UserPlus,
-    title: 'Professional Assessment',
-    description: 'Complete a comprehensive assessment designed for high-performers. We evaluate stress levels, work-life balance, and career-specific mental health factors.',
+    title: 'Academic Assessment',
+    description: 'Complete a comprehensive assessment designed for students and researchers. We evaluate academic stress levels, study-life balance, and education-specific mental health factors.',
     color: 'text-blue-600',
     bgColor: 'bg-blue-50'
   },
   {
     number: '02',
     icon: Brain,
-    title: 'AI-Powered Analysis',
-    description: 'Our AI continuously monitors your mental health patterns, work stress, and performance metrics to provide insights tailored to your professional lifestyle.',
+    title: 'Academic Stress Analysis',
+    description: 'Our AI continuously monitors your mental health patterns, study stress, research pressure, and academic performance metrics to provide insights tailored to student life.',
     color: 'text-purple-600',
     bgColor: 'bg-purple-50'
   },
   {
     number: '03',
     icon: Target,
-    title: 'Personalized Support',
-    description: 'Receive targeted coaching and access to mental health experts who understand high-pressure careers and can provide specialized guidance.',
+    title: 'Academic-Focused Support',
+    description: 'Receive targeted coaching and access to mental health experts who understand the unique pressures of student life, research deadlines, and academic environments.',
     color: 'text-green-600',
     bgColor: 'bg-green-50'
   }
 ];
 
 const benefits = [
-  'Reduce burnout risk by 70%',
-  'Improve work-life balance',
-  'Increase productivity and focus',
-  'Build long-term resilience'
+  'Reduce academic burnout by 70%',
+  'Improve study-life balance',
+  'Increase focus and retention',
+  'Build academic resilience'
 ];
 
 export function HowItWorks() {
@@ -44,11 +44,11 @@ export function HowItWorks() {
             How It Works
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 px-4">
-            Your Wellness Journey
+            Your Academic Wellness Journey
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-            A streamlined approach to mental health designed for busy professionals. 
-            Get started in minutes and maintain your wellbeing while building your career.
+            A streamlined approach to mental health designed specifically for students and researchers. 
+            Get started in minutes and maintain your wellbeing while pursuing academic excellence.
           </p>
         </div>
 
@@ -88,10 +88,10 @@ export function HowItWorks() {
         <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 lg:p-12 shadow-sm border border-gray-100">
           <div className="text-center mb-6 sm:mb-8">
             <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
-              Proven Results for High Performers
+              Proven Results for Students & Researchers
             </h3>
             <p className="text-gray-600 text-sm sm:text-base">
-              Join professionals who have transformed their mental health and career performance
+              Join students and researchers who have transformed their academic wellbeing and performance
             </p>
           </div>
           
