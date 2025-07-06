@@ -328,10 +328,10 @@ Best regards`);
       <section className="py-16 sm:py-24 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-            Ready to Transform Your Mental Health?
+            Ready to Transform Your Academic Wellbeing?
           </h2>
           <p className="text-xl text-gray-600 mb-10">
-            Join hundreds of high-performing students, researchers, and professionals who are already optimizing their wellbeing
+            Join hundreds of students and researchers who are already optimizing their academic wellbeing and performance
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
