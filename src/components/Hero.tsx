@@ -200,7 +200,7 @@ Best regards`);
               </h2>
               <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto px-4">
                 Get immediate, intelligent mental health support designed for ambitious minds under pressure.
-                Start your conversation below and experience personalized AI therapy built for high-performance lifestyles.
+                Start your conversation below and experience personalised AI therapy built for high-performance lifestyles.
               </p>
             </div>
             <TherapistChat />

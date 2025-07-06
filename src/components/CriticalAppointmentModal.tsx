@@ -264,10 +264,12 @@ Time: ${new Date().toLocaleString()}`;
           <div className="mt-4 sm:mt-6 pt-4 border-t border-gray-200">
             <h4 className="text-sm font-semibold text-gray-900 mb-2">Immediate Crisis Resources:</h4>
             <div className="space-y-1 text-xs text-gray-600">
+              <div>🇦🇺 Australia: 000 (Emergency Services)</div>
+              <div>🇦🇺 Australia: 13 11 14 (Lifeline)</div>
               <div>🇺🇸 US: 988 (Suicide & Crisis Lifeline)</div>
               <div>🇬🇧 UK: 116 123 (Samaritans)</div>
               <div>🇧🇩 Bangladesh: 09611677777 (Kaan Pete Roi)</div>
-              <div>🚨 Emergency Services: 911 / 999 / 112</div>
+              <div>🚨 Emergency Services: 000 / 911 / 999 / 112</div>
             </div>
           </div>
         </CardContent>

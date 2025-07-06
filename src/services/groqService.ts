@@ -88,6 +88,8 @@ Set needsTherapist to true for mid and high levels.`;
 
 const CLINICAL_ANALYSIS_PROMPT = `Analyze this mental health conversation and provide structured clinical data in JSON format:
 
+Use Australian English spelling (e.g., analyse, recognise, realise, centre, colour, behaviour, counselling).
+
 {
   "symptomSummary": "Brief summary of reported symptoms",
   "clinicalIndicators": ["indicator1", "indicator2", "indicator3"],
