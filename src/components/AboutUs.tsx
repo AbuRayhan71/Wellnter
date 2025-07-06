@@ -69,21 +69,6 @@ const founders = [
       'Advocate for holistic wellness approaches'
     ]
   },
-  {
-    name: 'Aaron Lauterbach',
-    role: 'Co-Founder',
-    background: 'Psychology & Clinical Mental Health Specialist',
-    image: '/src/assets/1678113951491.jpeg',
-    bio: 'Aaron brings deep expertise in psychology and clinical mental health to Wellnter. His understanding of therapeutic approaches, mental health assessment, and evidence-based interventions ensures that our AI platform delivers clinically sound support. Aaron\'s passion for making mental health care more accessible drives the clinical foundation of our technology.',
-    expertise: ['Clinical Psychology', 'Mental Health Assessment', 'Therapeutic Interventions', 'Research Psychology', 'Crisis Intervention'],
-    linkedin: 'https://www.linkedin.com/in/aaron-lauterbach-607474178/',
-    achievements: [
-      'Expert in clinical psychology and mental health',
-      'Specialized in academic stress and student mental health',
-      'Research experience in therapeutic interventions',
-      'Advocate for accessible mental health care'
-    ]
-  }
 ];
 
 const milestones = [
