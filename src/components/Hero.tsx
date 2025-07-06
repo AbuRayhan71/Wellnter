@@ -60,6 +60,7 @@ Best regards`);
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <a href="#features" className="text-gray-600 hover:text-blue-600 transition-colors">Features</a>
+            <a href="/features" className="text-gray-600 hover:text-blue-600 transition-colors">All Features</a>
             <a href="/how-it-works" className="text-gray-600 hover:text-blue-600 transition-colors">How it Works</a>
             <a href="#ai-therapist" className="text-gray-600 hover:text-blue-600 transition-colors">AI Therapist</a>
             <a href="#contact" className="text-gray-600 hover:text-blue-600 transition-colors">Contact</a>
@@ -94,6 +95,13 @@ Best regards`);
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Features
+              </a>
+              <a 
+                href="/features" 
+                className="block text-gray-600 hover:text-blue-600 transition-colors py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                All Features
               </a>
               <a 
                 href="/how-it-works" 

@@ -1,5 +1,6 @@
 import { Hero } from '@/components/Hero';
 import { HowItWorksPage } from '@/components/HowItWorksPage';
+import { FeaturesPage } from '@/components/FeaturesPage';
 import { Footer } from '@/components/Footer';
 import { useEffect, useState } from 'react';
 import './App.css';
@@ -19,7 +20,9 @@ function App() {
 
     // Check URL path to determine which page to show
     const path = window.location.pathname;
-    if (path === '/how-it-works') {
+    if (path === '/features') {
+      setCurrentPage('features');
+    } else if (path === '/how-it-works') {
       setCurrentPage('how-it-works');
     } else {
       setCurrentPage('home');
@@ -28,7 +31,9 @@ function App() {
     // Listen for URL changes
     const handlePopState = () => {
       const newPath = window.location.pathname;
-      if (newPath === '/how-it-works') {
+      if (newPath === '/features') {
+        setCurrentPage('features');
+      } else if (newPath === '/how-it-works') {
         setCurrentPage('how-it-works');
       } else {
         setCurrentPage('home');
@@ -55,7 +60,9 @@ function App() {
           const path = url.pathname;
           window.history.pushState({}, '', path);
           
-          if (path === '/how-it-works') {
+          if (path === '/features') {
+            setCurrentPage('features');
+          } else if (path === '/how-it-works') {
             setCurrentPage('how-it-works');
           } else {
             setCurrentPage('home');
@@ -68,6 +75,14 @@ function App() {
     document.addEventListener('click', handleNavigation);
     return () => document.removeEventListener('click', handleNavigation);
   }, []);
+
+  if (currentPage === 'features') {
+    return (
+      <div className="min-h-screen w-full overflow-x-hidden">
+        <FeaturesPage />
+      </div>
+    );
+  }
 
   if (currentPage === 'how-it-works') {
     return (
