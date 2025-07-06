@@ -288,28 +288,28 @@ Best regards`);
 
   const renderClinicalAssessment = (clinicalData: ClinicalAssessment) => {
     return (
-      <div className="mt-3 space-y-3">
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-4 border border-blue-100 shadow-sm">
-          <div className="flex items-center justify-between mb-3">
-            <span className={`px-3 py-1 rounded-full text-sm font-bold ${getTriageLevelColor(clinicalData.triageLevel)} shadow-sm`}>
+      <div className="mt-2 sm:mt-3 space-y-2 sm:space-y-3">
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg sm:rounded-xl p-3 sm:p-4 border border-blue-100 shadow-sm">
+          <div className="flex items-center justify-between mb-2 sm:mb-3">
+            <span className={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-bold ${getTriageLevelColor(clinicalData.triageLevel)} shadow-sm`}>
               {clinicalData.triageLevel}
             </span>
             <div className="flex items-center space-x-2">
-              <div className="text-sm font-semibold text-blue-700">Confidence</div>
-              <div className="bg-blue-600 text-white px-2 py-1 rounded-lg text-sm font-bold">{clinicalData.confidence}%</div>
+              <div className="text-xs sm:text-sm font-semibold text-blue-700 hidden sm:block">Confidence</div>
+              <div className="bg-blue-600 text-white px-2 py-1 rounded-lg text-xs sm:text-sm font-bold">{clinicalData.confidence}%</div>
             </div>
           </div>
-          <p className="text-sm text-gray-700 leading-relaxed">{clinicalData.triageDescription}</p>
+          <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">{clinicalData.triageDescription}</p>
         </div>
 
-        <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-4 border border-green-100 shadow-sm">
-          <h4 className="font-semibold text-gray-900 mb-3 text-sm flex items-center">
-            <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+        <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg sm:rounded-xl p-3 sm:p-4 border border-green-100 shadow-sm">
+          <h4 className="font-semibold text-gray-900 mb-2 sm:mb-3 text-xs sm:text-sm flex items-center">
+            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full mr-2"></div>
             Follow-up Questions
           </h4>
-          <ul className="space-y-2">
+          <ul className="space-y-1 sm:space-y-2">
             {clinicalData.followUpQuestions.slice(0, 2).map((question, index) => (
-              <li key={index} className="flex items-start text-gray-700 text-sm">
+              <li key={index} className="flex items-start text-gray-700 text-xs sm:text-sm">
                 <span className="text-green-600 mr-2 mt-1">•</span>
                 {question}
               </li>
@@ -332,30 +332,30 @@ Best regards`);
 
       {/* Therapist Recommendation Prompt */}
       {therapistPrompt.show && (
-        <div className="bg-red-50 border-b">
+        <div className="bg-red-50 border-b mx-2 sm:mx-0 rounded-t-lg sm:rounded-none">
           <div className={`${
             therapistPrompt.clinicalData 
               ? getATSUrgencyColor(therapistPrompt.clinicalData.triageLevel)
               : getSupportLevelColor(therapistPrompt.analysis.level)
-          } p-3 text-white relative`}>
+          } p-3 sm:p-4 text-white relative rounded-t-lg sm:rounded-none`}>
             <Button
               onClick={handleDismissPrompt}
               variant="ghost"
               size="sm"
-              className="absolute top-1 right-1 text-white hover:bg-white/20 p-1 h-auto"
+              className="absolute top-2 right-2 text-white hover:bg-white/20 p-1 h-auto"
             >
-              <X className="w-3 h-3" />
+              <X className="w-4 h-4" />
             </Button>
             
-            <div className="pr-6">
-              <h4 className="font-semibold mb-1 text-sm">Professional Support Recommended</h4>
-              <p className="text-xs opacity-90 mb-2">Based on our assessment, speaking with a licensed therapist would be beneficial.</p>
+            <div className="pr-8">
+              <h4 className="font-semibold mb-2 text-sm sm:text-base">Professional Support Recommended</h4>
+              <p className="text-xs sm:text-sm opacity-90 mb-3">Based on our assessment, speaking with a licensed therapist would be beneficial.</p>
               <Button 
                 onClick={handleScheduleCall}
                 size="sm"
-                className="bg-white text-gray-900 hover:bg-gray-100"
+                className="bg-white text-gray-900 hover:bg-gray-100 text-xs sm:text-sm px-3 py-2"
               >
-                <Calendar className="w-3 h-3 mr-1" />
+                <Calendar className="w-3 h-3 mr-2" />
                 Schedule Appointment
               </Button>
             </div>
@@ -364,33 +364,33 @@ Best regards`);
       )}
 
       {/* Messages Area */}
-      <ScrollArea className="h-96 p-3 bg-gray-50">
-        <div className="space-y-3">
+      <ScrollArea className="h-80 sm:h-96 p-2 sm:p-4 bg-gray-50 mx-2 sm:mx-0">
+        <div className="space-y-3 sm:space-y-4">
           {messages.map((message, index) => (
-            <div key={index} className="space-y-2">
+            <div key={index} className="space-y-2 sm:space-y-3">
               <div className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`max-w-[85%] ${
+                <div className={`max-w-[90%] sm:max-w-[85%] ${
                   message.role === 'user'
                     ? 'bg-blue-600 text-white rounded-2xl rounded-br-md'
                     : 'bg-white border border-gray-200 rounded-2xl rounded-bl-md shadow-sm'
-                } p-3`}>
-                  <div className="flex items-start space-x-2">
+                } p-3 sm:p-4`}>
+                  <div className="flex items-start space-x-2 sm:space-x-3">
                     {message.role === 'assistant' && (
-                      <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Bot className="w-3 h-3 text-white" />
+                      <div className="w-6 h-6 sm:w-7 sm:h-7 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Bot className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                       </div>
                     )}
                     <div className="flex-1">
-                      <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
-                      <p className={`text-xs mt-1 ${
+                      <p className="text-sm sm:text-base leading-relaxed whitespace-pre-wrap">{message.content}</p>
+                      <p className={`text-xs mt-2 ${
                         message.role === 'user' ? 'text-blue-100' : 'text-gray-500'
                       }`}>
                         {formatTime(message.timestamp)}
                       </p>
                     </div>
                     {message.role === 'user' && (
-                      <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-                        <User className="w-3 h-3 text-white" />
+                      <div className="w-6 h-6 sm:w-7 sm:h-7 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <User className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                       </div>
                     )}
                   </div>
@@ -399,7 +399,7 @@ Best regards`);
               
               {/* Clinical Assessment Display */}
               {message.role === 'assistant' && message.clinicalData && index > 0 && (
-                <div className="max-w-[85%]">
+                <div className="max-w-[90%] sm:max-w-[85%] ml-8 sm:ml-10">
                   {renderClinicalAssessment(message.clinicalData)}
                 </div>
               )}
@@ -408,15 +408,15 @@ Best regards`);
           
           {isLoading && (
             <div className="flex justify-start">
-              <div className="bg-white border border-gray-200 rounded-2xl rounded-bl-md shadow-sm p-3 max-w-[85%]">
-                <div className="flex items-center space-x-2">
-                  <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
-                    <Bot className="w-3 h-3 text-white" />
+              <div className="bg-white border border-gray-200 rounded-2xl rounded-bl-md shadow-sm p-3 sm:p-4 max-w-[90%] sm:max-w-[85%]">
+                <div className="flex items-center space-x-2 sm:space-x-3">
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 bg-blue-600 rounded-full flex items-center justify-center">
+                    <Bot className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                   </div>
                   <div className="flex space-x-1">
-                    <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce"></div>
-                    <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce delay-100"></div>
-                    <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce delay-200"></div>
+                    <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-blue-400 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-blue-400 rounded-full animate-bounce delay-100"></div>
+                    <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-blue-400 rounded-full animate-bounce delay-200"></div>
                   </div>
                 </div>
               </div>
@@ -427,17 +427,17 @@ Best regards`);
       </ScrollArea>
 
       {/* Language Selector */}
-      <div className="px-3 py-2 border-t border-gray-100 bg-gray-50">
+      <div className="px-3 sm:px-4 py-2 sm:py-3 border-t border-gray-100 bg-gray-50 mx-2 sm:mx-0">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <Globe className="w-4 h-4 text-blue-600" />
+            <Globe className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
             <select 
               value={selectedLanguage.code}
               onChange={(e) => {
                 const language = TOP_LANGUAGES.find(lang => lang.code === e.target.value);
                 if (language) handleLanguageChange(language);
               }}
-              className="text-sm bg-transparent border-none focus:outline-none text-gray-700"
+              className="text-xs sm:text-sm bg-transparent border-none focus:outline-none text-gray-700"
             >
               {TOP_LANGUAGES.map((language) => (
                 <option key={language.code} value={language.code}>
@@ -446,23 +446,23 @@ Best regards`);
               ))}
             </select>
           </div>
-          <div className="flex items-center space-x-1 text-xs text-green-600">
-            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+          <div className="flex items-center space-x-1 text-xs sm:text-sm text-green-600">
+            <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-green-500 rounded-full"></div>
             <span>AI Ready</span>
           </div>
         </div>
       </div>
 
       {/* Input Area */}
-      <div className="p-3 border-t border-gray-200">
-        <div className="flex space-x-2">
+      <div className="p-3 sm:p-4 border-t border-gray-200 mx-2 sm:mx-0 rounded-b-xl sm:rounded-none">
+        <div className="flex space-x-2 sm:space-x-3">
           <Input
             value={inputMessage}
             onChange={(e) => setInputMessage(e.target.value)}
             onKeyPress={handleKeyPress}
-            placeholder="How are you feeling today?"
+            placeholder="How are you feeling?"
             disabled={isLoading}
-            className="flex-1 bg-gray-50 border-gray-200 focus:border-blue-500 focus:ring-blue-500 h-10 rounded-xl text-sm"
+            className="flex-1 bg-gray-50 border-gray-200 focus:border-blue-500 focus:ring-blue-500 h-10 sm:h-12 rounded-xl text-sm sm:text-base px-3 sm:px-4"
           />
           <VoiceInput 
             onTranscription={handleVoiceTranscription}
@@ -471,14 +471,14 @@ Best regards`);
           <Button
             onClick={() => handleSendMessage()}
             disabled={!inputMessage.trim() || isLoading}
-            className="bg-blue-600 hover:bg-blue-700 px-4 h-10 rounded-xl"
+            className="bg-blue-600 hover:bg-blue-700 px-3 sm:px-4 h-10 sm:h-12 rounded-xl"
           >
-            <Send className="w-4 h-4" />
+            <Send className="w-4 h-4 sm:w-5 sm:h-5" />
           </Button>
         </div>
         
-        <div className="flex items-center justify-between mt-2">
-          <p className="text-xs text-gray-500">
+        <div className="flex items-center justify-between mt-2 sm:mt-3">
+          <p className="text-xs sm:text-sm text-gray-500">
             🔊 Voice input • Secure & Private
           </p>
           <button 
@@ -496,7 +496,7 @@ Best regards`);
               });
               setCriticalModal({ show: false, urgencyLevel: 'critical' });
             }}
-            className="text-xs text-blue-600 hover:text-blue-700 underline"
+            className="text-xs sm:text-sm text-blue-600 hover:text-blue-700 underline"
           >
             New Chat
           </button>
@@ -504,13 +504,13 @@ Best regards`);
       </div>
 
       {/* Bottom Warning */}
-      <div className="bg-gray-800 text-white p-3">
+      <div className="bg-gray-800 text-white p-3 sm:p-4 mx-2 sm:mx-0 rounded-b-xl sm:rounded-none">
         <div className="text-center">
           <div className="flex items-center justify-center space-x-2 mb-1">
-            <AlertTriangle className="w-4 h-4 text-red-400" />
-            <span className="text-xs font-medium">Research Prototype Only</span>
+            <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 text-red-400" />
+            <span className="text-xs sm:text-sm font-medium">Research Prototype Only</span>
           </div>
-          <div className="text-xs text-gray-300">
+          <div className="text-xs sm:text-sm text-gray-300">
             🔒 Encrypted • 🌍 10 Languages • ⚡ Real-time AI
           </div>
         </div>

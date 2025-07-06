@@ -63,7 +63,7 @@ export function VoiceInput({ onTranscription, disabled = false }: VoiceInputProp
         disabled={disabled || isLoading}
         variant="ghost"
         size="sm"
-        className={`h-12 w-12 rounded-xl border transition-all duration-200 ${
+        className={`h-10 w-10 sm:h-12 sm:w-12 rounded-xl border transition-all duration-200 ${
           isRecording 
             ? 'border-red-500 bg-red-50 hover:bg-red-100 text-red-600' 
             : 'border-gray-200 hover:bg-gray-50 text-gray-500'
@@ -71,38 +71,39 @@ export function VoiceInput({ onTranscription, disabled = false }: VoiceInputProp
         title={isRecording ? 'Stop recording' : 'Start voice input'}
       >
         {isLoading ? (
-          <Loader2 className="w-5 h-5 animate-spin" />
+          <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" />
         ) : isRecording ? (
-          <MicOff className="w-5 h-5" />
+          <MicOff className="w-4 h-4 sm:w-5 sm:h-5" />
         ) : (
-          <Mic className="w-5 h-5" />
+          <Mic className="w-4 h-4 sm:w-5 sm:h-5" />
         )}
       </Button>
 
       {/* Recording indicator */}
       {isRecording && (
-        <div className="absolute -top-2 -right-2 w-4 h-4 bg-red-500 rounded-full animate-pulse">
+        <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-3 h-3 sm:w-4 sm:h-4 bg-red-500 rounded-full animate-pulse">
           <div className="absolute inset-0 bg-red-500 rounded-full animate-ping"></div>
         </div>
       )}
 
       {/* Status tooltip */}
       {(isRecording || isTranscribing || hasError) && (
-        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg whitespace-nowrap">
+        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 sm:px-3 py-1 sm:py-2 bg-gray-900 text-white text-xs rounded-lg whitespace-nowrap max-w-xs">
           {isRecording && (
             <div className="flex items-center space-x-2">
-              <Volume2 className="w-3 h-3" />
-              <span>Recording... Click to stop</span>
+              <Volume2 className="w-3 h-3 flex-shrink-0" />
+              <span className="hidden sm:inline">Recording... Click to stop</span>
+              <span className="sm:hidden">Recording...</span>
             </div>
           )}
           {isTranscribing && (
             <div className="flex items-center space-x-2">
-              <Loader2 className="w-3 h-3 animate-spin" />
+              <Loader2 className="w-3 h-3 animate-spin flex-shrink-0" />
               <span>Transcribing...</span>
             </div>
           )}
           {hasError && (
-            <span className="text-red-300">
+            <span className="text-red-300 text-xs">
               {recordingError || transcriptionError}
             </span>
           )}
