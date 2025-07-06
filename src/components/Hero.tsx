@@ -198,7 +198,8 @@ Best regards`);
               Join 500+ students and researchers optimizing their mental health and academic performance with Wellnter
             </p>
           </div>
-        {/* Who We Work With Section */}
+
+          {/* Who We Work With Section */}
         <div id="partnerships" className="bg-gray-50 py-16 sm:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 sm:mb-16">
@@ -299,7 +300,9 @@ Best regards`);
               </div>
             </div>
           </div>
-            {/* Technology & Software Partners */}
+
+          {/* Technology & Software Partners */}
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-100 mb-16">
               <div className="text-center mb-8">
                 <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-4">
@@ -361,7 +364,7 @@ Best regards`);
                 </div>
               </div>
             </div>
-        </div>
+
             {/* Lead Generation & Business Development */}
             <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-6 sm:p-8 text-white">
               <div className="text-center mb-8">
@@ -443,6 +446,8 @@ Best regards`);
                 </Button>
               </div>
             </div>
+          </div>
+        </div>
           </div>
         </div>
       </div>
