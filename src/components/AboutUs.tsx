@@ -52,20 +52,6 @@ const founders = [
       'Expert in business development and partnerships',
       'Passionate advocate for student mental health'
     ]
-  },
-  {
-    name: 'Dr. Emily Rodriguez',
-    role: 'Co-Founder & Chief Medical Officer',
-    background: 'Psychiatry MD, Harvard Medical School',
-    image: 'https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
-    bio: 'Dr. Rodriguez witnessed firsthand the mental health crisis in academic medicine during her residency at Harvard. She saw brilliant medical students and residents burning out at alarming rates, with traditional therapy not addressing the unique pressures of medical education. She joined Wellnter to revolutionize how we approach mental health in high-pressure academic environments.',
-    expertise: ['Psychiatry', 'Medical Education', 'Crisis Intervention', 'Digital Health'],
-    linkedin: 'https://linkedin.com/in/emily-rodriguez-md',
-    achievements: [
-      'Harvard Medical School faculty',
-      'Crisis intervention specialist',
-      'Digital health innovation leader'
-    ]
   }
 ];
 
@@ -302,6 +288,7 @@ Best regards`);
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {founders.map((founder, index) => (
               <Card key={index} className="bg-white border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                 <CardContent className="p-8">
