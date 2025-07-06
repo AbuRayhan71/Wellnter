@@ -346,14 +346,12 @@ Best regards`);
               <p className="text-xs opacity-90 mb-2">Based on our assessment, speaking with a licensed therapist would be beneficial.</p>
               <Button 
                 onClick={handleScheduleCall}
-            <h4 className="text-sm font-semibold text-gray-900 mb-2">Immediate Crisis Resources:</h4>
                 size="sm"
-              <div>🇦🇺 Australia: 000 (Emergency Services)</div>
-              <div>🇦🇺 Australia: 13 11 14 (Lifeline)</div>
+                className="bg-white text-gray-900 hover:bg-gray-100"
               >
                 <Calendar className="w-3 h-3 mr-1" />
                 Schedule Appointment
-              <div>🚨 Emergency Services: 000 / 911 / 999 / 112</div>
+              </Button>
             </div>
           </div>
         </div>
