@@ -42,15 +42,16 @@ const founders = [
   {
     name: 'Anastasia Thiessen',
     role: 'Co-Founder',
-    background: 'Business Strategy & Operations Specialist',
+    background: 'Research & Academic Development Specialist',
     image: '/src/assets/1750811984697 (1).jpeg',
-    bio: 'Anastasia brings extensive experience in business strategy and operations to Wellnter. Her deep understanding of scaling technology platforms and building sustainable business models has been instrumental in shaping Wellnter\'s growth strategy. She shares the vision of making mental health support accessible to students and researchers worldwide.',
-    expertise: ['Business Strategy', 'Operations Management', 'Product Development', 'Market Expansion'],
+    bio: 'Anastasia brings deep research experience and academic expertise to Wellnter. Having navigated the challenges of thesis writing and research pressure firsthand, she understands the unique mental health struggles that students and researchers face. Her academic background and research methodology expertise help ensure that Wellnter\'s approach is evidence-based and truly addresses the needs of the academic community.',
+    expertise: ['Research Methodology', 'Academic Development', 'Thesis Writing Support', 'Student Mental Health Research'],
     linkedin: 'https://www.linkedin.com/in/anastasia-thiessen-977b24216/',
     achievements: [
-      'Led operations for multiple tech startups',
-      'Expert in business development and partnerships',
-      'Passionate advocate for student mental health'
+      'Extensive research experience in academic environments',
+      'Expert in thesis development and academic writing',
+      'Specialized in student mental health research',
+      'Passionate advocate for academic wellness'
     ]
   },
   {
