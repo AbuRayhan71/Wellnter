@@ -114,6 +114,7 @@ Best regards`);
             <a href="/" className="text-gray-600 hover:text-blue-600 transition-colors">Home</a>
             <a href="/#features" className="text-gray-600 hover:text-blue-600 transition-colors">Features</a>
             <a href="/how-it-works" className="text-blue-600 font-medium">How it Works</a>
+            <a href="/about" className="text-gray-600 hover:text-blue-600 transition-colors">About Us</a>
             <a href="/#ai-therapist" className="text-gray-600 hover:text-blue-600 transition-colors">AI Therapist</a>
             <a href="/#contact" className="text-gray-600 hover:text-blue-600 transition-colors">Contact</a>
             <Button 
@@ -161,6 +162,13 @@ Best regards`);
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 How it Works
+              </a>
+              <a 
+                href="/about" 
+                className="block text-gray-600 hover:text-blue-600 transition-colors py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                About Us
               </a>
               <a 
                 href="/#ai-therapist" 
