@@ -35,7 +35,7 @@ export function Footer() {
 
       {/* Main footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" id="contact">
           {/* Brand */}
           <div className="sm:col-span-2">
             <div className="flex items-center space-x-3 mb-3 sm:mb-4">
@@ -113,11 +113,11 @@ export function Footer() {
           <div>
             <h5 className="text-base sm:text-lg font-semibold mb-4 sm:mb-6 text-white">Services</h5>
             <ul className="space-y-2 sm:space-y-3 text-gray-400 text-sm sm:text-base">
-              <li><a href="#" className="hover:text-white transition-colors">Academic Stress Support</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Study Burnout Prevention</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Research Anxiety Help</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Thesis Stress Monitoring</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Student Wellness Assessment</a></li>
+              <li><a href="/#ai-therapist" className="hover:text-white transition-colors">AI Mental Health Companion</a></li>
+              <li><a href="/features" className="hover:text-white transition-colors">Academic Stress Support</a></li>
+              <li><a href="/features" className="hover:text-white transition-colors">Study Burnout Prevention</a></li>
+              <li><a href="/features" className="hover:text-white transition-colors">Research Anxiety Help</a></li>
+              <li><a href="/features" className="hover:text-white transition-colors">Professional Therapist Network</a></li>
             </ul>
           </div>
 
@@ -125,11 +125,11 @@ export function Footer() {
           <div>
             <h5 className="text-base sm:text-lg font-semibold mb-4 sm:mb-6 text-white">Company</h5>
             <ul className="space-y-2 sm:space-y-3 text-gray-400 text-sm sm:text-base">
-              <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Our Mission</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
+              <li><a href="/about" className="hover:text-white transition-colors">About Us</a></li>
+              <li><a href="/about" className="hover:text-white transition-colors">Our Mission</a></li>
+              <li><a href="/how-it-works" className="hover:text-white transition-colors">How it Works</a></li>
+              <li><a href="/#partnerships" className="hover:text-white transition-colors">Partnerships</a></li>
+              <li><a href="mailto:contact@wellnter.com" className="hover:text-white transition-colors">Contact</a></li>
             </ul>
           </div>
         </div>
@@ -140,9 +140,9 @@ export function Footer() {
             © 2024 Wellnter. All rights reserved.
           </p>
           <div className="flex items-center space-x-4 sm:space-x-6 text-xs sm:text-sm text-gray-400">
-            <a href="#" className="hover:text-white transition-colors">Security</a>
-            <a href="#" className="hover:text-white transition-colors">Support</a>
-            <a href="#" className="hover:text-white transition-colors">Resources</a>
+            <a href="/features" className="hover:text-white transition-colors">Security</a>
+            <a href="mailto:contact@wellnter.com" className="hover:text-white transition-colors">Support</a>
+            <a href="/features" className="hover:text-white transition-colors">Resources</a>
           </div>
         </div>
       </div>
