@@ -318,6 +318,7 @@ Best regards`);
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {founders.map((founder, index) => (
               <Card key={index} className="bg-white border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                 <CardContent className="p-8">
                   <div className="text-center mb-6">
@@ -416,7 +417,10 @@ Best regards`);
                   <div className="hidden lg:block w-5/12"></div>
                 </div>
               ))}
+            </div>
           </div>
+        </div>
+      </section>
         </div>
       </section>
 
