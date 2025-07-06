@@ -332,12 +332,12 @@ Best regards`);
 
       {/* Therapist Recommendation Prompt */}
       {therapistPrompt.show && (
-        <div className="bg-red-50 border-b mx-2 sm:mx-0 rounded-t-lg sm:rounded-none">
+        <div className="bg-red-50 border-b">
           <div className={`${
             therapistPrompt.clinicalData 
               ? getATSUrgencyColor(therapistPrompt.clinicalData.triageLevel)
               : getSupportLevelColor(therapistPrompt.analysis.level)
-          } p-3 sm:p-4 text-white relative rounded-t-lg sm:rounded-none`}>
+          } p-3 sm:p-4 text-white relative`}>
             <Button
               onClick={handleDismissPrompt}
               variant="ghost"
@@ -364,7 +364,7 @@ Best regards`);
       )}
 
       {/* Messages Area */}
-      <ScrollArea className="h-80 sm:h-96 p-2 sm:p-4 bg-gray-50 mx-2 sm:mx-0">
+      <ScrollArea className="h-80 sm:h-96 p-3 sm:p-4 bg-gray-50">
         <div className="space-y-3 sm:space-y-4">
           {messages.map((message, index) => (
             <div key={index} className="space-y-2 sm:space-y-3">
@@ -427,7 +427,7 @@ Best regards`);
       </ScrollArea>
 
       {/* Language Selector */}
-      <div className="px-3 sm:px-4 py-2 sm:py-3 border-t border-gray-100 bg-gray-50 mx-2 sm:mx-0">
+      <div className="px-3 sm:px-4 py-2 sm:py-3 border-t border-gray-100 bg-gray-50">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Globe className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
@@ -454,7 +454,7 @@ Best regards`);
       </div>
 
       {/* Input Area */}
-      <div className="p-3 sm:p-4 border-t border-gray-200 mx-2 sm:mx-0 rounded-b-xl sm:rounded-none">
+      <div className="p-3 sm:p-4 border-t border-gray-200">
         <div className="flex space-x-2 sm:space-x-3">
           <Input
             value={inputMessage}
@@ -504,7 +504,7 @@ Best regards`);
       </div>
 
       {/* Bottom Warning */}
-      <div className="bg-gray-800 text-white p-3 sm:p-4 mx-2 sm:mx-0 rounded-b-xl sm:rounded-none">
+      <div className="bg-gray-800 text-white p-3 sm:p-4">
         <div className="text-center">
           <div className="flex items-center justify-center space-x-2 mb-1">
             <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 text-red-400" />

@@ -193,7 +193,7 @@ Best regards`);
           </div>
 
           {/* AI Therapist Section */}
-          <div id="ai-therapist" className="bg-gray-50 rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-12 mx-2 sm:mx-0">
+          <div id="ai-therapist" className="bg-gray-50 rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-12">
             <div className="text-center mb-8 sm:mb-10">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 px-2">
                 Wellnter AI
