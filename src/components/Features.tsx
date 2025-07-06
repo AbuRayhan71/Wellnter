@@ -4,43 +4,43 @@ import { Brain, Heart, Activity, Users, Shield, Target } from 'lucide-react';
 const features = [
   {
     icon: Target,
-    title: 'Built for Academic Life',
-    description: 'Designed specifically for students and researchers navigating the unique pressures of academic environments.',
+    title: 'Built for Students',
+    description: 'Designed specifically for academic environments and student life.',
     color: 'text-blue-600',
     bgColor: 'bg-blue-50'
   },
   {
     icon: Brain,
     title: 'AI-Powered Insights',
-    description: 'Smart monitoring of academic stress patterns, study cycles, and research-related mental health indicators.',
+    description: 'Smart monitoring of academic stress and study patterns.',
     color: 'text-purple-600',
     bgColor: 'bg-purple-50'
   },
   {
     icon: Heart,
     title: 'Burnout Prevention',
-    description: 'Early detection and intervention for academic burnout before it impacts your studies or research.',
+    description: 'Early detection and intervention for academic burnout.',
     color: 'text-red-600',
     bgColor: 'bg-red-50'
   },
   {
     icon: Activity,
-    title: 'Performance Support',
-    description: 'Evidence-based strategies to optimize focus, memory retention, and academic productivity.',
+    title: 'Study Optimization',
+    description: 'Evidence-based strategies to improve focus and retention.',
     color: 'text-green-600',
     bgColor: 'bg-green-50'
   },
   {
     icon: Users,
-    title: 'Expert Network',
-    description: 'Access to therapists and coaches who understand student life and academic challenges.',
+    title: 'Expert Support',
+    description: 'Access to therapists who understand student challenges.',
     color: 'text-orange-600',
     bgColor: 'bg-orange-50'
   },
   {
     icon: Shield,
-    title: 'Privacy & Security',
-    description: 'Your academic and mental health data protected with enterprise-grade encryption.',
+    title: 'Privacy First',
+    description: 'Your data protected with enterprise-grade security.',
     color: 'text-indigo-600',
     bgColor: 'bg-indigo-50'
   }
@@ -58,8 +58,7 @@ export function Features() {
             Built for Academic Success
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-            Our platform understands the unique mental health challenges faced by students and researchers 
-            in demanding academic environments, from undergraduate stress to PhD research pressure.
+            Mental health support designed specifically for students and researchers navigating academic challenges.
           </p>
         </div>
 
