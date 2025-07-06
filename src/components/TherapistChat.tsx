@@ -59,6 +59,7 @@ export function TherapistChat() {
   ]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState<Language>(TOP_25_LANGUAGES[0]);
   const [therapistPrompt, setTherapistPrompt] = useState<TherapistPrompt>({ 
     show: false, 
     analysis: { level: 'low', reasoning: '', needsTherapist: false } 
