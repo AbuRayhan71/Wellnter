@@ -52,6 +52,21 @@ const founders = [
       'Expert in business development and partnerships',
       'Passionate advocate for student mental health'
     ]
+  },
+  {
+    name: 'Aaron Lauterbach',
+    role: 'Co-Founder',
+    background: 'Psychology & Clinical Mental Health Specialist',
+    image: '/src/assets/1678113951491.jpeg',
+    bio: 'Aaron brings deep expertise in psychology and clinical mental health to Wellnter. His understanding of therapeutic approaches, mental health assessment, and evidence-based interventions ensures that our AI platform delivers clinically sound support. Aaron\'s passion for making mental health care more accessible drives the clinical foundation of our technology.',
+    expertise: ['Clinical Psychology', 'Mental Health Assessment', 'Therapeutic Interventions', 'Research Psychology', 'Crisis Intervention'],
+    linkedin: 'https://www.linkedin.com/in/aaron-lauterbach-607474178/',
+    achievements: [
+      'Expert in clinical psychology and mental health',
+      'Specialized in academic stress and student mental health',
+      'Research experience in therapeutic interventions',
+      'Advocate for accessible mental health care'
+    ]
   }
 ];
 
@@ -288,7 +303,7 @@ Best regards`);
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {founders.map((founder, index) => (
               <Card key={index} className="bg-white border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                 <CardContent className="p-8">
