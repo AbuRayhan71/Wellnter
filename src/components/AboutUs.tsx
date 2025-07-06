@@ -138,10 +138,10 @@ const values = [
 ];
 
 const stats = [
-  { number: '500+', label: 'Students in Research', icon: Users },
-  { number: '15+', label: 'University Partnerships', icon: GraduationCap },
+  { number: '87%', label: 'PhD Students Face Anxiety', icon: TrendingUp },
+  { number: '24/7', label: 'AI Crisis Support', icon: Shield },
   { number: '10+', label: 'Languages Supported', icon: Globe },
-  { number: '24/7', label: 'AI Support Available', icon: Brain }
+  { number: '95%', label: 'User Satisfaction Rate', icon: Star }
 ];
 
 export function AboutUs() {
