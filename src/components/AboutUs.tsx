@@ -32,7 +32,7 @@ const founders = [
     name: 'Md Abu Rayhan',
     role: 'Founder & CEO',
     background: 'Computer Science, AI/ML Specialist & Entrepreneur',
-    image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
+    image: '/src/assets/rayray.jpeg',
     bio: 'Rayhan experienced severe research anxiety and academic burnout during his computer science studies, leading to multiple panic attacks during thesis preparation. As an international student, he faced additional challenges accessing culturally-appropriate mental health support. His personal struggle with academic mental health inspired him to build AI technology that truly understands the unique pressures of student life and research environments.',
     expertise: ['AI/ML Engineering', 'Natural Language Processing', 'Software Architecture', 'Academic Technology', 'Entrepreneurship'],
     linkedin: 'https://www.linkedin.com/in/md-abu-rayhan-854b3b1a9/',
