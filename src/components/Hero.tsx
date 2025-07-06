@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Shield, Heart, Brain, CheckCircle, Menu, X } from 'lucide-react';
+import { ArrowRight, Shield, Heart, Brain, CheckCircle, Menu, X, GraduationCap, Microscope, Calendar, Activity, BookOpen, Zap, TrendingUp } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 export function Hero() {
@@ -61,6 +61,7 @@ Best regards`);
             <a href="#features" className="text-gray-600 hover:text-blue-600 transition-colors">Features</a>
             <a href="/features" className="text-gray-600 hover:text-blue-600 transition-colors">All Features</a>
             <a href="/how-it-works" className="text-gray-600 hover:text-blue-600 transition-colors">How it Works</a>
+            <a href="#partnerships" className="text-gray-600 hover:text-blue-600 transition-colors">Partnerships</a>
             <a href="#contact" className="text-gray-600 hover:text-blue-600 transition-colors">Contact</a>
             <Button 
               onClick={handleEarlyAccess}
@@ -107,6 +108,13 @@ Best regards`);
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 How it Works
+              </a>
+              <a 
+                href="#partnerships" 
+                className="block text-gray-600 hover:text-blue-600 transition-colors py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Partnerships
               </a>
               <a 
                 href="#contact" 
@@ -189,6 +197,7 @@ Best regards`);
             <p className="text-sm sm:text-base text-gray-500 mb-16 sm:mb-20 px-4">
               Join 500+ students and researchers optimizing their mental health and academic performance with Wellnter
             </p>
+          </div>
         </div>
       </div>
     </section>
