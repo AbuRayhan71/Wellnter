@@ -128,7 +128,6 @@ export function Footer() {
               <li><a href="/about" className="hover:text-white transition-colors">About Us</a></li>
               <li><a href="/about" className="hover:text-white transition-colors">Our Mission</a></li>
               <li><a href="/how-it-works" className="hover:text-white transition-colors">How it Works</a></li>
-              <li><a href="/#partnerships" className="hover:text-white transition-colors">Partnerships</a></li>
               <li><a href="mailto:contact@wellnter.com" className="hover:text-white transition-colors">Contact</a></li>
             </ul>
           </div>

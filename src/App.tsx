@@ -175,6 +175,8 @@ function App() {
         </div>
       </section>
       
+      <Features />
+      
       <Footer />
     </div>
   );
