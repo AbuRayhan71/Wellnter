@@ -52,21 +52,6 @@ const founders = [
       'Expert in business development and partnerships',
       'Passionate advocate for student mental health'
     ]
-  },
-  {
-    name: 'Aaron Lauterbach',
-    role: 'Co-Founder',
-    background: 'Psychology & Clinical Mental Health Specialist',
-    image: '/src/assets/1678113951491.jpeg',
-    bio: 'Aaron brings deep expertise in psychology and clinical mental health to Wellnter. His understanding of therapeutic approaches, mental health assessment, and evidence-based interventions ensures that our AI platform delivers clinically sound support. Aaron\'s passion for making mental health care more accessible drives the clinical foundation of our technology.',
-    expertise: ['Clinical Psychology', 'Mental Health Assessment', 'Therapeutic Interventions', 'Research Psychology', 'Crisis Intervention'],
-    linkedin: 'https://www.linkedin.com/in/aaron-lauterbach-607474178/',
-    achievements: [
-      'Expert in clinical psychology and mental health',
-      'Specialized in academic stress and student mental health',
-      'Research experience in therapeutic interventions',
-      'Advocate for accessible mental health care'
-    ]
   }
 ];
 
@@ -303,58 +288,59 @@ Best regards`);
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {founders.map((founder, index) => (
-              <Card key={index} className="bg-white border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                <CardContent className="p-8">
-                  <div className="text-center mb-6">
-                    <img 
-                      src={founder.image} 
-                      alt={founder.name}
-                      className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-blue-100"
-                    />
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{founder.name}</h3>
-                    <p className="text-blue-600 font-medium mb-2">{founder.role}</p>
-                    <p className="text-sm text-gray-600">{founder.background}</p>
-                  </div>
-                  
-                  <p className="text-gray-700 leading-relaxed mb-6 text-sm">
-                    {founder.bio}
-                  </p>
-                  
-                  <div className="mb-6">
-                    <h4 className="font-semibold text-gray-900 mb-3 text-sm">Expertise</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {founder.expertise.map((skill, skillIndex) => (
-                        <Badge key={skillIndex} variant="secondary" className="text-xs">
-                          {skill}
-                        </Badge>
-                      ))}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {founders.map((founder, index) => (
+                <Card key={index} className="bg-white border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                  <CardContent className="p-8">
+                    <div className="text-center mb-6">
+                      <img 
+                        src={founder.image} 
+                        alt={founder.name}
+                        className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-blue-100"
+                      />
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">{founder.name}</h3>
+                      <p className="text-blue-600 font-medium mb-2">{founder.role}</p>
+                      <p className="text-sm text-gray-600">{founder.background}</p>
                     </div>
-                  </div>
-                  
-                  <div className="mb-6">
-                    <h4 className="font-semibold text-gray-900 mb-3 text-sm">Key Achievements</h4>
-                    <ul className="space-y-2">
-                      {founder.achievements.map((achievement, achIndex) => (
-                        <li key={achIndex} className="flex items-start space-x-2 text-sm text-gray-600">
-                          <Star className="w-3 h-3 text-yellow-500 mt-1 flex-shrink-0" />
-                          <span>{achievement}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  <Button 
-                    onClick={() => handleContactFounder(founder.name, founder.linkedin)}
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white"
-                  >
-                    <Linkedin className="w-4 h-4 mr-2" />
-                    Connect on LinkedIn
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
+                    
+                    <p className="text-gray-700 leading-relaxed mb-6 text-sm">
+                      {founder.bio}
+                    </p>
+                    
+                    <div className="mb-6">
+                      <h4 className="font-semibold text-gray-900 mb-3 text-sm">Expertise</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {founder.expertise.map((skill, skillIndex) => (
+                          <Badge key={skillIndex} variant="secondary" className="text-xs">
+                            {skill}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <div className="mb-6">
+                      <h4 className="font-semibold text-gray-900 mb-3 text-sm">Key Achievements</h4>
+                      <ul className="space-y-2">
+                        {founder.achievements.map((achievement, achIndex) => (
+                          <li key={achIndex} className="flex items-start space-x-2 text-sm text-gray-600">
+                            <Star className="w-3 h-3 text-yellow-500 mt-1 flex-shrink-0" />
+                            <span>{achievement}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    <Button 
+                      onClick={() => handleContactFounder(founder.name, founder.linkedin)}
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                    >
+                      <Linkedin className="w-4 h-4 mr-2" />
+                      Connect on LinkedIn
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </section>
