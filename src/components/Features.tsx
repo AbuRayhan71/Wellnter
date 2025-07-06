@@ -5,42 +5,42 @@ const features = [
   {
     icon: Target,
     title: 'Built for Academic Life',
-    description: 'Whether you\'re managing coursework, thesis deadlines, research projects, or dissertation stress, Wellnter understands the unique pressures of academic life.',
+    description: 'Designed specifically for students and researchers navigating the unique pressures of academic environments.',
     color: 'text-blue-600',
     bgColor: 'bg-blue-50'
   },
   {
     icon: Brain,
-    title: 'Academic Stress Monitoring',
-    description: 'Our AI tracks stress patterns, study cycles, and focus levels specifically tailored to academic schedules and research demands.',
+    title: 'AI-Powered Insights',
+    description: 'Smart monitoring of academic stress patterns, study cycles, and research-related mental health indicators.',
     color: 'text-purple-600',
     bgColor: 'bg-purple-50'
   },
   {
     icon: Heart,
-    title: 'Academic Burnout Prevention',
-    description: 'Catch early warning signs of academic burnout and get personalized interventions before exam stress or research pressure becomes overwhelming.',
+    title: 'Burnout Prevention',
+    description: 'Early detection and intervention for academic burnout before it impacts your studies or research.',
     color: 'text-red-600',
     bgColor: 'bg-red-50'
   },
   {
     icon: Activity,
-    title: 'Study Performance Optimization',
-    description: 'Incorporate wellness routines and mental clarity practices into your study schedule to improve focus, memory retention, and academic productivity.',
+    title: 'Performance Support',
+    description: 'Evidence-based strategies to optimize focus, memory retention, and academic productivity.',
     color: 'text-green-600',
     bgColor: 'bg-green-50'
   },
   {
     icon: Users,
-    title: 'Academic-Focused Support',
-    description: 'Access certified therapists and academic coaches who understand the unique challenges of student life, research stress, and academic pressure.',
+    title: 'Expert Network',
+    description: 'Access to therapists and coaches who understand student life and academic challenges.',
     color: 'text-orange-600',
     bgColor: 'bg-orange-50'
   },
   {
     icon: Shield,
-    title: 'Student Privacy & Security',
-    description: 'Your academic and mental health data is protected with enterprise-grade encryption — completely confidential and secure.',
+    title: 'Privacy & Security',
+    description: 'Your academic and mental health data protected with enterprise-grade encryption.',
     color: 'text-indigo-600',
     bgColor: 'bg-indigo-50'
   }
