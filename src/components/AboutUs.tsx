@@ -138,9 +138,9 @@ const values = [
 ];
 
 const stats = [
-  { number: '3', label: 'Co-Founders', icon: Users },
-  { number: '2025', label: 'Platform Launch Year', icon: GraduationCap },
-  { number: '1', label: 'Award Won (PFC)', icon: Award },
+  { number: '500+', label: 'Students in Research', icon: Users },
+  { number: '15+', label: 'University Partnerships', icon: GraduationCap },
+  { number: '10+', label: 'Languages Supported', icon: Globe },
   { number: '24/7', label: 'AI Support Available', icon: Brain }
 ];
 
