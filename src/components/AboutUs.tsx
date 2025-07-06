@@ -74,33 +74,33 @@ const founders = [
 const milestones = [
   {
     year: '2023',
-    title: 'The Breaking Point',
-    description: 'Our founders experienced severe academic burnout during their PhD and medical studies, realizing existing mental health resources weren\'t designed for academic pressures.',
+    title: 'Founders Experience Burnout',
+    description: 'Our founders experienced severe academic burnout and couldn\'t find adequate help. This personal crisis became the catalyst for creating a solution that truly understands academic mental health challenges.',
     icon: Heart,
     color: 'text-red-600',
     bgColor: 'bg-red-50'
   },
   {
-    year: '2024',
-    title: 'Research & Development',
-    description: 'Conducted extensive research with 500+ students and researchers to understand the unique mental health challenges in academic environments.',
+    year: 'Apr-May 2024',
+    title: 'Solution Research Phase',
+    description: 'Started intensive research and development to create an AI-powered mental health platform specifically designed for students and researchers facing academic pressure.',
     icon: Microscope,
     color: 'text-blue-600',
     bgColor: 'bg-blue-50'
   },
   {
-    year: '2024',
-    title: 'AI Breakthrough',
-    description: 'Developed the first AI therapy system specifically trained on academic mental health data, with clinical-grade assessment capabilities.',
-    icon: Brain,
+    year: 'June 2024',
+    title: 'Platform Launch',
+    description: 'Successfully launched Wellnter platform and gained recognition by winning the PFC Peter Farrell Cup, validating our innovative approach to academic mental health.',
+    icon: Award,
     color: 'text-purple-600',
     bgColor: 'bg-purple-50'
   },
   {
-    year: '2025',
-    title: 'Platform Launch',
-    description: 'Launching Wellnter to universities worldwide, with partnerships across North America, Europe, and Asia.',
-    icon: Globe,
+    year: 'Late 2024',
+    title: 'University Partnerships',
+    description: 'Contracted with several universities and clients, establishing Wellnter as a trusted partner in academic mental health support across multiple institutions.',
+    icon: Users,
     color: 'text-green-600',
     bgColor: 'bg-green-50'
   }
