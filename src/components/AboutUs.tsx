@@ -30,7 +30,7 @@ import { useState } from 'react';
 const founders = [
   {
     name: 'Md Abu Rayhan',
-    role: 'Founder & CEO',
+    role: 'Founder',
     background: 'Computer Science, AI/ML Specialist & Entrepreneur',
     image: '/src/assets/rayray.jpeg',
     bio: 'Rayhan experienced severe research anxiety and academic burnout during his computer science studies, leading to multiple panic attacks during thesis preparation. As an international student, he faced additional challenges accessing culturally-appropriate mental health support. His personal struggle with academic mental health inspired him to build AI technology that truly understands the unique pressures of student life and research environments.',
@@ -45,7 +45,7 @@ const founders = [
   },
   {
     name: 'Anastasia Thiessen',
-    role: 'Co-Founder & COO',
+    role: 'Co-Founder',
     background: 'Business Strategy & Operations Specialist',
     image: '/src/assets/anastasia.jpeg',
     bio: 'Anastasia brings extensive experience in business strategy and operations to Wellnter. Her deep understanding of scaling technology platforms and building sustainable business models has been instrumental in shaping Wellnter\'s growth strategy. She shares the vision of making mental health support accessible to students and researchers worldwide.',
@@ -59,7 +59,7 @@ const founders = [
   },
   {
     name: 'Aaron Lauterbach',
-    role: 'Co-Founder & Clinical Director',
+    role: 'Co-Founder',
     background: 'Psychology & Clinical Mental Health Specialist',
     image: '/src/assets/1678113951491.jpeg',
     bio: 'Aaron brings deep expertise in psychology and clinical mental health to Wellnter. His understanding of therapeutic approaches, mental health assessment, and evidence-based interventions ensures that our AI platform delivers clinically sound support. Aaron\'s passion for making mental health care more accessible drives the clinical foundation of our technology.',
@@ -379,7 +379,7 @@ Best regards`);
                   and researchers. We needed something built by academics, for academics."
                 </p>
                 <div className="mt-6 text-sm text-gray-600">
-                  - Md Abu Rayhan, Founder & CEO
+                  - Md Abu Rayhan, Founder
                 </div>
               </div>
             </div>
