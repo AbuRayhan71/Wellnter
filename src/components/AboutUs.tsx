@@ -43,7 +43,7 @@ const founders = [
     name: 'Anastasia Thiessen',
     role: 'Co-Founder',
     background: 'Business Strategy & Operations Specialist',
-    image: 'https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
+    image: '/src/assets/1750811984697 (1).jpeg',
     bio: 'Anastasia brings extensive experience in business strategy and operations to Wellnter. Her deep understanding of scaling technology platforms and building sustainable business models has been instrumental in shaping Wellnter\'s growth strategy. She shares the vision of making mental health support accessible to students and researchers worldwide.',
     expertise: ['Business Strategy', 'Operations Management', 'Product Development', 'Market Expansion'],
     linkedin: 'https://www.linkedin.com/in/anastasia-thiessen-977b24216/',
