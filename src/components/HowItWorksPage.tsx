@@ -114,8 +114,7 @@ Best regards`);
             <a href="/" className="text-gray-600 hover:text-blue-600 transition-colors">Home</a>
             <a href="/#features" className="text-gray-600 hover:text-blue-600 transition-colors">Features</a>
             <a href="/how-it-works" className="text-blue-600 font-medium">How it Works</a>
-            <a href="/#ai-therapist" className="text-gray-600 hover:text-blue-600 transition-colors">AI Therapist</a>
-            <a href="/#contact" className="text-gray-600 hover:text-blue-600 transition-colors">Contact</a>
+            <a href="/about" className="text-gray-600 hover:text-blue-600 transition-colors">About Us</a>
             <Button 
               onClick={handleEarlyAccess}
               className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium"
@@ -163,18 +162,11 @@ Best regards`);
                 How it Works
               </a>
               <a 
-                href="/#ai-therapist" 
+                href="/about" 
                 className="block text-gray-600 hover:text-blue-600 transition-colors py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                AI Therapist
-              </a>
-              <a 
-                href="/#contact" 
-                className="block text-gray-600 hover:text-blue-600 transition-colors py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Contact
+                About Us
               </a>
               <Button 
                 onClick={() => {

@@ -2,6 +2,7 @@ import { Hero } from '@/components/Hero';
 import { Features } from '@/components/Features';
 import { HowItWorksPage } from '@/components/HowItWorksPage';
 import { FeaturesPage } from '@/components/FeaturesPage';
+import { AboutUs } from '@/components/AboutUs';
 import { Footer } from '@/components/Footer';
 import { useEffect, useState } from 'react';
 import './App.css';
@@ -25,6 +26,8 @@ function App() {
       setCurrentPage('features');
     } else if (path === '/how-it-works') {
       setCurrentPage('how-it-works');
+    } else if (path === '/about') {
+      setCurrentPage('about');
     } else {
       setCurrentPage('home');
     }
@@ -36,6 +39,8 @@ function App() {
         setCurrentPage('features');
       } else if (newPath === '/how-it-works') {
         setCurrentPage('how-it-works');
+      } else if (newPath === '/about') {
+        setCurrentPage('about');
       } else {
         setCurrentPage('home');
       }
@@ -65,6 +70,8 @@ function App() {
             setCurrentPage('features');
           } else if (path === '/how-it-works') {
             setCurrentPage('how-it-works');
+          } else if (path === '/about') {
+            setCurrentPage('about');
           } else {
             setCurrentPage('home');
           }
@@ -89,6 +96,14 @@ function App() {
     return (
       <div className="min-h-screen w-full overflow-x-hidden">
         <HowItWorksPage />
+      </div>
+    );
+  }
+
+  if (currentPage === 'about') {
+    return (
+      <div className="min-h-screen w-full overflow-x-hidden">
+        <AboutUs />
       </div>
     );
   }
