@@ -61,7 +61,7 @@ const founders = [
     name: 'Aaron Lauterbach',
     role: 'Co-Founder & Clinical Director',
     background: 'Psychology & Clinical Mental Health Specialist',
-    image: 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
+    image: '/src/assets/aaron.jpeg',
     bio: 'Aaron brings deep expertise in psychology and clinical mental health to Wellnter. His understanding of therapeutic approaches, mental health assessment, and evidence-based interventions ensures that our AI platform delivers clinically sound support. Aaron\'s passion for making mental health care more accessible drives the clinical foundation of our technology.',
     expertise: ['Clinical Psychology', 'Mental Health Assessment', 'Therapeutic Interventions', 'Human Physiology', 'Crisis Intervention'],
     linkedin: 'https://www.linkedin.com/in/aaron-lauterbach-607474178/',
