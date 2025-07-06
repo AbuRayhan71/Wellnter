@@ -73,7 +73,7 @@ const founders = [
 
 const milestones = [
   {
-    year: '2023',
+    year: '2024',
     title: 'Founders Experience Burnout',
     description: 'Our founders experienced severe academic burnout and couldn\'t find adequate help. This personal crisis became the catalyst for creating a solution that truly understands academic mental health challenges.',
     icon: Heart,
@@ -81,7 +81,7 @@ const milestones = [
     bgColor: 'bg-red-50'
   },
   {
-    year: 'Apr-May 2024',
+    year: 'Apr-May 2025',
     title: 'Solution Research Phase',
     description: 'Started intensive research and development to create an AI-powered mental health platform specifically designed for students and researchers facing academic pressure.',
     icon: Microscope,
@@ -89,7 +89,7 @@ const milestones = [
     bgColor: 'bg-blue-50'
   },
   {
-    year: 'June 2024',
+    year: 'June 2025',
     title: 'Platform Launch',
     description: 'Successfully launched Wellnter platform and gained recognition by winning the PFC Peter Farrell Cup, validating our innovative approach to academic mental health.',
     icon: Award,
@@ -97,9 +97,9 @@ const milestones = [
     bgColor: 'bg-purple-50'
   },
   {
-    year: 'Late 2024',
-    title: 'University Partnerships',
-    description: 'Contracted with several universities and clients, establishing Wellnter as a trusted partner in academic mental health support across multiple institutions.',
+    year: 'July 2025',
+    title: 'Building University Partnerships',
+    description: 'Actively building partnerships with universities and contracting with multiple clients, establishing Wellnter as a trusted partner in academic mental health support.',
     icon: Users,
     color: 'text-green-600',
     bgColor: 'bg-green-50'
