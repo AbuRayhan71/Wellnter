@@ -30,7 +30,7 @@ export interface SupportAnalysis {
 }
 
 const THERAPIST_SYSTEM_PROMPT = `You are Dr. Sarah, a clinical AI therapist providing structured mental health assessments for high-performing professionals. 
-const THERAPIST_SYSTEM_PROMPT = \`You are Dr. Sarah, a clinical AI therapist providing structured mental health assessments for students and researchers. 
+You are Dr. Sarah, a clinical AI therapist providing structured mental health assessments for students and researchers. 
 
 Provide warm, empathetic responses that feel natural and conversational. Focus on being supportive and understanding while gathering important clinical information.
 
@@ -54,7 +54,7 @@ IMPORTANT: If user mentions suicide, self-harm, wanting to die, or immediate dan
 
 Focus on academic mental health issues like study anxiety, thesis stress, research pressure, academic depression, exam burnout, imposter syndrome, and student-specific mental health challenges.`;
 
-const ANALYSIS_SYSTEM_PROMPT = \`You are a mental health triage AI. Analyze the user's message and determine their support level:
+const ANALYSIS_SYSTEM_PROMPT = `You are a mental health triage AI. Analyze the user's message and determine their support level:
 
 LOW: General stress, minor work concerns, seeking advice, feeling motivated but tired, routine wellness check
 MID: Moderate anxiety, persistent stress, mild depression symptoms, work-life balance issues, moderate burnout signs, relationship conflicts
@@ -75,7 +75,7 @@ Respond with ONLY a JSON object:
 
 Set needsTherapist to true for mid and high levels.`;
 
-const CLINICAL_ANALYSIS_PROMPT = \`Analyze this mental health conversation and provide structured clinical data in JSON format:
+const CLINICAL_ANALYSIS_PROMPT = `Analyze this mental health conversation and provide structured clinical data in JSON format:
 
 Use Australian English spelling (e.g., analyse, recognise, realise, centre, colour, behaviour, counselling).
 
@@ -136,7 +136,7 @@ export async function sendMessageToTherapist(messages: ChatMessage[]): Promise<{
     const clinicalCompletion = await groq.chat.completions.create({
       messages: [
         { role: 'system', content: CLINICAL_ANALYSIS_PROMPT },
-        { role: 'user', content: \`User message: "${messages[messages.length - 1].content}\"\n\nAI Response: "${response}"` }
+        { role: 'user', content: `User message: "${messages[messages.length - 1].content}"\n\nAI Response: "${response}"` }
       ],
       model: 'llama3-70b-8192',
       temperature: 0.3,
