@@ -140,14 +140,14 @@ Best regards`);
             </div>
             
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 sm:mb-8 leading-tight px-2">
-              Mental Health for
+              Mental Health for Students
               <br />
-              <span className="text-blue-600">High Performers</span>
+              <span className="text-blue-600">& Researchers</span>
             </h1>
             
             <p className="text-lg sm:text-xl text-gray-600 mb-10 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-4">
-              AI-powered mental health and wellness coaching designed for students, researchers, and professionals.
-              Stay mentally strong while pursuing excellence in academics, research, or career.
+              AI-powered mental health support designed specifically for students and researchers.
+              Navigate academic pressure, thesis stress, and research challenges while maintaining your wellbeing.
             </p>
 
             {/* Trust indicators */}
@@ -188,7 +188,7 @@ Best regards`);
 
             {/* Social proof */}
             <p className="text-sm sm:text-base text-gray-500 mb-16 sm:mb-20 px-4">
-              Join 500+ high-performing students, researchers, and professionals optimizing their mental health with Wellnter
+              Join 500+ students and researchers optimizing their mental health and academic performance with Wellnter
             </p>
           </div>
 
@@ -199,8 +199,8 @@ Best regards`);
                 Wellnter AI
               </h2>
               <p className="text-sm sm:text-base lg:text-lg text-gray-600 max-w-3xl mx-auto px-4 pb-4">
-                Get immediate, intelligent mental health support designed for ambitious minds under pressure.
-                Start your conversation below and experience personalised AI therapy built for high-performance lifestyles.
+                Get immediate, intelligent mental health support designed for students and researchers under academic pressure.
+                Start your conversation below and experience personalised AI therapy built for academic life.
               </p>
             </div>
             <TherapistChat />

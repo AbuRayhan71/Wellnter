@@ -7,55 +7,55 @@ const steps = [
   {
     number: '01',
     icon: UserPlus,
-    title: 'Professional Assessment',
-    description: 'Complete a comprehensive assessment designed for high-performers. We evaluate stress levels, work-life balance, and academic or career-specific mental health factors.',
+    title: 'Academic Assessment',
+    description: 'Complete a comprehensive assessment designed for students and researchers. We evaluate academic stress levels, study-life balance, and education-specific mental health factors.',
     color: 'text-blue-600',
     bgColor: 'bg-blue-50'
   },
   {
     number: '02',
     icon: Brain,
-    title: 'AI-Powered Analysis',
-    description: 'Our AI continuously monitors your mental health patterns, academic stress, work pressure, and performance metrics to provide insights tailored to your lifestyle.',
+    title: 'Academic Stress Analysis',
+    description: 'Our AI continuously monitors your mental health patterns, study stress, research pressure, and academic performance metrics to provide insights tailored to student life.',
     color: 'text-purple-600',
     bgColor: 'bg-purple-50'
   },
   {
     number: '03',
     icon: Target,
-    title: 'Personalized Support',
-    description: 'Receive targeted coaching and access to mental health experts who understand high-pressure academic and professional environments.',
+    title: 'Academic-Focused Support',
+    description: 'Receive targeted coaching and access to mental health experts who understand the unique pressures of student life, research deadlines, and academic environments.',
     color: 'text-green-600',
     bgColor: 'bg-green-50'
   }
 ];
 
 const benefits = [
-  'Reduce burnout risk by 70%',
-  'Improve work-life balance',
-  'Increase productivity and focus',
-  'Build long-term resilience'
+  'Reduce academic burnout by 70%',
+  'Improve study-life balance',
+  'Increase focus and retention',
+  'Build academic resilience'
 ];
 
 const features = [
   {
     icon: Brain,
-    title: 'AI-Powered Monitoring',
-    description: 'Advanced algorithms track stress patterns, sleep cycles, and focus levels tailored to academic and professional demands.',
+    title: 'Academic Stress Monitoring',
+    description: 'Advanced algorithms track stress patterns, study cycles, and focus levels tailored specifically to academic schedules and research demands.',
     color: 'text-blue-600',
     bgColor: 'bg-blue-50'
   },
   {
     icon: Heart,
-    title: 'Burnout Prevention',
-    description: 'Catch early warning signs and get personalized interventions before stress becomes overwhelming.',
+    title: 'Academic Burnout Prevention',
+    description: 'Catch early warning signs of study burnout and get personalized interventions before exam stress or research pressure becomes overwhelming.',
     color: 'text-red-600',
     bgColor: 'bg-red-50'
   },
   {
     icon: Activity,
-    title: 'Performance Optimization',
-    description: 'Incorporate wellness routines and mental clarity practices into your schedule to improve focus, retention, and productivity.',
+    title: 'Study Performance Optimization',
+    description: 'Incorporate wellness routines and mental clarity practices into your study schedule to improve focus, memory retention, and academic productivity.',
     color: 'text-green-600',
     bgColor: 'bg-green-50'
   }
@@ -200,12 +200,12 @@ Best regards`);
             </div>
             
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Your Wellness Journey
+              Your Academic Wellness Journey
             </h1>
             
             <p className="text-xl sm:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              A streamlined approach to mental health designed for students, researchers, and busy professionals. 
-              Get started in minutes and maintain your wellbeing while pursuing excellence.
+              A streamlined approach to mental health designed specifically for students and researchers. 
+              Get started in minutes and maintain your wellbeing while pursuing academic excellence.
             </p>
           </div>
 
@@ -269,10 +269,10 @@ Best regards`);
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-              Powerful Features for High Performers
+              Powerful Features for Students & Researchers
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our platform combines cutting-edge AI with proven mental health practices for students, researchers, and professionals
+              Our platform combines cutting-edge AI with proven mental health practices specifically designed for academic environments
             </p>
           </div>
 

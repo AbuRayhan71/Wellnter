@@ -4,43 +4,43 @@ import { Brain, Heart, Activity, Users, Shield, Target } from 'lucide-react';
 const features = [
   {
     icon: Target,
-    title: 'Built for High Performers',
-    description: 'Whether you\'re juggling deadlines, thesis work, coding sprints, or product launches, Wellnter supports the mental health of high achievers.',
+    title: 'Built for Academic Life',
+    description: 'Whether you\'re managing coursework, thesis deadlines, research projects, or dissertation stress, Wellnter understands the unique pressures of academic life.',
     color: 'text-blue-600',
     bgColor: 'bg-blue-50'
   },
   {
     icon: Brain,
-    title: 'AI-Powered Monitoring',
-    description: 'Our algorithms track stress patterns, sleep cycles, and focus levels tailored to academic and professional demands.',
+    title: 'Academic Stress Monitoring',
+    description: 'Our AI tracks stress patterns, study cycles, and focus levels specifically tailored to academic schedules and research demands.',
     color: 'text-purple-600',
     bgColor: 'bg-purple-50'
   },
   {
     icon: Heart,
-    title: 'Burnout Prevention',
-    description: 'Catch early warning signs and get personalized interventions before stress becomes overwhelming.',
+    title: 'Academic Burnout Prevention',
+    description: 'Catch early warning signs of academic burnout and get personalized interventions before exam stress or research pressure becomes overwhelming.',
     color: 'text-red-600',
     bgColor: 'bg-red-50'
   },
   {
     icon: Activity,
-    title: 'Performance Optimization',
-    description: 'Incorporate wellness routines and mental clarity practices into your schedule to improve focus, retention, and productivity.',
+    title: 'Study Performance Optimization',
+    description: 'Incorporate wellness routines and mental clarity practices into your study schedule to improve focus, memory retention, and academic productivity.',
     color: 'text-green-600',
     bgColor: 'bg-green-50'
   },
   {
     icon: Users,
-    title: 'Expert Network',
-    description: 'Access certified therapists and performance coaches who understand the life of students, researchers, and professionals.',
+    title: 'Academic-Focused Support',
+    description: 'Access certified therapists and academic coaches who understand the unique challenges of student life, research stress, and academic pressure.',
     color: 'text-orange-600',
     bgColor: 'bg-orange-50'
   },
   {
     icon: Shield,
-    title: 'Privacy & Security',
-    description: 'We protect your mental health data with enterprise-grade encryption — it stays confidential and secure.',
+    title: 'Student Privacy & Security',
+    description: 'Your academic and mental health data is protected with enterprise-grade encryption — completely confidential and secure.',
     color: 'text-indigo-600',
     bgColor: 'bg-indigo-50'
   }
@@ -55,11 +55,11 @@ export function Features() {
             Why Choose Wellnter?
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 px-4">
-            Built for High Performers
+            Built for Academic Success
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-            Our platform understands the unique mental health challenges faced by students, 
-            researchers, and professionals in high-pressure environments.
+            Our platform understands the unique mental health challenges faced by students and researchers 
+            in demanding academic environments, from undergraduate stress to PhD research pressure.
           </p>
         </div>
 

@@ -53,8 +53,8 @@ export function Footer() {
               </div>
             </div>
             <p className="text-gray-400 mb-4 sm:mb-6 max-w-md leading-relaxed text-sm sm:text-base">
-              AI-powered mental health and wellness coaching platform designed specifically 
-              for students, researchers, and high-performing professionals.
+              AI-powered mental health and wellness support platform designed specifically 
+              for students and researchers navigating academic challenges and research pressure.
             </p>
             
             {/* Contact Information */}
@@ -113,11 +113,11 @@ export function Footer() {
           <div>
             <h5 className="text-base sm:text-lg font-semibold mb-4 sm:mb-6 text-white">Services</h5>
             <ul className="space-y-2 sm:space-y-3 text-gray-400 text-sm sm:text-base">
-              <li><a href="#" className="hover:text-white transition-colors">AI Mental Health Support</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Burnout Prevention</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Performance Coaching</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Stress Monitoring</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Wellness Assessment</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Academic Stress Support</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Study Burnout Prevention</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Research Anxiety Help</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Thesis Stress Monitoring</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Student Wellness Assessment</a></li>
             </ul>
           </div>
 

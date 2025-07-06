@@ -38,7 +38,7 @@ export function TherapistChat() {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: 'assistant',
-      content: "Hi! I'm your AI mental wellness companion. I specialize in helping high-performing individuals — from students and researchers to tech professionals — manage stress, stay balanced, and avoid burnout. How are you feeling today?",
+      content: "Hi! I'm your AI mental wellness companion. I specialize in helping students and researchers manage academic stress, thesis anxiety, research pressure, and study-life balance. How are you feeling about your studies today?",
       timestamp: new Date()
     }
   ]);
@@ -93,16 +93,16 @@ export function TherapistChat() {
     setSelectedLanguage(language);
     // Update the initial message based on selected language
     const welcomeMessages: Record<string, string> = {
-      'en': "Hi! I'm your AI mental wellness companion. I specialize in helping high-performing individuals — from students and researchers to tech professionals — manage stress, stay balanced, and avoid burnout. How are you feeling today?",
-      'zh': "您好！我是您的AI心理健康伴侣。我专门帮助高绩效人士——从学生和研究人员到技术专业人士——管理压力、保持平衡并避免倦怠。您今天感觉如何？",
-      'hi': "नमस्ते! मैं आपकी AI मानसिक स्वास्थ्य साथी हूं। मैं उच्च प्रदर्शन करने वाले व्यक्तियों की मदद करने में विशेषज्ञ हूं — छात्रों और शोधकर्ताओं से लेकर तकनीकी पेशेवरों तक — तनाव का प्रबंधन करने, संतुलित रहने और बर्नआउट से बचने में। आज आप कैसा महसूस कर रहे हैं?",
-      'es': "¡Hola! Soy su compañera de bienestar mental con IA. Me especializo en ayudar a personas de alto rendimiento — desde estudiantes e investigadores hasta profesionales de tecnología — a manejar el estrés, mantenerse equilibrados y evitar el agotamiento. ¿Cómo se siente hoy?",
-      'fr': "Salut! Je suis votre compagnon de bien-être mental IA. Je me spécialise dans l'aide aux personnes très performantes — des étudiants et chercheurs aux professionnels de la technologie — pour gérer le stress, rester équilibrés et éviter l'épuisement. Comment vous sentez-vous aujourd'hui?",
-      'ar': "مرحباً! أنا رفيقتك في الصحة النفسية بالذكاء الاصطناعي. أتخصص في مساعدة الأفراد عالي الأداء — من الطلاب والباحثين إلى المهنيين التقنيين — في إدارة التوتر والبقاء متوازنين وتجنب الإرهاق. كيف تشعر اليوم؟",
-      'bn': "হ্যালো! আমি আপনার AI মানসিক সুস্থতার সঙ্গী। আমি উচ্চ-পারফরমিং ব্যক্তিদের সাহায্য করতে বিশেষজ্ঞ — ছাত্র এবং গবেষকদের থেকে প্রযুক্তি পেশাদারদের পর্যন্ত — চাপ পরিচালনা করতে, ভারসাম্য বজায় রাখতে এবং বার্নআউট এড়াতে। আজ আপনি কেমন অনুভব করছেন?",
-      'ru': "Привет! Я ваш ИИ-компаньон по психическому здоровью. Я специализируюсь на помощи высокоэффективным людям — от студентов и исследователей до технических специалистов — в управлении стрессом, поддержании баланса и предотвращении выгорания. Как вы себя чувствуете сегодня?",
-      'pt': "Olá! Eu sou sua companheira de bem-estar mental com IA. Especializo-me em ajudar indivíduos de alto desempenho — de estudantes e pesquisadores a profissionais de tecnologia — a gerenciar o estresse, manter o equilíbrio e evitar o esgotamento. Como você está se sentindo hoje?",
-      'ja': "こんにちは！私はあなたのAIメンタルウェルネスコンパニオンです。学生や研究者からテクノロジー専門家まで、高パフォーマンスな個人がストレスを管理し、バランスを保ち、燃え尽き症候群を避けるお手伝いを専門としています。今日はいかがお過ごしですか？"
+      'en': "Hi! I'm your AI mental wellness companion. I specialize in helping students and researchers manage academic stress, thesis anxiety, research pressure, and study-life balance. How are you feeling about your studies today?",
+      'zh': "您好！我是您的AI心理健康伴侣。我专门帮助学生和研究人员管理学术压力、论文焦虑、研究压力和学习生活平衡。您今天对学习感觉如何？",
+      'hi': "नमस्ते! मैं आपकी AI मानसिक स्वास्थ्य साथी हूं। मैं छात्रों और शोधकर्ताओं की शैक्षणिक तनाव, थीसिस चिंता, अनुसंधान दबाव और अध्ययन-जीवन संतुलन प्रबंधित करने में मदद करने में विशेषज्ञ हूं। आज आप अपनी पढ़ाई के बारे में कैसा महसूस कर रहे हैं?",
+      'es': "¡Hola! Soy su compañera de bienestar mental con IA. Me especializo en ayudar a estudiantes e investigadores a manejar el estrés académico, la ansiedad de tesis, la presión de investigación y el equilibrio estudio-vida. ¿Cómo se siente sobre sus estudios hoy?",
+      'fr': "Salut! Je suis votre compagnon de bien-être mental IA. Je me spécialise dans l'aide aux étudiants et chercheurs pour gérer le stress académique, l'anxiété de thèse, la pression de recherche et l'équilibre étude-vie. Comment vous sentez-vous par rapport à vos études aujourd'hui?",
+      'ar': "مرحباً! أنا رفيقتك في الصحة النفسية بالذكاء الاصطناعي. أتخصص في مساعدة الطلاب والباحثين في إدارة الضغط الأكاديمي وقلق الأطروحة وضغط البحث وتوازن الدراسة والحياة. كيف تشعر بشأن دراستك اليوم؟",
+      'bn': "হ্যালো! আমি আপনার AI মানসিক সুস্থতার সঙ্গী। আমি ছাত্র এবং গবেষকদের একাডেমিক চাপ, থিসিস উদ্বেগ, গবেষণা চাপ এবং অধ্যয়ন-জীবনের ভারসাম্য পরিচালনা করতে সাহায্য করতে বিশেষজ্ঞ। আজ আপনি আপনার পড়াশোনা সম্পর্কে কেমন অনুভব করছেন?",
+      'ru': "Привет! Я ваш ИИ-компаньон по психическому здоровью. Я специализируюсь на помощи студентам и исследователям в управлении академическим стрессом, тревогой по поводу диссертации, давлением исследований и балансом учебы и жизни. Как вы себя чувствуете по поводу учебы сегодня?",
+      'pt': "Olá! Eu sou sua companheira de bem-estar mental com IA. Especializo-me em ajudar estudantes e pesquisadores a gerenciar o estresse acadêmico, ansiedade de tese, pressão de pesquisa e equilíbrio estudo-vida. Como você está se sentindo sobre seus estudos hoje?",
+      'ja': "こんにちは！私はあなたのAIメンタルウェルネスコンパニオンです。学生や研究者が学術的ストレス、論文不安、研究プレッシャー、勉強と生活のバランスを管理するお手伝いを専門としています。今日は勉強についてどのように感じていますか？"
     };
 
     if (messages.length === 1) {
@@ -461,6 +461,7 @@ Best regards`);
             onChange={(e) => setInputMessage(e.target.value)}
             onKeyPress={handleKeyPress}
             placeholder="How are you feeling?"
+            placeholder="How are you feeling about your studies?"
             disabled={isLoading}
             className="flex-1 bg-gray-50 border-gray-200 focus:border-blue-500 focus:ring-blue-500 h-10 sm:h-12 rounded-xl text-sm sm:text-base px-3 sm:px-4"
           />
