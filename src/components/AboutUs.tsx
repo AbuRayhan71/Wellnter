@@ -142,9 +142,9 @@ const values = [
 ];
 
 const stats = [
-  { number: '500+', label: 'Students in Research', icon: Users },
-  { number: '15+', label: 'University Partnerships', icon: GraduationCap },
-  { number: '10+', label: 'Languages Supported', icon: Globe },
+  { number: '87%', label: 'PhD Students Experience Anxiety', icon: TrendingUp },
+  { number: '41%', label: 'Consider Dropping Out Due to Stress', icon: AlertTriangle },
+  { number: '1 in 4', label: 'Australian Students Have Mental Health Issues', icon: Heart },
   { number: '24/7', label: 'AI Support Available', icon: Brain }
 ];
 
