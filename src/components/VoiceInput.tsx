@@ -61,12 +61,12 @@ export function VoiceInput({ onTranscription, disabled = false }: VoiceInputProp
       <Button
         onClick={handleVoiceInput}
         disabled={disabled || isLoading}
-        variant="ghost"
+        variant="outline"
         size="sm"
-        className={`h-10 w-10 sm:h-12 sm:w-12 rounded-xl border transition-all duration-200 ${
+        className={`h-10 w-10 sm:h-12 sm:w-12 rounded-xl transition-all duration-200 bg-white hover:bg-white border-gray-200 ${
           isRecording 
-            ? 'border-red-500 bg-red-50 hover:bg-red-100 text-red-600' 
-            : 'border-gray-200 hover:bg-gray-50 text-gray-500'
+            ? 'border-red-500 bg-white hover:bg-white text-red-600' 
+            : 'border-gray-200 hover:bg-white text-gray-500'
         } ${hasError ? 'border-red-300 bg-red-50' : ''}`}
         title={isRecording ? 'Stop recording' : 'Start voice input'}
       >
