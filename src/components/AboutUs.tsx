@@ -25,11 +25,26 @@ import {
 
 const founders = [
   {
+    name: 'Md Abu Rayhan',
+    role: 'Founder & CEO',
+    background: 'Computer Science, AI/ML Specialist & Entrepreneur',
+    image: '/src/assets/rayray.jpeg',
+    bio: 'Rayhan experienced severe research anxiety and academic burnout during his computer science studies, leading to multiple panic attacks during thesis preparation. As an international student, he faced additional challenges accessing culturally-appropriate mental health support. His personal struggle with academic mental health inspired him to build AI technology that truly understands the unique pressures of student life and research environments.',
+    expertise: ['AI/ML Engineering', 'Natural Language Processing', 'Software Architecture', 'Academic Technology', 'Entrepreneurship'],
+    linkedin: 'https://www.linkedin.com/in/md-abu-rayhan-854b3b1a9/',
+    achievements: [
+      'Built AI systems serving 100K+ users',
+      'Expert in conversational AI and NLP',
+      'International student advocate',
+      'Founded multiple tech startups'
+    ]
+  },
+  {
     name: 'Dr. Sarah Chen',
-    role: 'Co-Founder & CEO',
+    role: 'Co-Founder & Chief Clinical Officer',
     background: 'Clinical Psychology PhD, Stanford University',
-    image: 'https://images.pexels.com/photos/3760263/pexels-photo-3760263.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
-    bio: 'Dr. Chen experienced severe burnout during her PhD in Clinical Psychology at Stanford. After struggling with thesis anxiety and imposter syndrome, she realized the gap in mental health support specifically designed for academic environments. Her research in AI-assisted therapy and academic stress patterns forms the foundation of Wellnter\'s clinical approach.',
+    image: 'https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
+    bio: 'Dr. Chen experienced severe burnout during her PhD in Clinical Psychology at Stanford. After struggling with thesis anxiety and imposter syndrome, she realized the gap in mental health support specifically designed for academic environments. Her research in AI-assisted therapy and academic stress patterns forms the clinical foundation of Wellnter\'s approach.',
     expertise: ['Clinical Psychology', 'AI Therapy', 'Academic Mental Health', 'Research Psychology'],
     linkedin: 'https://linkedin.com/in/sarahchen-phd',
     achievements: [
@@ -39,22 +54,8 @@ const founders = [
     ]
   },
   {
-    name: 'Md Abu Rayhan',
-    role: 'Co-Founder & CTO',
-    background: 'Computer Science, AI/ML Specialist',
-    image: 'https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
-    bio: 'Rayhan struggled with severe research anxiety during his computer science studies, leading to multiple panic attacks during thesis defense preparation. As an international student, he faced additional challenges accessing culturally-appropriate mental health support. His experience inspired him to build AI technology that understands the unique pressures of academic life.',
-    expertise: ['AI/ML Engineering', 'Natural Language Processing', 'Software Architecture', 'Academic Technology'],
-    linkedin: 'https://www.linkedin.com/in/md-abu-rayhan-854b3b1a9/',
-    achievements: [
-      'Built AI systems serving 100K+ users',
-      'Expert in conversational AI and NLP',
-      'International student advocate'
-    ]
-  },
-  {
     name: 'Dr. Emily Rodriguez',
-    role: 'Co-Founder & Chief Clinical Officer',
+    role: 'Co-Founder & Chief Medical Officer',
     background: 'Psychiatry MD, Harvard Medical School',
     image: 'https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
     bio: 'Dr. Rodriguez witnessed firsthand the mental health crisis in academic medicine during her residency at Harvard. She saw brilliant medical students and residents burning out at alarming rates, with traditional therapy not addressing the unique pressures of medical education. She joined Wellnter to revolutionize how we approach mental health in high-pressure academic environments.',
@@ -190,15 +191,15 @@ Best regards`);
             </div>
             
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Built by Students,
+              Built by a Student,
               <br />
               <span className="text-blue-600">For Students</span>
             </h1>
             
             <p className="text-xl sm:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Wellnter was born from personal struggle. Our founders experienced severe academic burnout 
-              and realized that existing mental health resources weren't designed for the unique pressures 
-              of academic life. We're here to change that.
+              Wellnter was born from personal struggle. Our founder experienced severe academic burnout 
+              and panic attacks during his studies, realizing that existing mental health resources weren't 
+              designed for the unique pressures of academic life. We're here to change that.
             </p>
           </div>
 
@@ -279,7 +280,7 @@ Best regards`);
                   and researchers. We needed something built by academics, for academics."
                 </p>
                 <div className="mt-6 text-sm text-gray-600">
-                  - Wellnter Founding Team
+                  - Md Abu Rayhan, Founder & CEO
                 </div>
               </div>
             </div>
@@ -292,10 +293,10 @@ Best regards`);
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-              Meet Our Founders
+              Meet Our Team
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Three individuals who turned their personal struggles into a mission to help millions of students worldwide.
+              Passionate individuals who turned personal struggles into a mission to help millions of students worldwide.
             </p>
           </div>
 
