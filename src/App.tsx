@@ -97,7 +97,6 @@ function App() {
   return (
     <div className="min-h-screen w-full overflow-x-hidden">
       <Hero />
-      <Features />
       
       {/* AI Therapist Section */}
       <section id="ai-therapist" className="py-16 sm:py-24 bg-gray-50">
