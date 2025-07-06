@@ -32,7 +32,7 @@ const founders = [
     name: 'Md Abu Rayhan',
     role: 'Founder & CEO',
     background: 'Computer Science, AI/ML Specialist & Entrepreneur',
-    image: 'https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
+    image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
     bio: 'Rayhan experienced severe research anxiety and academic burnout during his computer science studies, leading to multiple panic attacks during thesis preparation. As an international student, he faced additional challenges accessing culturally-appropriate mental health support. His personal struggle with academic mental health inspired him to build AI technology that truly understands the unique pressures of student life and research environments.',
     expertise: ['AI/ML Engineering', 'Natural Language Processing', 'Software Architecture', 'Academic Technology', 'Entrepreneurship'],
     linkedin: 'https://www.linkedin.com/in/md-abu-rayhan-854b3b1a9/',
@@ -47,7 +47,7 @@ const founders = [
     name: 'Anastasia Thiessen',
     role: 'Co-Founder & COO',
     background: 'Business Strategy & Operations Specialist',
-    image: 'https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
+    image: 'https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
     bio: 'Anastasia brings extensive experience in business strategy and operations to Wellnter. Her deep understanding of scaling technology platforms and building sustainable business models has been instrumental in shaping Wellnter\'s growth strategy. She shares the vision of making mental health support accessible to students and researchers worldwide.',
     expertise: ['Business Strategy', 'Operations Management', 'Product Development', 'Market Expansion'],
     linkedin: 'https://www.linkedin.com/in/anastasia-thiessen-977b24216/',
@@ -59,32 +59,18 @@ const founders = [
   },
   {
     name: 'Aaron Lauterbach',
-    role: 'Co-Founder & Chief Science Officer',
-    background: 'Physiology & Human Performance Specialist',
-    image: 'https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
-    bio: 'Aaron brings deep expertise in physiology and human performance to Wellnter. His understanding of how stress affects the body, sleep patterns, and cognitive function helps ensure our platform addresses the physical aspects of mental health. Aaron\'s research in physiological responses to academic stress provides the scientific foundation for our holistic approach to student wellness.',
-    expertise: ['Human Physiology', 'Stress Response Systems', 'Sleep Science', 'Cognitive Performance', 'Biometric Analysis'],
-    linkedin: 'https://www.linkedin.com/in/aaron-lauterbach-607474178/',
-    achievements: [
-      'Expert in physiological stress responses',
-      'Research in academic stress and performance',
-      'Specialist in sleep and cognitive function',
-      'Advocate for holistic wellness approaches'
-    ]
-  },
-  {
-    name: 'Dr. Aaron Lauterbach',
     role: 'Co-Founder & Clinical Director',
     background: 'Psychology & Clinical Mental Health Specialist',
-    image: 'https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
-    bio: 'Dr. Aaron brings deep expertise in psychology and clinical mental health to Wellnter. His understanding of therapeutic approaches, mental health assessment, and evidence-based interventions ensures that our AI platform delivers clinically sound support. Aaron\'s passion for making mental health care more accessible drives the clinical foundation of our technology.',
-    expertise: ['Clinical Psychology', 'Mental Health Assessment', 'Therapeutic Interventions', 'Research Psychology', 'Crisis Intervention'],
+    image: 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
+    bio: 'Aaron brings deep expertise in psychology and clinical mental health to Wellnter. His understanding of therapeutic approaches, mental health assessment, and evidence-based interventions ensures that our AI platform delivers clinically sound support. Aaron\'s passion for making mental health care more accessible drives the clinical foundation of our technology.',
+    expertise: ['Clinical Psychology', 'Mental Health Assessment', 'Therapeutic Interventions', 'Human Physiology', 'Crisis Intervention'],
     linkedin: 'https://www.linkedin.com/in/aaron-lauterbach-607474178/',
     achievements: [
       'Expert in clinical psychology and mental health',
       'Specialized in academic stress and student mental health',
       'Research experience in therapeutic interventions',
-      'Advocate for accessible mental health care'
+      'Advocate for accessible mental health care',
+      'Expert in physiological stress responses'
     ]
   }
 ];
