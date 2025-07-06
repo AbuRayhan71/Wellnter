@@ -432,6 +432,37 @@ Best regards`);
         </div>
       </section>
 
+      {/* Emergency Contact Section */}
+      <section className="py-8 bg-red-50 border-y border-red-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <div className="flex items-center justify-center mb-4">
+              <AlertTriangle className="w-6 h-6 text-red-600 mr-2" />
+              <h3 className="text-lg font-semibold text-red-800">Crisis Support Available 24/7</h3>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+              <div className="bg-white rounded-lg p-4 border border-red-200">
+                <div className="font-medium text-red-800 mb-2">🇺🇸 United States</div>
+                <div className="text-red-700">988 - Suicide & Crisis Lifeline</div>
+                <div className="text-red-700">911 - Emergency Services</div>
+              </div>
+              <div className="bg-white rounded-lg p-4 border border-red-200">
+                <div className="font-medium text-red-800 mb-2">🇦🇺 Australia</div>
+                <div className="text-red-700">13 11 14 - Lifeline</div>
+                <div className="text-red-700">000 - Emergency Services</div>
+              </div>
+              <div className="bg-white rounded-lg p-4 border border-red-200">
+                <div className="font-medium text-red-800 mb-2">🌍 International</div>
+                <div className="text-red-700">
+                  <a href="mailto:contact@wellnter.com" className="hover:underline">contact@wellnter.com</a>
+                </div>
+                <div className="text-red-700">Emergency Support</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Core AI Features */}
       <section className="py-16 sm:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -651,6 +682,82 @@ Best regards`);
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Information Section */}
+      <section className="py-16 sm:py-24 bg-blue-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+              Get Support & Information
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Multiple ways to connect with our team and access mental health resources
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card className="bg-white border border-gray-100 hover:shadow-lg transition-all duration-300">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Mail className="w-8 h-8 text-blue-600" />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  General Inquiries
+                </h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Questions about features, pricing, or getting started
+                </p>
+                <a 
+                  href="mailto:contact@wellnter.com" 
+                  className="text-blue-600 hover:text-blue-700 font-medium"
+                >
+                  contact@wellnter.com
+                </a>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white border border-gray-100 hover:shadow-lg transition-all duration-300">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <AlertTriangle className="w-8 h-8 text-red-600" />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  Crisis Support
+                </h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Immediate mental health emergency assistance
+                </p>
+                <a 
+                  href="mailto:contact@wellnter.com" 
+                  className="text-red-600 hover:text-red-700 font-medium"
+                >
+                  Emergency Contact
+                </a>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white border border-gray-100 hover:shadow-lg transition-all duration-300">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Users className="w-8 h-8 text-green-600" />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  Academic Partnerships
+                </h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  University and research institution collaborations
+                </p>
+                <a 
+                  href="mailto:contact@wellnter.com" 
+                  className="text-green-600 hover:text-green-700 font-medium"
+                >
+                  Partnership Inquiries
+                </a>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
