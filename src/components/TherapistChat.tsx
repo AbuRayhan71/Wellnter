@@ -20,7 +20,7 @@ interface Language {
   nativeName: string;
 }
 
-const TOP_LANGUAGES: Language[] = [
+const TOP_25_LANGUAGES: Language[] = [
   { code: 'en', name: 'English', flag: '🇺🇸', nativeName: 'English' },
   { code: 'zh', name: 'Chinese (Mandarin)', flag: '🇨🇳', nativeName: '中文' },
   { code: 'hi', name: 'Hindi', flag: '🇮🇳', nativeName: 'हिन्दी' },
@@ -31,11 +31,25 @@ const TOP_LANGUAGES: Language[] = [
   { code: 'ru', name: 'Russian', flag: '🇷🇺', nativeName: 'Русский' },
   { code: 'pt', name: 'Portuguese', flag: '🇧🇷', nativeName: 'Português' },
   { code: 'ja', name: 'Japanese', flag: '🇯🇵', nativeName: '日本語' },
-  { code: 'tr', name: 'Turkish', flag: '🇹🇷', nativeName: 'Türkçe' }
+  { code: 'tr', name: 'Turkish', flag: '🇹🇷', nativeName: 'Türkçe' },
+  { code: 'de', name: 'German', flag: '🇩🇪', nativeName: 'Deutsch' },
+  { code: 'ko', name: 'Korean', flag: '🇰🇷', nativeName: '한국어' },
+  { code: 'it', name: 'Italian', flag: '🇮🇹', nativeName: 'Italiano' },
+  { code: 'vi', name: 'Vietnamese', flag: '🇻🇳', nativeName: 'Tiếng Việt' },
+  { code: 'th', name: 'Thai', flag: '🇹🇭', nativeName: 'ไทย' },
+  { code: 'ur', name: 'Urdu', flag: '🇵🇰', nativeName: 'اردو' },
+  { code: 'id', name: 'Indonesian', flag: '🇮🇩', nativeName: 'Bahasa Indonesia' },
+  { code: 'pl', name: 'Polish', flag: '🇵🇱', nativeName: 'Polski' },
+  { code: 'nl', name: 'Dutch', flag: '🇳🇱', nativeName: 'Nederlands' },
+  { code: 'uk', name: 'Ukrainian', flag: '🇺🇦', nativeName: 'Українська' },
+  { code: 'fa', name: 'Persian (Farsi)', flag: '🇮🇷', nativeName: 'فارسی' },
+  { code: 'sw', name: 'Swahili', flag: '🇰🇪', nativeName: 'Kiswahili' },
+  { code: 'ro', name: 'Romanian', flag: '🇷🇴', nativeName: 'Română' },
+  { code: 'ta', name: 'Tamil', flag: '🇮🇳', nativeName: 'தமிழ்' },
+  { code: 'he', name: 'Hebrew', flag: '🇮🇱', nativeName: 'עברית' }
 ];
 
 export function TherapistChat() {
-  const [selectedLanguage, setSelectedLanguage] = useState<Language>(TOP_LANGUAGES[0]);
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: 'assistant',
@@ -104,7 +118,22 @@ export function TherapistChat() {
       'ru': "Привет! Я ваш ИИ-компаньон по психическому здоровью. Я специализируюсь на помощи студентам и исследователям в управлении академическим стрессом, тревогой по поводу диссертации, давлением исследований и балансом учебы и жизни. Как вы себя чувствуете по поводу учебы сегодня?",
       'pt': "Olá! Eu sou sua companheira de bem-estar mental com IA. Especializo-me em ajudar estudantes e pesquisadores a gerenciar o estresse acadêmico, ansiedade de tese, pressão de pesquisa e equilíbrio estudo-vida. Como você está se sentindo sobre seus estudos hoje?",
       'ja': "こんにちは！私はあなたのAIメンタルウェルネスコンパニオンです。学生や研究者が学術的ストレス、論文不安、研究プレッシャー、勉強と生活のバランスを管理するお手伝いを専門としています。今日は勉強についてどのように感じていますか？",
-      'tr': "Merhaba! Ben sizin AI zihinsel sağlık yardımcınızım. Öğrencilerin ve araştırmacıların akademik stresi, tez kaygısı, araştırma baskısı ve çalışma-yaşam dengesini yönetmelerine yardımcı olmada uzmanım. Bugün çalışmalarınız hakkında nasıl hissediyorsunuz?"
+      'tr': "Merhaba! Ben sizin AI zihinsel sağlık yardımcınızım. Öğrencilerin ve araştırmacıların akademik stresi, tez kaygısı, araştırma baskısı ve çalışma-yaşam dengesini yönetmelerine yardımcı olmada uzmanım. Bugün çalışmalarınız hakkında nasıl hissediyorsunuz?",
+      'de': "Hallo! Ich bin Ihr KI-Begleiter für mentales Wohlbefinden. Ich spezialisiere mich darauf, Studenten und Forschern beim Umgang mit akademischem Stress, Thesis-Angst, Forschungsdruck und der Work-Study-Balance zu helfen. Wie fühlen Sie sich heute bezüglich Ihres Studiums?",
+      'ko': "안녕하세요! 저는 당신의 AI 정신 건강 동반자입니다. 학생과 연구자들이 학업 스트레스, 논문 불안, 연구 압박, 학습-생활 균형을 관리하는 데 도움을 주는 것을 전문으로 합니다. 오늘 공부에 대해 어떻게 느끼고 계신가요?",
+      'it': "Ciao! Sono il tuo compagno AI per il benessere mentale. Mi specializzo nell'aiutare studenti e ricercatori a gestire lo stress accademico, l'ansia da tesi, la pressione della ricerca e l'equilibrio studio-vita. Come ti senti riguardo ai tuoi studi oggi?",
+      'vi': "Xin chào! Tôi là người bạn đồng hành AI về sức khỏe tinh thần của bạn. Tôi chuyên giúp sinh viên và nhà nghiên cứu quản lý căng thẳng học tập, lo lắng về luận văn, áp lực nghiên cứu và cân bằng học tập-cuộc sống. Hôm nay bạn cảm thấy thế nào về việc học của mình?",
+      'th': "สวัสดี! ฉันเป็นผู้ช่วย AI ด้านสุขภาพจิตของคุณ ฉันเชี่ยวชาญในการช่วยนักเรียนและนักวิจัยจัดการกับความเครียดทางการศึกษา ความวิตกกังวลเรื่องวิทยานิพนธ์ แรงกดดันจากการวิจัย และความสมดุลระหว่างการเรียนกับชีวิต วันนี้คุณรู้สึกอย่างไรเกี่ยวกับการเรียนของคุณ?",
+      'ur': "ہیلو! میں آپ کا AI ذہنی صحت کا ساتھی ہوں۔ میں طلباء اور محققین کی تعلیمی تناؤ، مقالے کی پریشانی، تحقیقی دباؤ، اور مطالعہ-زندگی کے توازن کو سنبھالنے میں مدد کرنے میں مہارت رکھتا ہوں۔ آج آپ اپنی تعلیم کے بارے میں کیسا محسوس کر رہے ہیں؟",
+      'id': "Halo! Saya adalah pendamping AI kesehatan mental Anda. Saya mengkhususkan diri membantu mahasiswa dan peneliti mengelola stres akademik, kecemasan tesis, tekanan penelitian, dan keseimbangan belajar-hidup. Bagaimana perasaan Anda tentang studi Anda hari ini?",
+      'pl': "Cześć! Jestem Twoim towarzyszem AI w zakresie zdrowia psychicznego. Specjalizuję się w pomaganiu studentom i badaczom w radzeniu sobie ze stresem akademickim, lękiem przed pracą dyplomową, presją badawczą i równowagą nauka-życie. Jak czujesz się dziś w związku ze swoimi studiami?",
+      'nl': "Hallo! Ik ben je AI-begeleider voor mentaal welzijn. Ik ben gespecialiseerd in het helpen van studenten en onderzoekers bij het omgaan met academische stress, scriptieangst, onderzoeksdruk en de balans tussen studie en leven. Hoe voel je je vandaag over je studie?",
+      'uk': "Привіт! Я ваш AI-супутник з психічного здоров'я. Я спеціалізуюся на допомозі студентам та дослідникам у керуванні академічним стресом, тривогою щодо дисертації, дослідницьким тиском та балансом навчання-життя. Як ви почуваєтеся сьогодні щодо своїх досліджень?",
+      'fa': "سلام! من همراه هوش مصنوعی سلامت روان شما هستم. من در کمک به دانشجویان و محققان برای مدیریت استرس تحصیلی، اضطراب پایان‌نامه، فشار تحقیق و تعادل تحصیل-زندگی تخصص دارم. امروز در مورد تحصیلاتتان چه احساسی دارید؟",
+      'sw': "Hujambo! Mimi ni mwenzako wa AI wa afya ya akili. Ninafanya kazi ya kusaidia wanafunzi na watafiti kudhibiti mkazo wa kitaaluma, wasiwasi wa tasnifu, shinikizo la utafiti, na uwiano wa masomo-maisha. Leo unahisije kuhusu masomo yako?",
+      'ro': "Salut! Sunt însoțitorul tău AI pentru bunăstarea mentală. Mă specializez în a ajuta studenții și cercetătorii să gestioneze stresul academic, anxietatea legată de teză, presiunea cercetării și echilibrul studiu-viață. Cum te simți astăzi în legătură cu studiile tale?",
+      'ta': "வணக்கம்! நான் உங்கள் AI மனநல துணைவர். மாணவர்கள் மற்றும் ஆராய்ச்சியாளர்கள் கல்வி மன அழுத்தம், ஆய்வுக் கட்டுரை பதட்டம், ஆராய்ச்சி அழுத்தம் மற்றும் படிப்பு-வாழ்க்கை சமநிலையை நிர்வகிக்க உதவுவதில் நான் நிபுணத்துவம் பெற்றுள்ளேன். இன்று உங்கள் படிப்பைப் பற்றி எப்படி உணர்கிறீர்கள்?",
+      'he': "שלום! אני הבן לוויה שלך ב-AI לבריאות נפשית. אני מתמחה בעזרה לסטודנטים וחוקרים להתמודד עם לחץ אקדמי, חרדת תזה, לחץ מחקר ואיזון לימודים-חיים. איך אתה מרגיש היום לגבי הלימודים שלך?"
     };
 
     if (messages.length === 1) {
