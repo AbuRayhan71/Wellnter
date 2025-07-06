@@ -321,7 +321,7 @@ Best regards`);
   };
 
   return (
-    <div className="w-full bg-white rounded-xl shadow-lg overflow-hidden">
+    <div className="w-full bg-white overflow-hidden">
       {/* Critical Appointment Modal */}
       <CriticalAppointmentModal
         isOpen={criticalModal.show}
@@ -364,7 +364,7 @@ Best regards`);
       )}
 
       {/* Messages Area */}
-      <ScrollArea className="h-80 sm:h-96 p-2 sm:p-3 bg-gray-50">
+      <ScrollArea className="h-80 sm:h-96 p-1 sm:p-2 bg-gray-50">
         <div className="space-y-3 sm:space-y-4">
           {messages.map((message, index) => (
             <div key={index} className="space-y-2 sm:space-y-3">
@@ -427,7 +427,7 @@ Best regards`);
       </ScrollArea>
 
       {/* Language Selector */}
-      <div className="px-2 sm:px-3 py-2 sm:py-3 border-t border-gray-100 bg-gray-50">
+      <div className="px-1 sm:px-2 py-2 sm:py-3 border-t border-gray-100 bg-gray-50">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Globe className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
@@ -454,7 +454,7 @@ Best regards`);
       </div>
 
       {/* Input Area */}
-      <div className="p-2 sm:p-3 border-t border-gray-200">
+      <div className="p-1 sm:p-2 border-t border-gray-200">
         <div className="flex space-x-2 sm:space-x-3">
           <Input
             value={inputMessage}
@@ -504,7 +504,7 @@ Best regards`);
       </div>
 
       {/* Bottom Warning */}
-      <div className="bg-gray-800 text-white p-2 sm:p-3">
+      <div className="bg-gray-800 text-white p-1 sm:p-2">
         <div className="text-center">
           <div className="flex items-center justify-center space-x-2 mb-1">
             <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 text-red-400" />

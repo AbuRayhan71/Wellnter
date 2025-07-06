@@ -193,12 +193,12 @@ Best regards`);
           </div>
 
           {/* AI Therapist Section */}
-          <div id="ai-therapist" className="bg-gray-50 rounded-2xl sm:rounded-3xl p-2 sm:p-4 lg:p-8">
+          <div id="ai-therapist" className="bg-gray-50 p-0">
             <div className="text-center mb-8 sm:mb-10">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 px-2">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 px-4 pt-8">
                 Wellnter AI
               </h2>
-              <p className="text-sm sm:text-base lg:text-lg text-gray-600 max-w-3xl mx-auto px-1 sm:px-2">
+              <p className="text-sm sm:text-base lg:text-lg text-gray-600 max-w-3xl mx-auto px-4 pb-4">
                 Get immediate, intelligent mental health support designed for ambitious minds under pressure.
                 Start your conversation below and experience personalised AI therapy built for high-performance lifestyles.
               </p>
