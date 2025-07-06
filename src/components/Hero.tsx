@@ -61,8 +61,8 @@ Best regards`);
             <a href="#features" className="text-gray-600 hover:text-blue-600 transition-colors">Features</a>
             <a href="/features" className="text-gray-600 hover:text-blue-600 transition-colors">All Features</a>
             <a href="/how-it-works" className="text-gray-600 hover:text-blue-600 transition-colors">How it Works</a>
-            <a href="/about" className="text-gray-600 hover:text-blue-600 transition-colors">About Us</a>
             <a href="#partnerships" className="text-gray-600 hover:text-blue-600 transition-colors">Partnerships</a>
+            <a href="#contact" className="text-gray-600 hover:text-blue-600 transition-colors">Contact</a>
             <Button 
               onClick={handleEarlyAccess}
               className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium"
@@ -110,18 +110,18 @@ Best regards`);
                 How it Works
               </a>
               <a 
-                href="/about" 
-                className="block text-gray-600 hover:text-blue-600 transition-colors py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                About Us
-              </a>
-              <a 
                 href="#partnerships" 
                 className="block text-gray-600 hover:text-blue-600 transition-colors py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Partnerships
+              </a>
+              <a 
+                href="#contact" 
+                className="block text-gray-600 hover:text-blue-600 transition-colors py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Contact
               </a>
               <Button 
                 onClick={() => {
