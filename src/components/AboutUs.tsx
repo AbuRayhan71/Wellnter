@@ -421,8 +421,6 @@ Best regards`);
           </div>
         </div>
       </section>
-        </div>
-      </section>
 
       {/* Our Values */}
       <section className="py-16 sm:py-24 bg-gray-50">
