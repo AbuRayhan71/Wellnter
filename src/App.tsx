@@ -114,7 +114,7 @@ function App() {
       <Hero />
       
       {/* AI Therapist Section */}
-      <section id="ai-therapist" className="py-12 sm:py-16 bg-gray-50">
+      <section id="ai-therapist" className="py-16 sm:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12">
             <div className="inline-flex items-center px-4 py-2 bg-blue-100 rounded-full text-blue-700 text-sm font-medium mb-6">
