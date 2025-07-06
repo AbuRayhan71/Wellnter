@@ -498,7 +498,7 @@ Best regards`);
               });
               setCriticalModal({ show: false, urgencyLevel: 'critical' });
             }}
-            className="text-xs sm:text-sm text-blue-600 hover:text-blue-700 hover:bg-blue-50 px-3 py-1.5 rounded-lg font-medium transition-all duration-200 border border-blue-200 hover:border-blue-300"
+            className="text-xs sm:text-sm text-blue-600 bg-white hover:bg-white px-3 py-1.5 rounded-lg font-medium border border-blue-200 shadow-sm"
           >
             New Chat
           </Button>
