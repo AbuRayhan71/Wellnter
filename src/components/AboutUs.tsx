@@ -94,25 +94,17 @@ const milestones = [
     bgColor: 'bg-blue-50'
   },
   {
-    year: '2025',
+    year: 'June 2025',
     title: 'AI Breakthrough',
-    description: 'Developed the first AI therapy system specifically trained on academic mental health data, with clinical-grade assessment capabilities.',
+    description: 'Developed the first AI therapy system specifically trained on academic mental health data, with clinical-grade assessment capabilities and joined PFC.',
     icon: Brain,
     color: 'text-purple-600',
     bgColor: 'bg-purple-50'
   },
   {
-    year: 'June 2025',
+    year: 'July 2025',
     title: 'Platform Launch',
     description: 'Successfully launched Wellnter to universities worldwide, with partnerships across North America, Europe, and Asia.',
-    icon: Globe,
-    color: 'text-green-600',
-    bgColor: 'bg-green-50'
-  },
-  {
-    year: '2025',
-    title: 'Joined PFC Partnership',
-    description: 'Formed strategic partnership with PFC to expand our reach and enhance our mental health support services for academic institutions.',
     icon: Globe,
     color: 'text-green-600',
     bgColor: 'bg-green-50'
