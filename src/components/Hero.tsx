@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Shield, Heart, Brain, CheckCircle, Menu, X, GraduationCap, Microscope, Calendar, Activity, BookOpen, Zap, TrendingUp } from 'lucide-react';
+import { ArrowRight, Shield, Heart, Brain, CheckCircle, Menu, X, GraduationCap, Microscope, Calendar, Activity, BookOpen, Zap, TrendingUp, AlertTriangle, Users } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 export function Hero() {
@@ -138,29 +138,29 @@ Best regards`);
             </div>
             
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 sm:mb-8 leading-tight px-2">
-              Clinical-Grade Mental Health
+              Mental Health Platform
               <br />
-              <span className="text-blue-600">Triage Platform</span>
+              <span className="text-blue-600">for Students & Researchers</span>
             </h1>
             
             <p className="text-lg sm:text-xl text-gray-600 mb-10 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-4">
-              Advanced AI triage system providing clinical-grade mental health assessment and support 
-              specifically designed for students and researchers. Get the right level of care, at the right time.
+              AI-powered mental health support designed specifically for academic environments.
+              Navigate thesis stress, research pressure, and academic challenges while maintaining your wellbeing.
             </p>
 
             {/* Trust indicators */}
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 mb-10 sm:mb-12 text-sm sm:text-base text-gray-500 px-4">
               <div className="flex items-center space-x-2">
-                <Shield className="w-5 h-5 text-green-600" />
-                <span>ATS Clinical Triage</span>
+                <Shield className="w-5 h-5 text-blue-600" />
+                <span>Privacy First</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Heart className="w-5 h-5 text-red-600" />
-                <span>Crisis Detection</span>
+                <Heart className="w-5 h-5 text-blue-600" />
+                <span>Academic Focus</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Brain className="w-5 h-5 text-purple-600" />
-                <span>Academic Specialization</span>
+                <Brain className="w-5 h-5 text-blue-600" />
+                <span>AI-Powered</span>
               </div>
             </div>
 

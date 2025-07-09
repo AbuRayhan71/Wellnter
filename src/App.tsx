@@ -6,6 +6,7 @@ import { AboutUs } from '@/components/AboutUs';
 import { Footer } from '@/components/Footer';
 import { TherapistChat } from '@/components/TherapistChat';
 import { useEffect, useState } from 'react';
+import { Activity, AlertTriangle, Users, Shield, Brain } from 'lucide-react';
 import './App.css';
 
 function App() {
