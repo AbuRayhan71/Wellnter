@@ -134,33 +134,33 @@ Best regards`);
           <div className="text-center mb-16 sm:mb-20">
             <div className="inline-flex items-center px-3 sm:px-4 py-2 bg-blue-50 rounded-full text-blue-700 text-xs sm:text-sm font-medium mb-6 sm:mb-8">
               <CheckCircle className="w-3 sm:w-4 h-3 sm:h-4 mr-2" />
-              AI-Powered Mental Health Platform
+              AI-Powered Mental Health Triage Platform
             </div>
             
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 sm:mb-8 leading-tight px-2">
-              Mental Health Platform
+              AI Mental Health Triage
               <br />
-              <span className="text-blue-600">for Students & Researchers</span>
+              <span className="text-blue-600">Built for Academia</span>
             </h1>
             
             <p className="text-lg sm:text-xl text-gray-600 mb-10 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-4">
-              AI-powered mental health support designed specifically for academic environments.
-              Navigate thesis stress, research pressure, and academic challenges while maintaining your wellbeing.
+              An intelligent triage platform that assesses, prioritizes, and connects students and researchers 
+              with the right level of mental health support. From AI-powered screening to professional intervention.
             </p>
 
             {/* Trust indicators */}
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 mb-10 sm:mb-12 text-sm sm:text-base text-gray-500 px-4">
               <div className="flex items-center space-x-2">
                 <Shield className="w-5 h-5 text-blue-600" />
-                <span>Privacy First</span>
+                <span>Clinical-Grade Triage</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Heart className="w-5 h-5 text-blue-600" />
-                <span>Academic Focus</span>
+                <span>Academic-Focused</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Brain className="w-5 h-5 text-blue-600" />
-                <span>AI-Powered</span>
+                <span>Smart Assessment</span>
               </div>
             </div>
 
