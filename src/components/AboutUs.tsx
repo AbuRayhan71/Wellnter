@@ -78,7 +78,7 @@ const founders = [
 
 const milestones = [
   {
-    year: '2023',
+    year: '2024',
     title: 'The Breaking Point',
     description: 'Our founders experienced severe academic burnout during their PhD and medical studies, realizing existing mental health resources weren\'t designed for academic pressures.',
     icon: Heart,
@@ -86,7 +86,7 @@ const milestones = [
     bgColor: 'bg-red-50'
   },
   {
-    year: '2024',
+    year: 'Early 2025',
     title: 'Research & Development',
     description: 'Conducted extensive research with 500+ students and researchers to understand the unique mental health challenges in academic environments.',
     icon: Microscope,
@@ -94,7 +94,7 @@ const milestones = [
     bgColor: 'bg-blue-50'
   },
   {
-    year: '2024',
+    year: '2025',
     title: 'AI Breakthrough',
     description: 'Developed the first AI therapy system specifically trained on academic mental health data, with clinical-grade assessment capabilities.',
     icon: Brain,
@@ -102,9 +102,17 @@ const milestones = [
     bgColor: 'bg-purple-50'
   },
   {
-    year: '2025',
+    year: 'June 2025',
     title: 'Platform Launch',
-    description: 'Launching Wellnter to universities worldwide, with partnerships across North America, Europe, and Asia.',
+    description: 'Successfully launched Wellnter to universities worldwide, with partnerships across North America, Europe, and Asia.',
+    icon: Globe,
+    color: 'text-green-600',
+    bgColor: 'bg-green-50'
+  },
+  {
+    year: '2025',
+    title: 'Joined PFC Partnership',
+    description: 'Formed strategic partnership with PFC to expand our reach and enhance our mental health support services for academic institutions.',
     icon: Globe,
     color: 'text-green-600',
     bgColor: 'bg-green-50'
