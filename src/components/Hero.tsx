@@ -138,29 +138,29 @@ Best regards`);
             </div>
             
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 sm:mb-8 leading-tight px-2">
-              Mental Health for Students
+              Clinical-Grade Mental Health
               <br />
-              <span className="text-blue-600">& Researchers</span>
+              <span className="text-blue-600">Triage Platform</span>
             </h1>
             
             <p className="text-lg sm:text-xl text-gray-600 mb-10 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-4">
-              AI-powered mental health support designed specifically for students and researchers.
-              Navigate academic pressure, thesis stress, and research challenges while maintaining your wellbeing.
+              Advanced AI triage system providing clinical-grade mental health assessment and support 
+              specifically designed for students and researchers. Get the right level of care, at the right time.
             </p>
 
             {/* Trust indicators */}
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 mb-10 sm:mb-12 text-sm sm:text-base text-gray-500 px-4">
               <div className="flex items-center space-x-2">
-                <Shield className="w-5 h-5 text-blue-600" />
-                <span>Privacy First</span>
+                <Shield className="w-5 h-5 text-green-600" />
+                <span>ATS Clinical Triage</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Heart className="w-5 h-5 text-blue-600" />
-                <span>Burnout Prevention</span>
+                <Heart className="w-5 h-5 text-red-600" />
+                <span>Crisis Detection</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Brain className="w-5 h-5 text-blue-600" />
-                <span>AI-Powered Insights</span>
+                <Brain className="w-5 h-5 text-purple-600" />
+                <span>Academic Specialization</span>
               </div>
             </div>
 
