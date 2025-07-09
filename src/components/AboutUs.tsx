@@ -48,7 +48,7 @@ const founders = [
     name: 'Anastasia Thiessen',
     role: 'Co-Founder',
     background: 'Business Strategy & Operations Specialist',
-    image: '/anastasia.jpeg',
+    image: '/anastasia-new.jpeg',
     bio: 'Anastasia brings extensive experience in business strategy and operations to Wellnter. Her deep understanding of scaling technology platforms and building sustainable business models has been instrumental in shaping Wellnter\'s growth strategy. She shares the vision of making mental health support accessible to students and researchers worldwide.',
     expertise: ['Business Strategy', 'Operations Management', 'Product Development', 'Market Expansion'],
     linkedin: 'https://www.linkedin.com/in/anastasia-thiessen-977b24216/',
@@ -60,7 +60,7 @@ const founders = [
   },
   {
     name: 'Aaron Lauterbach',
-    role: 'Co-Founder',
+    role: 'Advisor',
     background: 'Psychology & Clinical Mental Health Specialist',
     image: '/aaron.jpeg',
     bio: 'Aaron brings deep expertise in psychology and clinical mental health to Wellnter. His understanding of therapeutic approaches, mental health assessment, and evidence-based interventions ensures that our AI platform delivers clinically sound support. Aaron\'s passion for making mental health care more accessible drives the clinical foundation of our technology.',
