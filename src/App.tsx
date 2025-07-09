@@ -5,6 +5,7 @@ import { FeaturesPage } from '@/components/FeaturesPage';
 import { AboutUs } from '@/components/AboutUs';
 import { Footer } from '@/components/Footer';
 import { TherapistChat } from '@/components/TherapistChat';
+import { GraduationCap, BookOpen, Zap, Users, CheckCircle } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Activity, AlertTriangle, Users, Shield, Brain } from 'lucide-react';
 import './App.css';

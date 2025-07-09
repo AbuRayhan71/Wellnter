@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Shield, Heart, Brain, CheckCircle, Menu, X, GraduationCap, Microscope, Calendar, Activity, BookOpen, Zap, TrendingUp, AlertTriangle, Users } from 'lucide-react';
+import { ArrowRight, Shield, Heart, Brain, CheckCircle, Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 export function Hero() {
