@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Send, Bot, User, Calendar, AlertTriangle, Phone, X, Globe } from 'lucide-react';
+import { Send, Bot, User, Calendar, AlertTriangle, Phone, X, Globe, Lightbulb } from 'lucide-react';
 import { sendMessageToTherapist, analyzeSupportLevel, ChatMessage, SupportAnalysis, ClinicalAssessment } from '@/services/groqService';
 import { VoiceInput } from '@/components/VoiceInput';
 import { CriticalAppointmentModal } from '@/components/CriticalAppointmentModal';
@@ -48,6 +48,44 @@ const TOP_25_LANGUAGES: Language[] = [
   { code: 'ta', name: 'Tamil', flag: '🇮🇳', nativeName: 'தமிழ்' }
 ];
 
+const CHAT_SUGGESTIONS = [
+  {
+    category: "Academic Stress",
+    suggestions: [
+      "I'm feeling overwhelmed with my coursework",
+      "I have thesis anxiety and can't focus",
+      "I'm experiencing imposter syndrome",
+      "I'm struggling with research pressure"
+    ]
+  },
+  {
+    category: "Study Issues",
+    suggestions: [
+      "I can't concentrate while studying",
+      "I'm procrastinating on important assignments",
+      "I feel burned out from studying",
+      "I'm having trouble with work-life balance"
+    ]
+  },
+  {
+    category: "Emotional Support",
+    suggestions: [
+      "I'm feeling anxious about my future",
+      "I'm dealing with academic depression",
+      "I feel isolated and lonely",
+      "I'm having panic attacks before exams"
+    ]
+  },
+  {
+    category: "Quick Check-ins",
+    suggestions: [
+      "How can I manage stress better?",
+      "What are some study techniques for anxiety?",
+      "I need help with time management",
+      "Can you help me with breathing exercises?"
+    ]
+  }
+];
 export function TherapistChat() {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
@@ -59,6 +97,7 @@ export function TherapistChat() {
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState<Language>(TOP_25_LANGUAGES[0]);
+  const [showSuggestions, setShowSuggestions] = useState(true);
   const [therapistPrompt, setTherapistPrompt] = useState<TherapistPrompt>({ 
     show: false, 
     analysis: { level: 'low', reasoning: '', needsTherapist: false } 
@@ -255,6 +294,11 @@ Best regards`);
     setInputMessage(transcribedText);
   };
 
+  const handleSuggestionClick = (suggestion: string) => {
+    setInputMessage(suggestion);
+    setShowSuggestions(false);
+  };
+
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
@@ -374,6 +418,43 @@ Best regards`);
       {/* Messages Area */}
       <ScrollArea className="h-80 sm:h-96 p-1 sm:p-2 bg-gray-50">
         <div className="space-y-3 sm:space-y-4">
+          {/* Suggestions - Show only at the beginning */}
+          {showSuggestions && messages.length === 1 && (
+            <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 sm:p-6 mx-2">
+              <div className="flex items-center space-x-2 mb-4">
+                <Lightbulb className="w-5 h-5 text-blue-600" />
+                <h3 className="font-semibold text-gray-900 text-sm sm:text-base">Quick Start Suggestions</h3>
+              </div>
+              
+              <div className="space-y-4">
+                {CHAT_SUGGESTIONS.map((category, categoryIndex) => (
+                  <div key={categoryIndex}>
+                    <h4 className="text-xs sm:text-sm font-medium text-gray-700 mb-2">{category.category}</h4>
+                    <div className="grid grid-cols-1 gap-2">
+                      {category.suggestions.map((suggestion, suggestionIndex) => (
+                        <Button
+                          key={suggestionIndex}
+                          variant="outline"
+                          size="sm"
+                          onClick={() => handleSuggestionClick(suggestion)}
+                          className="text-left justify-start h-auto py-2 px-3 text-xs sm:text-sm text-gray-700 hover:text-blue-600 hover:border-blue-300 hover:bg-blue-50 transition-colors"
+                        >
+                          {suggestion}
+                        </Button>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
+              <div className="mt-4 pt-3 border-t border-gray-100">
+                <p className="text-xs text-gray-500 text-center">
+                  💡 Click any suggestion above or type your own message below
+                </p>
+              </div>
+            </div>
+          )}
+          
           {messages.map((message, index) => (
             <div key={index} className="space-y-2 sm:space-y-3">
               <div className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -511,6 +592,17 @@ Best regards`);
           >
             New Chat
           </Button>
+          {!showSuggestions && messages.length > 1 && (
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setShowSuggestions(true)}
+              className="text-xs sm:text-sm text-gray-500 hover:text-blue-600 px-3 py-1.5 rounded-lg"
+            >
+              <Lightbulb className="w-3 h-3 mr-1" />
+              Show Suggestions
+            </Button>
+          )}
         </div>
       </div>
 
