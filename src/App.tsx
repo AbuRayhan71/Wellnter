@@ -5,6 +5,7 @@ import { FeaturesPage } from '@/components/FeaturesPage';
 import { AboutUs } from '@/components/AboutUs';
 import { Footer } from '@/components/Footer';
 import { TherapistChat } from '@/components/TherapistChat';
+import { TherapistDashboard } from '@/components/TherapistDashboard';
 import { GraduationCap, BookOpen, Zap, Users, CheckCircle } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Activity, AlertTriangle, Shield, Brain } from 'lucide-react';
@@ -25,7 +26,9 @@ function App() {
 
     // Check URL path to determine which page to show
     const path = window.location.pathname;
-    if (path === '/features') {
+    if (path === '/therapist') {
+      setCurrentPage('therapist');
+    } else if (path === '/features') {
       setCurrentPage('features');
     } else if (path === '/how-it-works') {
       setCurrentPage('how-it-works');
@@ -38,7 +41,9 @@ function App() {
     // Listen for URL changes
     const handlePopState = () => {
       const newPath = window.location.pathname;
-      if (newPath === '/features') {
+      if (newPath === '/therapist') {
+        setCurrentPage('therapist');
+      } else if (newPath === '/features') {
         setCurrentPage('features');
       } else if (newPath === '/how-it-works') {
         setCurrentPage('how-it-works');
@@ -69,7 +74,9 @@ function App() {
           const path = url.pathname;
           window.history.pushState({}, '', path);
           
-          if (path === '/features') {
+          if (path === '/therapist') {
+            setCurrentPage('therapist');
+          } else if (path === '/features') {
             setCurrentPage('features');
           } else if (path === '/how-it-works') {
             setCurrentPage('how-it-works');
@@ -86,6 +93,14 @@ function App() {
     document.addEventListener('click', handleNavigation);
     return () => document.removeEventListener('click', handleNavigation);
   }, []);
+
+  if (currentPage === 'therapist') {
+    return (
+      <div className="min-h-screen w-full overflow-x-hidden">
+        <TherapistDashboard />
+      </div>
+    );
+  }
 
   if (currentPage === 'features') {
     return (
@@ -120,21 +135,113 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12">
             <div className="inline-flex items-center px-4 py-2 bg-blue-100 rounded-full text-blue-700 text-sm font-medium mb-6">
-              Try Our AI Therapist
+              Patient Portal - AI Mental Health Companion
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
-              Talk to Our AI Mental Health Companion
+              Dual-Sided Mental Health Platform
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8 sm:mb-10">
-              Experience personalized mental health support designed specifically for students and researchers. 
-              Our AI understands academic stress, thesis anxiety, and research pressure.
+              Complete mental health ecosystem with AI-powered patient support and professional therapist tools. 
+              Seamless integration between student care and clinical practice.
             </p>
           </div>
           
-          <div className="max-w-4xl mx-auto">
+          {/* Platform Overview */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            {/* Patient Side */}
             <div className="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
               <div className="bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-4">
-                <h3 className="text-white font-semibold text-lg">AI Mental Health Companion</h3>
+                <h3 className="text-white font-semibold text-lg">Patient Portal</h3>
+                <p className="text-blue-100 text-sm">AI Mental Health Companion • 24/7 Support • Crisis Detection</p>
+              </div>
+              <div className="p-6">
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                      <Brain className="w-4 h-4 text-blue-600" />
+                    </div>
+                    <span className="text-gray-700">AI-powered mental health assessment</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                      <Shield className="w-4 h-4 text-green-600" />
+                    </div>
+                    <span className="text-gray-700">Clinical-grade triage (ATS scoring)</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                      <AlertTriangle className="w-4 h-4 text-purple-600" />
+                    </div>
+                    <span className="text-gray-700">Automatic crisis intervention</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+                      <Users className="w-4 h-4 text-orange-600" />
+                    </div>
+                    <span className="text-gray-700">Seamless therapist referral</span>
+                  </div>
+                </div>
+                <div className="mt-6">
+                  <button 
+                    onClick={() => document.getElementById('patient-chat')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors"
+                  >
+                    Try Patient Portal
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Therapist Side */}
+            <div className="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
+              <div className="bg-gradient-to-r from-green-600 to-teal-600 px-6 py-4">
+                <h3 className="text-white font-semibold text-lg">Therapist Portal</h3>
+                <p className="text-green-100 text-sm">AI Scribe • Patient Management • Clinical Documentation</p>
+              </div>
+              <div className="p-6">
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                      <Activity className="w-4 h-4 text-green-600" />
+                    </div>
+                    <span className="text-gray-700">AI-assisted clinical documentation</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                      <CheckCircle className="w-4 h-4 text-blue-600" />
+                    </div>
+                    <span className="text-gray-700">Pre-filled patient assessments</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                      <Zap className="w-4 h-4 text-purple-600" />
+                    </div>
+                    <span className="text-gray-700">Session recording & transcription</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+                      <BookOpen className="w-4 h-4 text-orange-600" />
+                    </div>
+                    <span className="text-gray-700">MD escalation system</span>
+                  </div>
+                </div>
+                <div className="mt-6">
+                  <a 
+                    href="/therapist"
+                    className="block w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors text-center"
+                  >
+                    Access Therapist Portal
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Patient Chat Interface */}
+          <div id="patient-chat" className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
+              <div className="bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-4">
+                <h3 className="text-white font-semibold text-lg">Patient Portal - AI Mental Health Companion</h3>
                 <p className="text-blue-100 text-sm">Specialized in academic mental health • Available 24/7 • 10+ Languages</p>
               </div>
               <TherapistChat />
