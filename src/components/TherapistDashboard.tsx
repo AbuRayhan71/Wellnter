@@ -999,6 +999,7 @@ Best regards`);
                           </Button>
                         </div>
 
+                        <>
                         {selectedPatient.sessionHistory.length > 0 ? (
                           <div className="space-y-4">
                             {selectedPatient.sessionHistory.map((session) => (
@@ -1036,6 +1037,7 @@ Best regards`);
                             <p>No sessions recorded yet</p>
                           </div>
                         )}
+                        </>
                       </div>
                     )}
 
