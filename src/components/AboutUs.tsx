@@ -8,11 +8,17 @@ import {
   Users, 
   Lightbulb, 
   Globe, 
+  Award,
+  BookOpen,
+  GraduationCap,
   Microscope,
+  Code,
+  Stethoscope,
   Linkedin,
   Mail,
   ArrowRight,
   Star,
+  Zap,
   Shield,
   TrendingUp,
   ArrowLeft,
@@ -42,7 +48,7 @@ const founders = [
     name: 'Anastasia Thiessen',
     role: 'Co-Founder',
     background: 'Business Strategy & Operations Specialist',
-    image: '/anastasia-new.jpeg',
+    image: '/WhatsApp Image 2025-07-09 at 13.18.22.jpeg',
     bio: 'Anastasia brings extensive experience in business strategy and operations to Wellnter. Her deep understanding of scaling technology platforms and building sustainable business models has been instrumental in shaping Wellnter\'s growth strategy. She shares the vision of making mental health support accessible to students and researchers worldwide.',
     expertise: ['Business Strategy', 'Operations Management', 'Product Development', 'Market Expansion'],
     linkedin: 'https://www.linkedin.com/in/anastasia-thiessen-977b24216/',
@@ -146,7 +152,7 @@ const stats = [
 export function AboutUs() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const handleContactFounder = (linkedin: string) => {
+  const handleContactFounder = (founderName: string, linkedin: string) => {
     window.open(linkedin, '_blank');
   };
 
@@ -445,7 +451,7 @@ Best regards`);
                   </div>
                   
                   <Button 
-                    onClick={() => handleContactFounder(founder.linkedin)}
+                    onClick={() => handleContactFounder(founder.name, founder.linkedin)}
                     className="w-full bg-blue-600 hover:bg-blue-700 text-white"
                   >
                     <Linkedin className="w-4 h-4 mr-2" />

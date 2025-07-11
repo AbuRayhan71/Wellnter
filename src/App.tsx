@@ -6,7 +6,7 @@ import { AboutUs } from '@/components/AboutUs';
 import { Footer } from '@/components/Footer';
 import { TherapistChat } from '@/components/TherapistChat';
 import { TherapistDashboard } from '@/components/TherapistDashboard';
-import { BookOpen, Zap, Users, CheckCircle } from 'lucide-react';
+import { GraduationCap, BookOpen, Zap, Users, CheckCircle } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Activity, AlertTriangle, Shield, Brain } from 'lucide-react';
 import './App.css';
