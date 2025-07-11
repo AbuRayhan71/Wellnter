@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Send, Bot, User, Calendar, AlertTriangle, Phone, X, Mic, Globe } from 'lucide-react';
+import { Send, Bot, User, Calendar, AlertTriangle, Phone, X, Globe } from 'lucide-react';
 import { sendMessageToTherapist, analyzeSupportLevel, ChatMessage, SupportAnalysis, ClinicalAssessment } from '@/services/groqService';
 import { VoiceInput } from '@/components/VoiceInput';
 import { CriticalAppointmentModal } from '@/components/CriticalAppointmentModal';
@@ -92,11 +92,6 @@ export function TherapistChat() {
     const isATS1or2 = clinicalData && ['ATS 1', 'ATS 2'].includes(clinicalData.triageLevel);
     
     return hasCriticalKeywords || isATS1or2 || false;
-  };
-
-  // Helper function to check if ATS score requires appointment
-  const requiresAppointment = (atsLevel: string): boolean => {
-    return ['ATS 1', 'ATS 2', 'ATS 3'].includes(atsLevel);
   };
 
   // Helper function to get urgency level based on ATS score
@@ -285,23 +280,6 @@ Best regards`);
       case 'ATS 2': return 'bg-red-500';
       case 'ATS 3': return 'bg-orange-500';
       default: return 'bg-green-500';
-    }
-  };
-
-  const getSupportLevelIcon = (level: string) => {
-    switch (level) {
-      case 'high': return AlertTriangle;
-      case 'mid': return Phone;
-      default: return Calendar;
-    }
-  };
-
-  const getATSIcon = (atsLevel: string) => {
-    switch (atsLevel) {
-      case 'ATS 1': return AlertTriangle;
-      case 'ATS 2': return AlertTriangle;
-      case 'ATS 3': return Phone;
-      default: return Calendar;
     }
   };
 
