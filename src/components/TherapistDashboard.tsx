@@ -1036,7 +1036,6 @@ Best regards`);
                             <p>No sessions recorded yet</p>
                           </div>
                         )}
-                        </>
                       </div>
                     )}
 
