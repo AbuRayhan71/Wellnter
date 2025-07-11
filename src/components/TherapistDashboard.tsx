@@ -27,7 +27,11 @@ import {
   Shield,
   ArrowLeft,
   Menu,
-  X
+  X,
+  Stethoscope,
+  GraduationCap,
+  BookOpen,
+  TrendingUp
 } from 'lucide-react';
 
 interface PatientData {
@@ -43,6 +47,13 @@ interface PatientData {
   riskFactors: string[];
   sessionHistory: SessionRecord[];
   intakeForm: IntakeFormData;
+  aiPreAssessment: {
+    summary: string;
+    keyFindings: string[];
+    recommendedActions: string[];
+    urgencyLevel: string;
+    confidenceScore: number;
+  };
 }
 
 interface SessionRecord {
@@ -105,6 +116,25 @@ const mockPatients: PatientData[] = [
     symptoms: ['Severe anxiety', 'Panic attacks', 'Academic burnout', 'Sleep disturbances'],
     clinicalNotes: 'PhD student experiencing severe thesis anxiety with panic attacks during research presentations. Patient reports feeling overwhelmed by dissertation deadlines and imposter syndrome. Requires immediate intervention and ongoing support.',
     riskFactors: ['Social isolation', 'Perfectionism', 'Financial stress', 'Family pressure'],
+    aiPreAssessment: {
+      summary: 'High-functioning PhD student presenting with severe academic anxiety, panic symptoms, and burnout. AI assessment indicates significant distress related to thesis completion and career uncertainty. Patient demonstrates insight but requires immediate professional intervention.',
+      keyFindings: [
+        'Severe anxiety symptoms (9/10 severity)',
+        'Panic attacks triggered by academic presentations',
+        'Sleep disruption affecting cognitive function',
+        'Perfectionist tendencies contributing to stress',
+        'Strong academic background but declining performance'
+      ],
+      recommendedActions: [
+        'Immediate anxiety management techniques',
+        'Cognitive behavioral therapy for academic anxiety',
+        'Sleep hygiene intervention',
+        'Stress management workshops',
+        'Consider psychiatric consultation for medication evaluation'
+      ],
+      urgencyLevel: 'High - Requires immediate attention',
+      confidenceScore: 92
+    },
     sessionHistory: [
       {
         id: 's1',
@@ -161,6 +191,25 @@ const mockPatients: PatientData[] = [
     symptoms: ['Study stress', 'Procrastination', 'Mild depression', 'Time management issues'],
     clinicalNotes: 'Undergraduate student struggling with time management and motivation. Reports difficulty concentrating during study sessions and feeling overwhelmed by coursework.',
     riskFactors: ['Academic pressure', 'Family expectations', 'Financial concerns'],
+    aiPreAssessment: {
+      summary: 'Third-year engineering student experiencing moderate academic stress and motivational challenges. AI assessment suggests underlying time management and organizational difficulties contributing to academic underperformance.',
+      keyFindings: [
+        'Moderate stress levels (6/10)',
+        'Procrastination patterns affecting grades',
+        'Mild depressive symptoms',
+        'Good social support system',
+        'Responsive to structured interventions'
+      ],
+      recommendedActions: [
+        'Time management and study skills training',
+        'Cognitive behavioral techniques for procrastination',
+        'Academic coaching sessions',
+        'Stress reduction techniques',
+        'Regular check-ins for progress monitoring'
+      ],
+      urgencyLevel: 'Moderate - Standard intervention timeline',
+      confidenceScore: 85
+    },
     sessionHistory: [
       {
         id: 's3',
@@ -209,6 +258,25 @@ const mockPatients: PatientData[] = [
     symptoms: ['Suicidal ideation', 'Severe depression', 'Academic failure anxiety', 'Social withdrawal'],
     clinicalNotes: 'URGENT: Masters student expressing suicidal thoughts related to academic failure. Immediate crisis intervention required. Patient has been struggling with research project and feels hopeless about future.',
     riskFactors: ['Suicidal ideation', 'Social isolation', 'Academic failure', 'Previous mental health history'],
+    aiPreAssessment: {
+      summary: 'CRITICAL: Masters student in clinical psychology presenting with active suicidal ideation and severe depression. AI crisis detection protocols activated. Patient requires immediate professional intervention and safety planning.',
+      keyFindings: [
+        'Active suicidal ideation with plan',
+        'Severe depression (10/10 severity)',
+        'Academic failure triggering hopelessness',
+        'History of self-harm behaviors',
+        'Substance use as coping mechanism'
+      ],
+      recommendedActions: [
+        'IMMEDIATE: Crisis intervention and safety planning',
+        'Emergency contact notification',
+        'Psychiatric evaluation for hospitalization',
+        'Remove access to means of self-harm',
+        'Intensive therapy and monitoring'
+      ],
+      urgencyLevel: 'CRITICAL - Immediate intervention required',
+      confidenceScore: 98
+    },
     sessionHistory: [
       {
         id: 's4',
@@ -255,6 +323,7 @@ export function TherapistDashboard() {
   const [aiSuggestions, setAiSuggestions] = useState<string[]>([]);
   const [activeTab, setActiveTab] = useState<'overview' | 'intake' | 'sessions' | 'notes'>('overview');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isGeneratingNotes, setIsGeneratingNotes] = useState(false);
 
   // Auto-select first patient for demo purposes
   useEffect(() => {
@@ -296,6 +365,9 @@ CLINICAL ASSESSMENT:
 - Support Level: ${patient.supportLevel.toUpperCase()}
 - Last Assessment: ${patient.lastAssessment.toLocaleDateString()}
 
+AI PRE-ASSESSMENT SUMMARY:
+${patient.aiPreAssessment.summary}
+
 PRESENTING SYMPTOMS:
 ${patient.symptoms.map(symptom => `- ${symptom}`).join('\n')}
 
@@ -305,8 +377,13 @@ ${patient.clinicalNotes}
 RISK FACTORS:
 ${patient.riskFactors.map(factor => `- ${factor}`).join('\n')}
 
+AI RECOMMENDED ACTIONS:
+${patient.aiPreAssessment.recommendedActions.map(action => `- ${action}`).join('\n')}
+
 REASON FOR ESCALATION:
-This patient requires immediate medical evaluation and potential psychiatric consultation. Please prioritize this case.
+This patient requires immediate medical evaluation and potential psychiatric consultation. Please prioritize this case based on ${patient.aiPreAssessment.urgencyLevel}.
+
+AI Confidence Score: ${patient.aiPreAssessment.confidenceScore}%
 
 Therapist: Dr. [Your Name]
 Date: ${new Date().toLocaleDateString()}
@@ -316,15 +393,82 @@ Time: ${new Date().toLocaleTimeString()}`);
   };
 
   const generateAISuggestions = async (notes: string) => {
-    // Simulate AI-generated suggestions based on session notes
-    const suggestions = [
-      "Consider exploring cognitive behavioral therapy techniques for anxiety management",
-      "Recommend mindfulness exercises for stress reduction",
-      "Suggest academic accommodation discussion with university",
-      "Follow up on sleep hygiene practices",
-      "Assess need for psychiatric consultation"
-    ];
-    setAiSuggestions(suggestions);
+    setIsGeneratingNotes(true);
+    
+    // Simulate GPT API call
+    try {
+      // In a real implementation, this would call GPT API
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      const suggestions = [
+        "Consider exploring cognitive behavioral therapy techniques for anxiety management",
+        "Recommend mindfulness exercises for stress reduction during study sessions",
+        "Suggest academic accommodation discussion with university disability services",
+        "Follow up on sleep hygiene practices and consider sleep study referral",
+        "Assess need for psychiatric consultation for medication evaluation",
+        "Implement grounding techniques for panic attack management",
+        "Explore perfectionism patterns and their impact on academic performance"
+      ];
+      setAiSuggestions(suggestions);
+    } catch (error) {
+      console.error('Error generating AI suggestions:', error);
+    } finally {
+      setIsGeneratingNotes(false);
+    }
+  };
+
+  const generateSessionSummary = async () => {
+    setIsGeneratingNotes(true);
+    
+    try {
+      // Simulate GPT API call for session summary
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      const summary = `Session Summary (AI Generated):
+
+PATIENT PRESENTATION:
+- Patient appeared anxious but engaged throughout session
+- Demonstrated good insight into current stressors
+- Cooperative with therapeutic interventions
+
+KEY TOPICS DISCUSSED:
+- Academic pressure and thesis-related anxiety
+- Coping strategies for managing panic symptoms
+- Sleep disturbances and their impact on daily functioning
+- Support system utilization
+
+INTERVENTIONS PROVIDED:
+- Psychoeducation about anxiety and panic responses
+- Breathing techniques for acute anxiety management
+- Cognitive restructuring for catastrophic thinking patterns
+
+PATIENT RESPONSE:
+- Receptive to interventions and willing to practice techniques
+- Expressed motivation for continued treatment
+- Demonstrated understanding of safety planning
+
+TREATMENT PLAN:
+- Continue weekly sessions focusing on CBT techniques
+- Implement daily mindfulness practice
+- Monitor sleep patterns and anxiety levels
+- Follow up on academic accommodations
+
+RISK ASSESSMENT:
+- No current suicidal ideation
+- Good safety awareness
+- Stable support system
+
+NEXT SESSION GOALS:
+- Review homework assignments
+- Practice anxiety management techniques
+- Explore academic stress reduction strategies`;
+
+      setSessionNotes(prev => prev + "\n\n" + summary);
+    } catch (error) {
+      console.error('Error generating session summary:', error);
+    } finally {
+      setIsGeneratingNotes(false);
+    }
   };
 
   const startRecording = () => {
@@ -335,8 +479,8 @@ Time: ${new Date().toLocaleTimeString()}`);
   const stopRecording = () => {
     setIsRecording(false);
     // In a real implementation, this would stop recording and generate transcript
-    const mockTranscript = "Patient discussed increased anxiety levels related to upcoming thesis defense. Reported difficulty sleeping and concentration issues. Expressed concerns about imposter syndrome.";
-    setSessionNotes(prev => prev + "\n\nSession Transcript:\n" + mockTranscript);
+    const mockTranscript = "Patient discussed increased anxiety levels related to upcoming thesis defense. Reported difficulty sleeping and concentration issues. Expressed concerns about imposter syndrome and fear of failure. Therapist provided psychoeducation about anxiety responses and introduced breathing techniques.";
+    setSessionNotes(prev => prev + "\n\nSession Transcript (AI Generated):\n" + mockTranscript);
     generateAISuggestions(mockTranscript);
   };
 
@@ -354,9 +498,9 @@ Best regards`);
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-50">
       {/* Navigation */}
-      <nav className="relative z-10 px-4 sm:px-6 lg:px-8 py-4 sm:py-6 bg-white border-b border-gray-100">
+      <nav className="relative z-10 px-4 sm:px-6 lg:px-8 py-4 sm:py-6 bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <img 
@@ -486,8 +630,8 @@ Best regards`);
               {mockPatients.map((patient) => (
                 <Card 
                   key={patient.id}
-                  className={`cursor-pointer transition-all duration-200 hover:shadow-md ${
-                    selectedPatient?.id === patient.id ? 'ring-2 ring-blue-500 bg-blue-50' : ''
+                  className={`cursor-pointer transition-all duration-200 hover:shadow-md bg-white border ${
+                    selectedPatient?.id === patient.id ? 'ring-2 ring-blue-500 bg-blue-50' : 'border-gray-200'
                   }`}
                   onClick={() => setSelectedPatient(patient)}
                 >
@@ -521,7 +665,7 @@ Best regards`);
           </div>
 
           {/* Main Content */}
-          <div className="flex-1 overflow-y-auto">
+          <div className="flex-1 overflow-y-auto bg-gray-50">
             {selectedPatient ? (
               <div className="p-6">
                 {/* Patient Header */}
@@ -566,6 +710,56 @@ Best regards`);
                   </div>
                 </div>
 
+                {/* AI Pre-Assessment Summary */}
+                <div className="bg-white rounded-lg shadow-sm border border-gray-200 mb-6">
+                  <div className="bg-gradient-to-r from-purple-600 to-blue-600 px-6 py-4 rounded-t-lg">
+                    <h3 className="text-white font-semibold text-lg flex items-center">
+                      <Brain className="w-5 h-5 mr-2" />
+                      AI Pre-Assessment Summary
+                    </h3>
+                    <p className="text-purple-100 text-sm">
+                      Confidence Score: {selectedPatient.aiPreAssessment.confidenceScore}% • {selectedPatient.aiPreAssessment.urgencyLevel}
+                    </p>
+                  </div>
+                  <div className="p-6">
+                    <p className="text-gray-700 mb-4 leading-relaxed">
+                      {selectedPatient.aiPreAssessment.summary}
+                    </p>
+                    
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                      <div>
+                        <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
+                          <TrendingUp className="w-4 h-4 mr-2 text-blue-600" />
+                          Key Findings
+                        </h4>
+                        <ul className="space-y-2">
+                          {selectedPatient.aiPreAssessment.keyFindings.map((finding, index) => (
+                            <li key={index} className="flex items-start space-x-2">
+                              <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
+                              <span className="text-sm text-gray-700">{finding}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      <div>
+                        <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
+                          <Stethoscope className="w-4 h-4 mr-2 text-green-600" />
+                          Recommended Actions
+                        </h4>
+                        <ul className="space-y-2">
+                          {selectedPatient.aiPreAssessment.recommendedActions.map((action, index) => (
+                            <li key={index} className="flex items-start space-x-2">
+                              <ArrowLeft className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0 rotate-180" />
+                              <span className="text-sm text-gray-700">{action}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 {/* Tab Navigation */}
                 <div className="bg-white rounded-lg shadow-sm border border-gray-200 mb-6">
                   <div className="border-b border-gray-200">
@@ -592,7 +786,7 @@ Best regards`);
                     </nav>
                   </div>
 
-                  <div className="p-6">
+                  <div className="p-6 bg-white">
                     {activeTab === 'overview' && (
                       <div className="space-y-6">
                         {/* Current Symptoms */}
@@ -631,11 +825,11 @@ Best regards`);
                       <div className="space-y-6">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                           {/* Demographics */}
-                          <Card>
-                            <CardHeader>
+                          <Card className="bg-white border border-gray-200">
+                            <CardHeader className="bg-gray-50">
                               <CardTitle className="text-lg">Demographics</CardTitle>
                             </CardHeader>
-                            <CardContent className="space-y-3">
+                            <CardContent className="space-y-3 bg-white">
                               <div className="flex justify-between">
                                 <span className="text-gray-600">Age:</span>
                                 <span className="font-medium">{selectedPatient.intakeForm.age}</span>
@@ -656,11 +850,14 @@ Best regards`);
                           </Card>
 
                           {/* Academic Information */}
-                          <Card>
-                            <CardHeader>
-                              <CardTitle className="text-lg">Academic Information</CardTitle>
+                          <Card className="bg-white border border-gray-200">
+                            <CardHeader className="bg-gray-50">
+                              <CardTitle className="text-lg flex items-center">
+                                <GraduationCap className="w-5 h-5 mr-2" />
+                                Academic Information
+                              </CardTitle>
                             </CardHeader>
-                            <CardContent className="space-y-3">
+                            <CardContent className="space-y-3 bg-white">
                               <div className="flex justify-between">
                                 <span className="text-gray-600">Program:</span>
                                 <span className="font-medium">{selectedPatient.intakeForm.currentProgram}</span>
@@ -681,11 +878,14 @@ Best regards`);
                           </Card>
 
                           {/* Mental Health Assessment */}
-                          <Card>
-                            <CardHeader>
-                              <CardTitle className="text-lg">Mental Health Assessment</CardTitle>
+                          <Card className="bg-white border border-gray-200">
+                            <CardHeader className="bg-gray-50">
+                              <CardTitle className="text-lg flex items-center">
+                                <Heart className="w-5 h-5 mr-2" />
+                                Mental Health Assessment
+                              </CardTitle>
                             </CardHeader>
-                            <CardContent className="space-y-3">
+                            <CardContent className="space-y-3 bg-white">
                               <div className="flex justify-between">
                                 <span className="text-gray-600">Stress Level:</span>
                                 <Badge className={`${selectedPatient.intakeForm.stressLevel >= 7 ? 'bg-red-500' : selectedPatient.intakeForm.stressLevel >= 4 ? 'bg-orange-500' : 'bg-green-500'} text-white`}>
@@ -706,11 +906,14 @@ Best regards`);
                           </Card>
 
                           {/* Risk Assessment */}
-                          <Card>
-                            <CardHeader>
-                              <CardTitle className="text-lg">Risk Assessment</CardTitle>
+                          <Card className="bg-white border border-gray-200">
+                            <CardHeader className="bg-gray-50">
+                              <CardTitle className="text-lg flex items-center">
+                                <Shield className="w-5 h-5 mr-2" />
+                                Risk Assessment
+                              </CardTitle>
                             </CardHeader>
-                            <CardContent className="space-y-3">
+                            <CardContent className="space-y-3 bg-white">
                               <div className="flex justify-between items-center">
                                 <span className="text-gray-600">Suicidal Ideation:</span>
                                 {selectedPatient.intakeForm.suicidalIdeation ? (
@@ -750,7 +953,7 @@ Best regards`);
                         {selectedPatient.sessionHistory.length > 0 ? (
                           <div className="space-y-4">
                             {selectedPatient.sessionHistory.map((session) => (
-                              <Card key={session.id}>
+                              <Card key={session.id} className="bg-white border border-gray-200">
                                 <CardContent className="p-4">
                                   <div className="flex items-start justify-between mb-3">
                                     <div>
@@ -790,14 +993,14 @@ Best regards`);
                     {activeTab === 'notes' && (
                       <div className="space-y-6">
                         {/* Session Recording */}
-                        <Card>
-                          <CardHeader>
+                        <Card className="bg-white border border-gray-200">
+                          <CardHeader className="bg-gray-50">
                             <CardTitle className="flex items-center space-x-2">
                               <Brain className="w-5 h-5 text-blue-600" />
                               <span>AI-Assisted Session Notes</span>
                             </CardTitle>
                           </CardHeader>
-                          <CardContent className="space-y-4">
+                          <CardContent className="space-y-4 bg-white">
                             <div className="flex items-center space-x-4">
                               <Button
                                 onClick={isRecording ? stopRecording : startRecording}
@@ -833,12 +1036,12 @@ Best regards`);
                                   value={sessionNotes}
                                   onChange={(e) => setSessionNotes(e.target.value)}
                                   placeholder="Enter session notes here. AI will assist with suggestions and formatting."
-                                  className="w-full h-40 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                  className="w-full h-40 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
                                 />
                               </div>
 
                               {aiSuggestions.length > 0 && (
-                                <div className="bg-blue-50 p-4 rounded-lg">
+                                <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
                                   <h4 className="font-medium text-blue-900 mb-3">AI Suggestions</h4>
                                   <ul className="space-y-2">
                                     {aiSuggestions.map((suggestion, index) => (
@@ -852,9 +1055,39 @@ Best regards`);
                               )}
 
                               <div className="flex space-x-3">
-                                <Button onClick={() => generateAISuggestions(sessionNotes)}>
-                                  <Brain className="w-4 h-4 mr-2" />
-                                  Get AI Suggestions
+                                <Button 
+                                  onClick={() => generateAISuggestions(sessionNotes)}
+                                  disabled={isGeneratingNotes}
+                                  className="bg-purple-600 hover:bg-purple-700 text-white"
+                                >
+                                  {isGeneratingNotes ? (
+                                    <>
+                                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+                                      Generating...
+                                    </>
+                                  ) : (
+                                    <>
+                                      <Brain className="w-4 h-4 mr-2" />
+                                      Get AI Suggestions
+                                    </>
+                                  )}
+                                </Button>
+                                <Button 
+                                  onClick={generateSessionSummary}
+                                  disabled={isGeneratingNotes}
+                                  className="bg-green-600 hover:bg-green-700 text-white"
+                                >
+                                  {isGeneratingNotes ? (
+                                    <>
+                                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+                                      Generating...
+                                    </>
+                                  ) : (
+                                    <>
+                                      <FileText className="w-4 h-4 mr-2" />
+                                      Generate Summary
+                                    </>
+                                  )}
                                 </Button>
                                 <Button variant="outline">
                                   <Save className="w-4 h-4 mr-2" />
