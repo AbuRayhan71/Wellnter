@@ -9,12 +9,10 @@ import {
   Lightbulb, 
   Globe, 
   Microscope,
-  Stethoscope,
   Linkedin,
   Mail,
   ArrowRight,
   Star,
-  Zap,
   Shield,
   TrendingUp,
   ArrowLeft,
@@ -148,7 +146,7 @@ const stats = [
 export function AboutUs() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const handleContactFounder = (founderName: string, linkedin: string) => {
+  const handleContactFounder = (linkedin: string) => {
     window.open(linkedin, '_blank');
   };
 
@@ -447,7 +445,7 @@ Best regards`);
                   </div>
                   
                   <Button 
-                    onClick={() => handleContactFounder(founder.name, founder.linkedin)}
+                    onClick={() => handleContactFounder(founder.linkedin)}
                     className="w-full bg-blue-600 hover:bg-blue-700 text-white"
                   >
                     <Linkedin className="w-4 h-4 mr-2" />
