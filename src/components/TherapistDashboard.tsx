@@ -1038,6 +1038,7 @@ Best regards`);
                           </div>
                         )}
                         </>
+                        </>
                       </div>
                     )}
 
