@@ -3,7 +3,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { TherapistDocumentation } from '@/components/TherapistDocumentation';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { 
   User, 
@@ -322,7 +321,6 @@ export function TherapistDashboard() {
   const [isRecording, setIsRecording] = useState(false);
   const [sessionNotes, setSessionNotes] = useState('');
   const [aiSuggestions, setAiSuggestions] = useState<string[]>([]);
-  const [showDocumentation, setShowDocumentation] = useState(false);
   const [activeTab, setActiveTab] = useState<'overview' | 'intake' | 'sessions' | 'notes'>('overview');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isGeneratingNotes, setIsGeneratingNotes] = useState(false);
@@ -486,11 +484,6 @@ NEXT SESSION GOALS:
     generateAISuggestions(mockTranscript);
   };
 
-  const handleDocumentPatient = (patient: Patient) => {
-    setSelectedPatient(patient);
-    setShowDocumentation(true);
-  };
-
   const handleEarlyAccess = () => {
     const subject = encodeURIComponent('Early Access Registration - Wellnter');
     const body = encodeURIComponent(`Hi,
@@ -503,48 +496,6 @@ Best regards`);
     
     window.location.href = `mailto:contact@wellnter.com?subject=${subject}&body=${body}`;
   };
-
-  if (showDocumentation) {
-    return (
-      <div className="min-h-screen bg-gray-50">
-        {/* Navigation */}
-        <nav className="bg-white border-b border-gray-200 px-4 sm:px-6 lg:px-8 py-4">
-          <div className="max-w-7xl mx-auto flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <img 
-                src="/wellnter-logo.png" 
-                alt="Wellnter Logo" 
-                className="w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                }}
-              />
-              <div className="text-2xl sm:text-3xl font-bold">
-                <span className="text-blue-600">Wellnter</span>
-                <span className="text-gray-600 text-lg ml-2">Therapist Portal</span>
-              </div>
-            </div>
-            
-            <div className="flex items-center space-x-4">
-              <Button 
-                onClick={() => setShowDocumentation(false)}
-                variant="outline"
-                className="text-blue-600 border-blue-600 hover:bg-blue-50"
-              >
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Back to Dashboard
-              </Button>
-            </div>
-          </div>
-        </nav>
-
-        <TherapistDocumentation 
-          patientId={selectedPatient?.id} 
-          sessionData={selectedPatient}
-        />
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -991,11 +942,11 @@ Best regards`);
 
                     {activeTab === 'sessions' && (
                       <div className="space-y-4">
-                            onClick={() => handleDocumentPatient(patient)}
+                        <div className="flex items-center justify-between">
                           <h3 className="text-lg font-semibold text-gray-900">Session History</h3>
                           <Button size="sm">
-                            <FileText className="w-4 h-4 mr-1" />
-                            Document
+                            <Calendar className="w-4 h-4 mr-2" />
+                            Schedule Session
                           </Button>
                         </div>
 
